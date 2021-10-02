@@ -29,24 +29,44 @@ All team members are always expected to follow the coding standards and best pra
 
 ** Naming convention **
 
-	Meaningful, descriptive words to name variables.
+	Meaningful, descriptive words to name variables.	
+
 	Good:
-		string CharacterName;
+		string characterName;
 		int Row, Column;
-		GameObject SpawnedItem;
+		GameObject spawnedItem;
+		
 	Not Good:
 		string nam;
 		int i,j;
 		GameObject temp;
 
 	Capitalization expectation
-		Example:
+	
+		PascalCase should be used for class and method names.
+
+		CamelCase should be used for method arguments and local variables.
+
+		Example: public class Character
+			 {
+				public Character PrintDetails(string characterName)
+				{
+					//...
+				}
+			 }
 		
 	Standard Prefixing 
-		Example:
+		
+		The letter I should be used to prefix an interface.
+
+		Example: public interface ICharacter {};
 		
 	Abbreviation use 
-		Example:
+	
+		Avoid using abbreviations excluding Xml, etc.
+
+		Example: Do // string firstName; 
+			 Don't // string frstNm;
 		
 ** Layout Conventions **	
 
