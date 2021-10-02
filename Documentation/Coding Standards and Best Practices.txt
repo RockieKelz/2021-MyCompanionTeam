@@ -2,7 +2,7 @@ Coding Standards and Best Practices
 
 Agreeing Members:
 Person McPerson 
-Person O’Person 
+Racquel McCall 
 Sam Whorton
 Amber Xiong
 
