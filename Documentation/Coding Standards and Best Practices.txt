@@ -1,8 +1,7 @@
 Coding Standards and Best Practices
 
 Agreeing Members:
-Person McPerson 
-Person O’Person 
+Adam Deye 
 Sam Whorton
 Amber Xiong
 
