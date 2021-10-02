@@ -3,7 +3,7 @@ Coding Standards and Best Practices
 Agreeing Members:
 Person McPerson 
 Person O’Person 
-Person VonPerson
+Sam Whorton
 Amber Xiong
 
 Purpose
