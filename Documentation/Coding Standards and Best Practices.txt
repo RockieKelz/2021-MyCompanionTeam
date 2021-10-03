@@ -1,12 +1,12 @@
 Coding Standards and Best Practices
 
 Agreeing Members:
-
-Adam DeyeSam Whorton
+Adam Deye
+Sam Whorton
 Amber Xiong
 Racquel McCall
 
-Purpose
+Purpose:
 
 To develop reliable and maintainable applications, you must follow coding standards and best practices.
 The naming conventions, coding standards and best practices described in this document are compiled from our own experience. 
@@ -14,7 +14,8 @@ All team members are always expected to follow the coding standards and best pra
 
 
 ** Folder Heiarchy **
-
+	
+	Only folders created at the top most level.
 
 ** Commenting standards **
 
@@ -30,7 +31,6 @@ All team members are always expected to follow the coding standards and best pra
 
 ** Naming convention **
 
-	Meaningful, descriptive words to name variables.
 	Meaningful, descriptive words to name variables.	
 
 	Good:
