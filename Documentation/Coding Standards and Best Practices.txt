@@ -71,27 +71,73 @@ All team members are always expected to follow the coding standards and best pra
 ** Layout Conventions **	
 
 	Indenting standard
-		Example:
+
+		Smart indenting must be utilized at all times.
+		
+		Visual studio keyboard shortcut is Ctrl+K followed by Ctrl+F.
+
+		Example: public class Character
+			 {
+				public Character PrintDetails(string characterName)
+				{
+					//...
+				}
+			 }
 		
 	Curly braces ( {} ) format
-		Example:
+
+		Always align curly braces vertically.
+
+		Example: class Character
+			 {
+				static void PrintName()
+				{
+					// ...
+				}
+			 }
 		
 	Blank line expectation
-		Example:
+
+		Seperate methods and different sections by one blank line.
+
+		Example: class Character
+			 {
+				static void PrintName()
+				{
+					// ...
+				}
+			 }
+
+			 class 
 		
 	Spacing around operators
-		Example:
+
+		All operators must contain a preceeding and a following space.
+
+		Example: int age = 31;
 
 	Maximum characters per line
+	
+		Number of characters per line should not exceed 80.
 		
 	Maximum nested conditions 
+
+		Number of nested conditions should not exceed 5.
 		
 	Maximum lines per method
+
+		Number of lines per method should not exceed 20 lines.
 		
 	Maximum lines per file
 
+		Number of lines per file should not exceed 400.
+
 	#region usage
-		Example:
+		Example: #region MyRegion
+			 
+			 // ...
+
+			 #EndRegion
 		
 ** Programming Practices **
 
