@@ -1,9 +1,10 @@
 Coding Standards and Best Practices
 
 Agreeing Members:
-Adam Deye 
-Sam Whorton
+
+Adam DeyeSam Whorton
 Amber Xiong
+Racquel McCall
 
 Purpose
 
@@ -29,6 +30,7 @@ All team members are always expected to follow the coding standards and best pra
 
 ** Naming convention **
 
+	Meaningful, descriptive words to name variables.
 	Meaningful, descriptive words to name variables.	
 
 	Good:
