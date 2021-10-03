@@ -110,8 +110,6 @@ All team members are always expected to follow the coding standards and best pra
 				}
 			 }
 
-			 class 
-		
 	Spacing around operators
 
 		All operators must contain a preceeding and a following space.
@@ -145,6 +143,34 @@ All team members are always expected to follow the coding standards and best pra
 
 	Static values (hardcoded numbers. Const variables, and #defines)
 
+		Do not hard code numbers unless absolutely unavoidable. 
+
+		Do not use SCREAMING CAPS for constants.
+
 	Commenting out code
 
+		Each variable must have a comment explaining its purpose.
+	
+		Every method must have a comment explaining its purpose.
+
+		Single line comments should containe a splace at the beginning.
+
+		Multiple line comments should contain "//" at the beginning of each line.
+
+		Example: int userAge; // Keep track of user's age.
+
+			 class Character // Store's information for each character.
+			 {
+				static void PrintName() // Prints the character's name.
+				{
+					// ...
+				}
+			 }
+
+			 // This is an example of a
+			 // multiple line comment. 
+
 	DRY practices (“Don’t Repeat Yourself")
+
+		Every piece of of knowledge must have a single, unambiguous, authoritative representation
+		within the system.
