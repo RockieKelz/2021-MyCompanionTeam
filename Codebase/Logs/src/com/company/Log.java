@@ -7,23 +7,32 @@
 
 
 package com.company;
+import java.util.Date;
 import java.util.Vector;
 
 public class Log {
 
     // Properties
 
-    private Vector<BaseEntry> Entries;
+    private Date date;
 
-    /// METHODS ///
+    public Vector<BaseEntry> Entries;
+
+/// METHODS ///
 
     // Constructor
     Log(){}
 
     // Accessors
-    public Vector<BaseEntry> GetEntries() { return Entries; }
+    public Date GetDate() { return date; }
 
     // Mutators
-    public void SetEntries(Vector<BaseEntry> _entries) { Entries = _entries; }
+    public void SetDate(Date _date) { date = _date; }
+
+
+    public void AddEntry(BaseEntry entry) {
+        entry.SetDate(date);
+        Entries.add(entry);
+    }
 
 }
