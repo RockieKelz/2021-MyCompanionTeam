@@ -10,7 +10,7 @@ package com.company;
 public class JournalLog extends BaseLog {
 
     // Properties
-        //TODO: Add the appropriate properties to the Journal entries
+        // TODO: Add the appropriate properties to the Journal entries
         //- does the entry need to be saved as a single string or as multiple?
 
     /// METHODS ///
