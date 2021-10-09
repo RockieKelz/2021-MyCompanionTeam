@@ -13,7 +13,7 @@ The naming conventions, coding standards and best practices described in this do
 All team members are always expected to follow the coding standards and best practices.
 
 
-** Folder Heiarchy **
+** Folder Hierarchy **
 	
 	Only folders created at the top most level.
 
@@ -59,7 +59,7 @@ All team members are always expected to follow the coding standards and best pra
 		
 	Standard Prefixing 
 		
-		The letter I should be used to prefix an interface.
+		The letter 'I' should be used to prefix an interface.
 
 		Example: public interface ICharacter {};
 		
@@ -153,7 +153,7 @@ All team members are always expected to follow the coding standards and best pra
 	
 		Every method must have a comment explaining its purpose.
 
-		Single line comments should containe a splace at the beginning.
+		Single line comments should contain a space at the beginning.
 
 		Multiple line comments should contain "//" at the beginning of each line.
 
@@ -172,5 +172,5 @@ All team members are always expected to follow the coding standards and best pra
 
 	DRY practices (“Don’t Repeat Yourself")
 
-		Every piece of of knowledge must have a single, unambiguous, authoritative representation
+		Every piece of knowledge must have a single, unambiguous, authoritative representation
 		within the system.
