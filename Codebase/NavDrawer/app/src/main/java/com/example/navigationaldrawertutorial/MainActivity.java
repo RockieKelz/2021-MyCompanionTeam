@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_home:
                         replaceFragment(new HomeFragment());
                         break;
-                    case R.id.nav_login:
+                    case R.id.nav_account:
                         replaceFragment(new AccountFragment());
                         break;
                     case R.id.nav_settings:

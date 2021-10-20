@@ -21,17 +21,17 @@
                 android:id="@+id/topAppBar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:title="Racquel's Demo"
+                app:title="My Companion Demo"
                 app:navigationIcon="@drawable/ic_menu"
                 android:background="@color/white" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
         <FrameLayout
+            android:id="@+id/frameLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/frameLayout"
-            android:layout_below="@+id/appBarLayout"/>
+            android:layout_below="@+id/appBarLayout" />
 
     </RelativeLayout>
 

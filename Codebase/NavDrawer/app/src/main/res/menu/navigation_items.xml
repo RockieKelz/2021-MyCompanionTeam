@@ -3,27 +3,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+    //Main navigational items for the side menu
     <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="Home"/>
+        <item
+            android:id="@+id/nav_account"
+            android:icon="@drawable/ic_account"
+            android:title="Account"/>
+        <item
+            android:id="@+id/nav_calendar"
+            android:icon="@drawable/ic_calendar"
+            android:title="Calendar"/>
+        <item
+            android:id="@+id/nav_journal"
+            android:icon="@drawable/ic_journal"
+            android:title="Journal"/>
+        <item
+            android:id="@+id/nav_tracker"
+            android:icon="@drawable/ic_timeline"
+            android:title="Tracker"/>
+        <item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/ic_help"
+            android:title="Professional Help"/>
 
-    <item
-        android:id="@+id/nav_home"
-        android:icon="@drawable/ic_home"
-        android:title="Home"/>
     </group>
 
-    <item android:title="Account">
-        <menu>
-            <group android:checkableBehavior="single">
-            <item
-                android:id="@+id/nav_login"
-                android:icon="@drawable/ic_baseline_account_box_24"
-                android:title="Login"/>
-            </group>
-        </menu>
-    </item>
-
-
-
+    //Additional navigational items for the side menu
     <item android:title="Other">
         <menu>
             <group android:checkableBehavior="single">
@@ -31,10 +40,6 @@
                 android:id="@+id/nav_settings"
                 android:icon="@drawable/ic_settings"
                 android:title="Settings"/>
-            <item
-                android:id="@+id/nav_help"
-                android:icon="@drawable/ic_help"
-                android:title="Help"/>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_baseline_share_24"
