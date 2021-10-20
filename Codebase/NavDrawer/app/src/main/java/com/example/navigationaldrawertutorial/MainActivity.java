@@ -40,23 +40,29 @@ public class MainActivity extends AppCompatActivity {
                 item.setChecked(true);
                 drawerLayout.closeDrawer(GravityCompat.START);
 
-                //determine which page was selected
+                //Navigation switch case to determine which page was selected
                 switch (id)
                 {
-                    case R.id.nav_home:
-                        replaceFragment(new HomeFragment());
-                        break;
                     case R.id.nav_account:
                         replaceFragment(new AccountFragment());
+                        break;
+                    case R.id.nav_calendar:
+                        replaceFragment(new CalendarFragment());
+                        break;
+                    case R.id.nav_journal:
+                        replaceFragment(new JournalFragment());
+                        break;
+                    case R.id.nav_help:
+                        replaceFragment(new ProfHelpFragment());
                         break;
                     case R.id.nav_settings:
                         replaceFragment(new SettingsFragment());
                         break;
-                    case R.id.nav_help:
-                        Toast.makeText(MainActivity.this, "Help is Clicked", Toast.LENGTH_SHORT).show();
+                    case R.id.nav_tracker:
+                        replaceFragment(new TrackerFragment());
                         break;
                     case R.id.nav_share:
-                        Toast.makeText(MainActivity.this, "Share is Clicked", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Share Pop Up Under Construction", Toast.LENGTH_SHORT).show();
                         break;
                     default:
                         return true;
@@ -66,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-//    Swap pages when navigation bar is used
+//    Swap existing fragment page with a new fragment page
     private void replaceFragment(Fragment fragment)
     {
         FragmentManager fragmentManager = getSupportFragmentManager();
