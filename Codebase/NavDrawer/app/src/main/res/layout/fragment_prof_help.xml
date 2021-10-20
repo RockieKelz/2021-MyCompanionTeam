@@ -3,15 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
-    tools:context=".HomeFragment">
+    tools:context=".ProfHelpFragment"
+    android:background="@color/white">
 
+    <!--//Text that will be displayed in middle of screen-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="HomePage"
-        android:textColor="@color/white"
-        android:textSize="50dp"/>
+        android:text="Professional Help Page"
+        android:textColor="@color/black"
+        android:textSize="40sp"/>
 
 </FrameLayout>

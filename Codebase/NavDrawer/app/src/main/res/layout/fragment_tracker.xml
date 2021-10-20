@@ -3,15 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".AccountFragment">
+    tools:context=".TrackerFragment"
+    android:background="@color/white">
 
-<!--//Text that will be displayed in middle of screen-->
+    <!--//Text that will be displayed in middle of screen-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Account Page"
+        android:text="Tracker Page"
         android:textColor="@color/black"
         android:textSize="40sp"/>
 
