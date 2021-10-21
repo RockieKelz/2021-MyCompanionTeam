@@ -21,9 +21,9 @@
                 android:id="@+id/topAppBar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:title="My Companion Demo"
+                android:background="@color/white"
                 app:navigationIcon="@drawable/ic_menu"
-                android:background="@color/white" />
+                app:title="My Companion Demo" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -31,8 +31,8 @@
             android:id="@+id/frameLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/appBarLayout"
-            android:layout_above="@+id/bottom_nav" />
+            android:layout_above="@+id/bottom_nav"
+            android:layout_below="@+id/appBarLayout" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav"

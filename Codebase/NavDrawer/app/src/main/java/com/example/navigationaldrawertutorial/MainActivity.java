@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,7 +26,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         MaterialToolbar toolbar = findViewById(R.id.topAppBar);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new HomeFragment()).commit();
+
         NavigationView navigationView = findViewById(R.id.navigation_view);
+        BottomNavigationView bottomNavView = findViewById(R.id.bottom_nav);
+        bottomNavView.setSelectedItemId(R.id.bottom_nav_home);
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
                 //Navigation switch case to determine which page was selected
                 switch (id)
                 {
+                    case R.id.nav_home:
+                        replaceFragment(new HomeFragment());
+                        break;
                     case R.id.nav_account:
                         replaceFragment(new AccountFragment());
                         break;
@@ -70,6 +80,34 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+        //TODO: Fix bottom navigation menu highlight
+        bottomNavView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener()
+        {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item)
+            {
+                switch (item.getItemId())
+                {
+                    case R.id.bottom_nav_calendar:
+                        replaceFragment(new CalendarFragment());
+                        break;
+                    case R.id.bottom_nav_tracker:
+                        replaceFragment(new TrackerFragment());
+                        break;
+                    case R.id.bottom_nav_home:
+                        replaceFragment(new HomeFragment());
+                        break;
+                    case R.id.bottom_nav_journal:
+                        replaceFragment(new JournalFragment());
+                        break;
+                    case R.id.bottom_nav_menu:
+                        drawerLayout.openDrawer(GravityCompat.START);
+                        break;
+                }
+                return true;
+            }
+        });
+
     }
 
 //    Swap existing fragment page with a new fragment page
