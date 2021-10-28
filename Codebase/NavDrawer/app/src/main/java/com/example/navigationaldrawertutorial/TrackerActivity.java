@@ -20,18 +20,18 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
-public class CalendarActivity extends AppCompatActivity {
+public class TrackerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendar);
+        setContentView(R.layout.activity_tracker);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new CalendarFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new TrackerFragment()).commit();
 
         NavigationView navigationView = findViewById(R.id.navigation_view);
         BottomNavigationView bottomNavView = findViewById(R.id.bottom_nav);
-        bottomNavView.setSelectedItemId(R.id.bottom_nav_calendar);
+        bottomNavView.setSelectedItemId(R.id.bottom_nav_tracker);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -65,7 +65,7 @@ public class CalendarActivity extends AppCompatActivity {
                         replaceFragment(new TrackerFragment());
                         break;
                     case R.id.nav_share:
-                        Toast.makeText(CalendarActivity.this, "Share Pop Up Under Construction", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TrackerActivity.this, "Share Pop Up Under Construction", Toast.LENGTH_SHORT).show();
                         break;
                     default:
                         return true;
@@ -82,18 +82,18 @@ public class CalendarActivity extends AppCompatActivity {
                 switch (item.getItemId())
                 {
                     case R.id.bottom_nav_calendar:
-                        replaceFragment(new CalendarFragment());
-                        break;
-                    case R.id.bottom_nav_tracker:
-                        Intent intent2 = new Intent(CalendarActivity.this, TrackerActivity.class);
+                        Intent intent2 = new Intent(TrackerActivity.this, CalendarActivity.class);
                         startActivity(intent2);
                         break;
+                    case R.id.bottom_nav_tracker:
+                        replaceFragment(new TrackerFragment());
+                        break;
                     case R.id.bottom_nav_home:
-                        Intent intent3 = new Intent(CalendarActivity.this, MainActivity.class);
+                        Intent intent3 = new Intent(TrackerActivity.this, MainActivity.class);
                         startActivity(intent3);
                         break;
                     case R.id.bottom_nav_journal:
-                        Intent intent1 = new Intent(CalendarActivity.this, JournalActivity.class);
+                        Intent intent1 = new Intent(TrackerActivity.this, JournalActivity.class);
                         startActivity(intent1);
                         break;
                     case R.id.bottom_nav_menu:

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NavigationalDrawerTutorial">
         <activity
+            android:name=".TrackerActivity"
+            android:exported="false" />
+        <activity
             android:name=".JournalActivity"
             android:exported="false" />
         <activity

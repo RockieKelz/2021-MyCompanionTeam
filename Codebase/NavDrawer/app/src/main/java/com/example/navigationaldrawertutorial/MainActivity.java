@@ -86,7 +86,8 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent2);
                         break;
                     case R.id.bottom_nav_tracker:
-                        replaceFragment(new TrackerFragment());
+                        Intent intent3 = new Intent(MainActivity.this, FragmentManager.class);
+                        startActivity(intent3);
                         break;
                     case R.id.bottom_nav_home:
                         replaceFragment(new HomeFragment());

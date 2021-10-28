@@ -128,7 +128,8 @@ public class JournalActivity extends AppCompatActivity {
                         startActivity(intent2);
                         break;
                     case R.id.bottom_nav_tracker:
-                        replaceFragment(new TrackerFragment());
+                        Intent intent3 = new Intent(JournalActivity.this, TrackerActivity.class);
+                        startActivity(intent3);
                         break;
                     case R.id.bottom_nav_home:
                         Intent intent1 = new Intent(JournalActivity.this, MainActivity.class);
