@@ -82,7 +82,8 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId())
                 {
                     case R.id.bottom_nav_calendar:
-                        replaceFragment(new CalendarFragment());
+                        Intent intent2 = new Intent(MainActivity.this, CalendarActivity.class);
+                        startActivity(intent2);
                         break;
                     case R.id.bottom_nav_tracker:
                         replaceFragment(new TrackerFragment());
