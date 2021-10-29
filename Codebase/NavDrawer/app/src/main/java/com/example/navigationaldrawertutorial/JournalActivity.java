@@ -36,7 +36,6 @@ public class JournalActivity extends AppCompatActivity {
         BottomNavigationView bottomNavView = findViewById(R.id.bottom_nav);
         bottomNavView.setSelectedItemId(R.id.bottom_nav_journal);
 
-        //Todo: Fix TabLayout
        TabLayout tabLayout_journal = findViewById(R.id.tabs_journal);
         ViewPager2 pager2_journal = findViewById(R.id.viewPager2_journal);
         FragmentManager fManager = getSupportFragmentManager();
@@ -85,25 +84,34 @@ public class JournalActivity extends AppCompatActivity {
                 switch (id)
                 {
                     case R.id.nav_home:
-                        replaceFragment(new HomeFragment());
+                        Intent intent1 = new Intent(JournalActivity.this, MainActivity.class);
+                        startActivity(intent1);
                         break;
                     case R.id.nav_account:
+                        tabLayout_journal.setVisibility(View.GONE);
+                        pager2_journal.setVisibility(View.GONE);
                         replaceFragment(new AccountFragment());
                         break;
                     case R.id.nav_calendar:
-                        replaceFragment(new CalendarFragment());
+                        Intent intent2 = new Intent(JournalActivity.this, CalendarActivity.class);
+                        startActivity(intent2);
                         break;
                     case R.id.nav_journal:
                         replaceFragment(new JournalFragment());
                         break;
                     case R.id.nav_help:
+                        tabLayout_journal.setVisibility(View.GONE);
+                        pager2_journal.setVisibility(View.GONE);
                         replaceFragment(new ProfHelpFragment());
                         break;
                     case R.id.nav_settings:
+                        tabLayout_journal.setVisibility(View.GONE);
+                        pager2_journal.setVisibility(View.GONE);
                         replaceFragment(new SettingsFragment());
                         break;
                     case R.id.nav_tracker:
-                        replaceFragment(new TrackerFragment());
+                        Intent intent3 = new Intent(JournalActivity.this, TrackerActivity.class);
+                        startActivity(intent3);
                         break;
                     case R.id.nav_share:
                         Toast.makeText(JournalActivity.this, "Share Pop Up Under Construction", Toast.LENGTH_SHORT).show();

@@ -53,7 +53,8 @@ public class MainActivity extends AppCompatActivity {
                         replaceFragment(new CalendarFragment());
                         break;
                     case R.id.nav_journal:
-                        replaceFragment(new JournalFragment());
+                        Intent intent1 = new Intent(MainActivity.this, JournalActivity.class);
+                        startActivity(intent1);
                         break;
                     case R.id.nav_help:
                         replaceFragment(new ProfHelpFragment());
