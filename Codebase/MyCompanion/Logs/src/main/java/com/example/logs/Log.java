@@ -15,11 +15,19 @@ public class Log {
 
     // METHODS //
 
+    // Constructors
+
+    // Copy Constructor
+    Log(Log log){
+        SetEntries(log.GetEntries());
+    }
+
+
     // Accessors
     public Vector<BaseEntry> GetEntries() { return Entries; }
 
     // Mutators
-    public void SetEntries(BaseEntry _entry) { AddEntry(_entry); }      // Might need to be removed and then add a copy constructor
+    public void SetEntries(Vector<BaseEntry> _entries) { Entries = _entries; }
 
 
     public void AddEntry(BaseEntry entry) { Entries.add(entry); }
