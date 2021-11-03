@@ -14,6 +14,8 @@ public class Log {
     // Properties
     private Vector<BaseEntry> Entries;
     private Date date;
+    private boolean HasCheckUp;
+    private boolean HasJournal;
 
     // METHODS //
 
@@ -23,12 +25,15 @@ public class Log {
     Log(Log log){
         SetEntries(log.GetEntries());
         date = log.GetDate();
+
     }
 
 
     // Accessors
     public Vector<BaseEntry> GetEntries() { return Entries; }
     public Date GetDate() { return date; }
+    public boolean CheckUpStatus() { return HasCheckUp; }
+    public boolean JournalStatus() { return HasJournal; }
 
     // Mutators
     public void SetEntries(Vector<BaseEntry> _entries) { Entries = _entries; }
@@ -38,6 +43,11 @@ public class Log {
     public void AddEntry(BaseEntry entry) {
         if(entry.GetDate() == date) {
             Entries.add(entry);
+            if(entry.GetType() == EntryType.CHECKUP){
+                HasCheckUp = true;
+            } else if (entry.GetType() == EntryType.JOURNAL){
+                HasJournal = true;
+            }
         } else {
             System.out.println("Entry is from a different date, cannot add to current Log.");
         }
@@ -57,4 +67,10 @@ public class Log {
     }
 
 
+
+
+
+
+    //TODO: 1. Add a check to see if a log still has an entry type after one is removed
+    //      2.
 }
