@@ -6,13 +6,15 @@
  */
 
 package com.example.logs;
+import java.util.HashMap;
 
 public class JournalEntry extends BaseEntry {
 
     // Properties
     // TODO: Add the appropriate properties to the Journal entries
     //- does the entry need to be saved as a single string or as multiple?
-    private String entry;
+
+    private HashMap<String, String> entry;
 
     /// METHODS ///
 
@@ -23,9 +25,13 @@ public class JournalEntry extends BaseEntry {
     }
 
     // Accessors
-    public String GetEntry() { return entry; }
+    public HashMap<String, String> GetEntry() { return entry; }
 
     // Mutators
-    public void SetEntry(String _entry) { entry = _entry; }
+    public void AddEntry(HashMap<String, String> _entry) { entry = _entry; }
 
+
+    public void AddQuestion(String question, String response){
+        entry.put(question, response);
+    }
 }
