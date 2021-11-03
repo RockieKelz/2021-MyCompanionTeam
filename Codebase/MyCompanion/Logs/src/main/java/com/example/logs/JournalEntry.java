@@ -14,7 +14,8 @@ public class JournalEntry extends BaseEntry {
     // TODO: Add the appropriate properties to the Journal entries
     //- does the entry need to be saved as a single string or as multiple?
 
-    private HashMap<String, String> entry;
+    private HashMap<String, String> Entry;
+    private String title;
 
     /// METHODS ///
 
@@ -25,13 +26,16 @@ public class JournalEntry extends BaseEntry {
     }
 
     // Accessors
-    public HashMap<String, String> GetEntry() { return entry; }
+    public HashMap<String, String> GetEntry() { return Entry; }
+    public String GetTitle() { return title; }
 
     // Mutators
-    public void AddEntry(HashMap<String, String> _entry) { entry = _entry; }
+    public void SetEntry(HashMap<String, String> _entry) { Entry = _entry; }
+    public void SetTitle(String _title) { title = _title; }
+
 
 
     public void AddQuestion(String question, String response){
-        entry.put(question, response);
+        Entry.put(question, response);
     }
 }
