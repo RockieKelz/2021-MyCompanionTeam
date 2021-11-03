@@ -9,12 +9,175 @@
     tools:context=".JournalFragment">
 
     <!--//Text that will be displayed in middle of screen-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@color/lighgrey"
+        android:layout_marginBottom="500dp" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="How were you on \n *Selected date goes here*?"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/button_calendarPick_checkUp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_calendar"
+        android:layout_marginStart="330dp"
+        android:layout_marginBottom="420dp" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image_mascotCheckUp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/profile_pic"
+        android:layout_marginBottom="300dp"
+        android:layout_gravity="center" />
+
     <TextView
+        android:id="@+id/text_frown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="360dp"
+        android:text="n" />
+    <TextView
+        android:id="@+id/text_neutral"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="250dp"
+        android:text="-" />
+    <TextView
+        android:id="@+id/text_smile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="250dp"
+        android:layout_marginStart="360dp"
+        android:text="u" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/slider_checkUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Check-Up Page"
-        android:textColor="@color/black"
-        android:textSize="40dp"/>
+        android:layout_marginBottom="50dp"
+        android:stepSize="1"
+        android:value="2"
+        android:valueFrom="0"
+        android:valueTo="4" />
+
+    <TableLayout
+        android:id="@+id/table_checkUpButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="-150dp">
+
+        <TableRow android:layout_width="match_parent">
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:autoSizeTextType="uniform"
+                    android:text="Stressed" />
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:text="Sad" />
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:autoSizeTextType="uniform"
+                    android:text="Anxious" />
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:text="Angry" />
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        </TableRow>
+
+        <TableRow android:layout_width="match_parent">
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:text="Withdrawn"
+                    android:textSize="9dp" />
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:text="Lonely" />
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:autoSizeTextType="uniform"
+                    android:text="Fearful" />
+
+                <Button
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:text="Happy" />
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/button_save_checkUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/table_checkUpButtons"
+        android:layout_gravity="center"
+        android:layout_marginBottom="-400dp"
+        android:text="Save" />
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
