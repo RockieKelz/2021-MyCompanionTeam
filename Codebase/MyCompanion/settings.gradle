@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "MyCompanion"
 include ':app'
 include ':Logs'
+include ':navigation'
