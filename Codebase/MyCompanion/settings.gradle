@@ -6,6 +6,5 @@ dependencyResolutionManagement {
         jcenter() // Warning: this repository is going to shut down soon
     }
 }
-rootProject.name = "MyCompanion"
+rootProject.name = "Navigational Drawer tutorial"
 include ':app'
-include ':Logs'
