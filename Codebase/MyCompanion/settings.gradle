@@ -8,3 +8,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Navigational Drawer tutorial"
 include ':app'
+include ':Logs'
+include ':navigation'

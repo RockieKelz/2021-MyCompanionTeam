@@ -9,10 +9,8 @@ package com.example.logs;
 
 import com.sun.tools.javac.comp.Check;
 
-import java.util.Date;
 import java.util.Vector;
 
-enum Emotions {SAD, HAPPY, ANXIOUS, CALM, ANGRY, EXCITED}
 public class CheckUpEntry extends BaseEntry {
 
     // Properties
