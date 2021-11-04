@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent2);
                         break;
                     case R.id.bottom_nav_tracker:
-                        Intent intent3 = new Intent(MainActivity.this, FragmentManager.class);
+                        Intent intent3 = new Intent(MainActivity.this, TrackerActivity.class);
                         startActivity(intent3);
                         break;
                     case R.id.bottom_nav_home:

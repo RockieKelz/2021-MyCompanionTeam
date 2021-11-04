@@ -7,6 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.TextView;
+
+import java.text.DateFormat;
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +64,41 @@ public class TrackerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tracker, container, false);
+        View trackerView = inflater.inflate(R.layout.fragment_tracker, container, false);
+
+        Calendar calendar = Calendar.getInstance();
+        DisplayDateRange(calendar, trackerView, 0);
+
+        ImageButton buttonPrevious = trackerView.findViewById(R.id.button_trackerPrev);
+        ImageButton buttonNext = trackerView.findViewById(R.id.button_trackerNext);
+
+        buttonPrevious.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DisplayDateRange(calendar, trackerView, -7);
+            }
+        });
+
+        buttonNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DisplayDateRange(calendar, trackerView, 7);
+            }
+        });
+
+        return trackerView;
+    }
+    void DisplayDateRange(Calendar calendar, View view, int days)
+    {
+        while(calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY)
+        {
+            calendar.add(calendar.DATE, -1);
+        }
+        calendar.add(calendar.DATE, days);
+        String startDate = DateFormat.getDateInstance().format(calendar.getTime());
+        calendar.add(calendar.DATE, 6);
+        String endDate = DateFormat.getDateInstance().format(calendar.getTime());
+        TextView textViewDate = view.findViewById(R.id.text_trackerDate);
+        textViewDate.setText(startDate + " - " + endDate);
     }
 }
