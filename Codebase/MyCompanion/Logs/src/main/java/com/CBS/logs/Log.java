@@ -5,7 +5,7 @@
     Last Modified: 11/2/2021
  */
 
-package com.example.logs;
+package com.CBS.logs;
 import java.util.Date;
 import java.util.Vector;
 

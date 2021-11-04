@@ -1,4 +1,4 @@
-package com.example.navigationaldrawertutorial;
+package com.CBS.MyCompanion;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.CBS.MyCompanion.R;
 
 /**
  * A simple {@link Fragment} subclass.

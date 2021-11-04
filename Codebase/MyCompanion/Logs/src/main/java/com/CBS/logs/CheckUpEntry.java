@@ -5,9 +5,7 @@
     Last Modified: 11/2/2021
  */
 
-package com.example.logs;
-
-import com.sun.tools.javac.comp.Check;
+package com.CBS.logs;
 
 import java.util.Vector;
 

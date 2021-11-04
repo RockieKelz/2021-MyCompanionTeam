@@ -1,4 +1,4 @@
-package com.example.navigationaldrawertutorial;
+package com.CBS.MyCompanion;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

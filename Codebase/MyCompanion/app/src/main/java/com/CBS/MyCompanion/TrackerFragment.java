@@ -1,4 +1,4 @@
-package com.example.navigationaldrawertutorial;
+package com.CBS.MyCompanion;
 
 import android.os.Bundle;
 
@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.CBS.MyCompanion.R;
 
 import java.text.DateFormat;
 import java.util.Calendar;

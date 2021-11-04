@@ -1,4 +1,4 @@
-package com.example.navigationaldrawertutorial;
+package com.CBS.MyCompanion;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,12 +10,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
-import com.google.android.material.appbar.MaterialToolbar;
+import com.CBS.MyCompanion.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;

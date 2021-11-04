@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".AccountFragment">
+    tools:context="com.CBS.MyCompanion.AccountFragment">
 
 <!--//Text that will be displayed in middle of screen-->
     <TextView

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfHelpFragment"
+    tools:context="com.CBS.MyCompanion.ProfHelpFragment"
     android:background="@color/white">
 
     <!--//Text that will be displayed in middle of screen-->

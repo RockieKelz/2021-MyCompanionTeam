@@ -1,4 +1,4 @@
-package com.example.navigationaldrawertutorial;
+package com.CBS.MyCompanion;
 
 import org.junit.Test;
 
