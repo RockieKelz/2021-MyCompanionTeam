@@ -10,16 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NavigationalDrawerTutorial">
         <activity
-            android:name="com.example.MyCompanion.com.CBS.MyCompanion.TrackerActivity"
+            android:name="com.CBS.MyCompanion.TrackerActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.MyCompanion.com.CBS.MyCompanion.JournalActivity"
+            android:name="com.CBS.MyCompanion.JournalActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.MyCompanion.com.CBS.MyCompanion.CalendarActivity"
+            android:name="com.CBS.MyCompanion.CalendarActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.MyCompanion.com.CBS.MyCompanion.MainActivity"
+            android:name="com.CBS.MyCompanion.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
