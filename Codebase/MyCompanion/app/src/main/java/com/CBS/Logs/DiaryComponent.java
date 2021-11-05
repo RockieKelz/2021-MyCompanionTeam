@@ -14,6 +14,12 @@ public class DiaryComponent {
 
     // METHODS //
 
+    // Overloaded Constructor
+    DiaryComponent(String _question, String _response){
+        SetQuestion(_question);
+        SetResponse(_response);
+    }
+
     // Copy Constructor
     DiaryComponent(DiaryComponent d){
         SetQuestion(d.GetQuestion());
