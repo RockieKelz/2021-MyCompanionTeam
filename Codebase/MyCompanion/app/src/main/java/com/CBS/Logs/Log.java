@@ -6,6 +6,13 @@
  */
 
 package com.CBS.Logs;
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.Date;
 import java.util.Vector;
 
@@ -65,7 +72,26 @@ public class Log {
         entry.SetDate(date);
     }
 
+    /*
+    // FireStore Initialization
+    public void SaveLog() {
+        FirebaseFirestore log = FirebaseFirestore.getInstance();
+        log.collection("Logs").add(this)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        android.util.Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getID());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        android.util.Log.w(TAG, "Error Adding document", e);
+                    }
+                });
+    }
 
+     */
 
 
 
