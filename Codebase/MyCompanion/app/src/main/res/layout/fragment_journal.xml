@@ -13,8 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Journal Page"
+        android:text="@string/journal_page"
         android:textColor="@color/black"
-        android:textSize="40dp"/>
+        android:textSize="40sp"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
