@@ -8,9 +8,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Slide;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.Toast;
 
 import com.CBS.MyCompanion.R;
@@ -23,6 +28,12 @@ public class TrackerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Set Up Screen Transition Animation of Activity Page
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+        getWindow().setEnterTransition(new Fade());
+        getWindow().setAllowEnterTransitionOverlap(true);
+
         setContentView(R.layout.activity_tracker);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new TrackerFragment()).commit();
@@ -42,26 +53,26 @@ public class TrackerActivity extends AppCompatActivity {
                 switch (id)
                 {
                     case R.id.nav_home:
-                        replaceFragment(new HomeFragment());
+                        replaceFragmentWithAnimation(new HomeFragment());
                         break;
                     case R.id.nav_account:
-                        replaceFragment(new AccountFragment());
+                        replaceFragmentWithAnimation(new AccountFragment());
                         break;
                     case R.id.nav_calendar:
-                        replaceFragment(new CalendarFragment());
+                        replaceFragmentWithAnimation(new CalendarFragment());
                         break;
                     case R.id.nav_journal:
                         Intent intent1 = new Intent(TrackerActivity.this, JournalActivity.class);
-                        startActivity(intent1);
+                        startActivity(intent1, ActivityOptions.makeSceneTransitionAnimation(TrackerActivity.this).toBundle());
                         break;
                     case R.id.nav_help:
-                        replaceFragment(new ProfHelpFragment());
+                        replaceFragmentWithAnimation(new ProfHelpFragment());
                         break;
                     case R.id.nav_settings:
-                        replaceFragment(new SettingsFragment());
+                        replaceFragmentWithAnimation(new SettingsFragment());
                         break;
                     case R.id.nav_tracker:
-                        replaceFragment(new TrackerFragment());
+                        replaceFragmentWithAnimation(new TrackerFragment());
                         break;
                     case R.id.nav_share:
                         Toast.makeText(TrackerActivity.this, "Share Pop Up Under Construction", Toast.LENGTH_SHORT).show();
@@ -82,18 +93,18 @@ public class TrackerActivity extends AppCompatActivity {
                 {
                     case R.id.bottom_nav_calendar:
                         Intent intent2 = new Intent(TrackerActivity.this, CalendarActivity.class);
-                        startActivity(intent2);
+                        startActivity(intent2, ActivityOptions.makeSceneTransitionAnimation(TrackerActivity.this).toBundle());
                         break;
                     case R.id.bottom_nav_tracker:
-                        replaceFragment(new TrackerFragment());
+                        replaceFragmentWithAnimation(new TrackerFragment());
                         break;
                     case R.id.bottom_nav_home:
                         Intent intent3 = new Intent(TrackerActivity.this, MainActivity.class);
-                        startActivity(intent3);
+                        startActivity(intent3, ActivityOptions.makeSceneTransitionAnimation(TrackerActivity.this).toBundle());
                         break;
                     case R.id.bottom_nav_journal:
                         Intent intent1 = new Intent(TrackerActivity.this, JournalActivity.class);
-                        startActivity(intent1);
+                        startActivity(intent1, ActivityOptions.makeSceneTransitionAnimation(TrackerActivity.this).toBundle());
                         break;
                     case R.id.bottom_nav_menu:
                         drawerLayout.openDrawer(GravityCompat.END);
@@ -106,12 +117,12 @@ public class TrackerActivity extends AppCompatActivity {
     }
 
     //    Swap existing fragment page with a new fragment page
-    private void replaceFragment(Fragment fragment)
+    private void replaceFragmentWithAnimation(Fragment fragment)
     {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout, fragment);
-        fragmentTransaction.commit();
-
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right, R.anim.slide_in_right,R.anim.slide_out_left);
+        transaction.replace(R.id.frameLayout, fragment);
+        transaction.commit();
     }
 }

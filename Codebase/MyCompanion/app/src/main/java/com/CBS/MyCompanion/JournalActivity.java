@@ -9,10 +9,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Slide;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Toast;
 
 import com.CBS.MyCompanion.R;
@@ -26,6 +31,12 @@ public class JournalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Set Up Screen Transition Animation of Activity Page
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+        getWindow().setEnterTransition(new Fade());
+        getWindow().setAllowEnterTransitionOverlap(true);
+
         setContentView(R.layout.activity_journal);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new JournalFragment()).commit();
@@ -83,33 +94,33 @@ public class JournalActivity extends AppCompatActivity {
                 {
                     case R.id.nav_home:
                         Intent intent1 = new Intent(JournalActivity.this, MainActivity.class);
-                        startActivity(intent1);
+                        startActivity(intent1, ActivityOptions.makeSceneTransitionAnimation(JournalActivity.this).toBundle());
                         break;
                     case R.id.nav_account:
                         tabLayout_journal.setVisibility(View.GONE);
                         pager2_journal.setVisibility(View.GONE);
-                        replaceFragment(new AccountFragment());
+                        replaceFragmentWithAnimation(new AccountFragment());
                         break;
                     case R.id.nav_calendar:
                         Intent intent2 = new Intent(JournalActivity.this, CalendarActivity.class);
-                        startActivity(intent2);
+                        startActivity(intent2, ActivityOptions.makeSceneTransitionAnimation(JournalActivity.this).toBundle());
                         break;
                     case R.id.nav_journal:
-                        replaceFragment(new JournalFragment());
+                        replaceFragmentWithAnimation(new JournalFragment());
                         break;
                     case R.id.nav_help:
                         tabLayout_journal.setVisibility(View.GONE);
                         pager2_journal.setVisibility(View.GONE);
-                        replaceFragment(new ProfHelpFragment());
+                        replaceFragmentWithAnimation(new ProfHelpFragment());
                         break;
                     case R.id.nav_settings:
                         tabLayout_journal.setVisibility(View.GONE);
                         pager2_journal.setVisibility(View.GONE);
-                        replaceFragment(new SettingsFragment());
+                        replaceFragmentWithAnimation(new SettingsFragment());
                         break;
                     case R.id.nav_tracker:
                         Intent intent3 = new Intent(JournalActivity.this, TrackerActivity.class);
-                        startActivity(intent3);
+                        startActivity(intent3, ActivityOptions.makeSceneTransitionAnimation(JournalActivity.this).toBundle());
                         break;
                     case R.id.nav_share:
                         Toast.makeText(JournalActivity.this, "Share Pop Up Under Construction", Toast.LENGTH_SHORT).show();
@@ -131,18 +142,18 @@ public class JournalActivity extends AppCompatActivity {
                 {
                     case R.id.bottom_nav_calendar:
                         Intent intent2 = new Intent(JournalActivity.this, CalendarActivity.class);
-                        startActivity(intent2);
+                        startActivity(intent2, ActivityOptions.makeSceneTransitionAnimation(JournalActivity.this).toBundle());
                         break;
                     case R.id.bottom_nav_tracker:
                         Intent intent3 = new Intent(JournalActivity.this, TrackerActivity.class);
-                        startActivity(intent3);
+                        startActivity(intent3, ActivityOptions.makeSceneTransitionAnimation(JournalActivity.this).toBundle());
                         break;
                     case R.id.bottom_nav_home:
                         Intent intent1 = new Intent(JournalActivity.this, MainActivity.class);
-                        startActivity(intent1);
+                        startActivity(intent1, ActivityOptions.makeSceneTransitionAnimation(JournalActivity.this).toBundle());
                         break;
                     case R.id.bottom_nav_journal:
-                        replaceFragment(new JournalFragment());
+                        replaceFragmentWithAnimation(new JournalFragment());
                         break;
                     case R.id.bottom_nav_menu:
                         drawerLayout.openDrawer(GravityCompat.END);
@@ -155,12 +166,12 @@ public class JournalActivity extends AppCompatActivity {
     }
 
     //    Swap existing fragment page with a new fragment page
-    private void replaceFragment(Fragment fragment)
+    private void replaceFragmentWithAnimation(Fragment fragment)
     {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout, fragment);
-        fragmentTransaction.commit();
-
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right, R.anim.slide_in_right,R.anim.slide_out_left);
+        transaction.replace(R.id.frameLayout, fragment);
+        transaction.commit();
     }
 }
