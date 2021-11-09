@@ -11,16 +11,18 @@ import androidx.fragment.app.FragmentTransaction;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
-import android.transition.Explode;
 import android.transition.Fade;
-import android.transition.Slide;
 import android.view.MenuItem;
 import android.view.Window;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.Calendar;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -121,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
     private void replaceFragmentWithAnimation(Fragment fragment)
     {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right, R.anim.slide_in_right,R.anim.slide_out_left);
         transaction.replace(R.id.frameLayout, fragment);
         transaction.commit();
