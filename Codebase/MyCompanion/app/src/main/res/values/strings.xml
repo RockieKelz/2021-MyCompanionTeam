@@ -1,11 +1,18 @@
 <resources>
     <string name="app_name">MyCompanion</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="calendar">Calendar</string>
     <string name="tracker">Tracker</string>
     <string name="home">Home</string>
     <string name="journal">Journal</string>
     <string name="menu">Menu</string>
     <string name="journal_page">Journal Page</string>
+    <string name="account">Account</string>
+    <string name="professional_help">Professional Help</string>
+    <string name="other">Other</string>
+    <string name="settings">Settings</string>
+    <string name="share">Share</string>
+    <string name="username">Mr. Pups</string>
+    <string name="home_check1">Journal Entry</string>
+    <string name="home_check2">Mood Entry</string>
 </resources>

@@ -1,5 +1,13 @@
 package com.CBS.MyCompanion;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
+import android.os.Bundle;
+import android.transition.Fade;
+import android.view.MenuItem;
+import android.view.Window;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -7,16 +15,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
-import android.app.ActivityOptions;
-import android.content.Intent;
-import android.os.Bundle;
-import android.transition.Explode;
-import android.transition.Fade;
-import android.transition.Slide;
-import android.view.MenuItem;
-import android.view.Window;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
