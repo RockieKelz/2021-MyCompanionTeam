@@ -16,13 +16,19 @@ import android.transition.Fade;
 import android.transition.Slide;
 import android.view.MenuItem;
 import android.view.Window;
+import android.widget.CalendarView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 
 public class CalendarActivity extends AppCompatActivity {
+
+
+    //CalendarView object for calender uses
+    private CalendarView mCalendarView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +40,12 @@ public class CalendarActivity extends AppCompatActivity {
         getWindow().setAllowEnterTransitionOverlap(true);
 
         setContentView(R.layout.activity_calendar);
+        mCalendarView = (CalendarView) findViewById(R.id.calendarView);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new CalendarFragment()).commit();
+        //Commented out following line #Alex Roeder
+        //Dont know if this line is nessesary or what it is for exactly, with line commented out navigation leads to
+        //calender now loads calendar. 
+        //getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new CalendarFragment()).commit();
 
         NavigationView navigationView = findViewById(R.id.navigation_view);
         BottomNavigationView bottomNavView = findViewById(R.id.bottom_nav);
