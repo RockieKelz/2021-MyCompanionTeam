@@ -12,8 +12,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.CBS.MyCompanion.R;
+import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
@@ -107,6 +113,7 @@ public class TrackerFragment extends Fragment {
         emotionLegend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         emotionLegend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
         emotionLegend.setWordWrapEnabled(true);
+        emotionLegend.setForm(Legend.LegendForm.CIRCLE);
 
         ArrayList<PieEntry> emotions = new ArrayList<>();
         emotions.add(new PieEntry(1, "Stressed"));
@@ -137,6 +144,60 @@ public class TrackerFragment extends Fragment {
         emotionChart.setData(data);
         emotionChart.invalidate();
 
+        LineChart moodChart = trackerView.findViewById(R.id.lineChart_moods);
+        moodChart.getDescription().setEnabled(false);
+
+        moodChart.getXAxis().setLabelCount(7);
+        moodChart.getXAxis().setAxisMinimum(0);
+        moodChart.getXAxis().setXOffset(1);
+        moodChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        moodChart.getAxisLeft().setLabelCount(5);
+        moodChart.getAxisRight().setEnabled(false);
+
+        moodChart.getLegend().setEnabled(false);
+
+        ArrayList<Entry> moods = new ArrayList<>();
+        moods.add(new Entry(1, 1));
+        moods.add(new Entry(2, 2));
+        moods.add(new Entry(3, 3));
+        moods.add(new Entry(4, 4));
+        moods.add(new Entry(5, 5));
+        moods.add(new Entry(6, 2));
+        moods.add(new Entry(7, 3));
+
+        ArrayList<Integer> moodColors = new ArrayList<>();
+        for (int i =0; i < moods.size(); i++)
+        {
+            int index = (int)moods.get(i).getY();
+            switch (index)
+            {
+                case 1:
+                    moodColors.add(Color.rgb(214, 31, 31));
+                    break;
+                case 2:
+                    moodColors.add(Color.rgb(224, 122, 83));
+                    break;
+                case 3:
+                    moodColors.add(Color.rgb(255, 211, 1));
+                    break;
+                case 4:
+                    moodColors.add(Color.rgb(154, 182, 98));
+                    break;
+                case 5:
+                    moodColors.add(Color.rgb(89, 135, 75));
+                    break;
+            }
+
+        }
+
+        LineDataSet moodDataSet = new LineDataSet(moods, "moods");
+        moodDataSet.setColor(Color.BLACK);
+        moodDataSet.setCircleColors(moodColors);
+        LineData moodData = new LineData(moodDataSet);
+        moodData.setDrawValues(true);
+        moodData.setValueTextColor(Color.BLACK);
+        moodChart.setData(moodData);
+        moodChart.invalidate();
 
         return trackerView;
     }
