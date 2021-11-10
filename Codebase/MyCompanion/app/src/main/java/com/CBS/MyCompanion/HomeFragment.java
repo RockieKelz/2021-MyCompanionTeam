@@ -1,5 +1,7 @@
 package com.CBS.MyCompanion;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,14 +11,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
-import com.CBS.MyCompanion.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.text.DateFormat;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,7 +22,9 @@ import java.text.DateFormat;
  */
 public class HomeFragment extends Fragment {
 
-    String formattedDate;
+    SharedPreferences sharedPreferences;
+    public static final String currentStreak = "streak";
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -57,6 +56,13 @@ public class HomeFragment extends Fragment {
         SimpleDateFormat simpleDate = new SimpleDateFormat("EEEE, MMM d, yyyy");
         getTimeFromAndroid(cal, homeView, 0);
 
+        //Generate Login Streak
+        sharedPreferences = getActivity().getApplicationContext().getSharedPreferences("streak", Context.MODE_PRIVATE);
+        int today = cal.get(Calendar.DAY_OF_YEAR);
+        int lastDay = sharedPreferences.getInt("last Login", 0);
+        int streak = sharedPreferences.getInt("current streak", 0);
+        getLoginStreak(today,lastDay, streak, homeView);
+
         //Change the date
         ImageButton buttonPrevious = homeView.findViewById(R.id.button_homePrev);
         ImageButton buttonNext = homeView.findViewById(R.id.button_homeNext);
@@ -82,7 +88,6 @@ public class HomeFragment extends Fragment {
         CheckBox trackerCheckBox= (CheckBox) homeView.findViewById(R.id.home_checkBox2);
         //If log is completed
         //trackerCheckBox.setChecked(true);
-
 
         return homeView;
     }
@@ -115,6 +120,24 @@ public class HomeFragment extends Fragment {
     {
         //Is the view checked
         boolean checked = ((CheckBox)view).isChecked();
+
+    }
+    private void getLoginStreak(int currentLogin, int lastLogin, int streak, View view)
+    {
+        if (lastLogin == currentLogin-1)
+        {
+            streak += 1;
+            sharedPreferences.edit().putInt("last login", currentLogin).apply();
+            sharedPreferences.edit().putInt("streak", streak).apply();
+        }
+        else
+        {
+            sharedPreferences.edit().putInt("last login", currentLogin).apply();
+            sharedPreferences.edit().putInt("streak", 1).apply();
+            streak=1;
+        }
+        TextView streakCount = view.findViewById(R.id.homeStreaks);
+        streakCount.setText("Current Login Streak: " + streak);
 
     }
 }
