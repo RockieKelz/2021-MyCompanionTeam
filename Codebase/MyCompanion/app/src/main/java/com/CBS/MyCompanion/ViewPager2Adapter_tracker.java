@@ -19,15 +19,17 @@ public class ViewPager2Adapter_tracker extends FragmentStateAdapter
         switch(position)
         {
             case 1:
-                return new CheckUpFragment();
+                return new TrackerFragment_month();
+            case 2:
+                return new TrackerFragment_year();
         }
 
-        return new JournalFragment();
+        return new TrackerFragment();
 
     }
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 3;
     }
 }
