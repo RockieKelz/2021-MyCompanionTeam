@@ -1,5 +1,6 @@
 package com.CBS.MyCompanion;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,8 +12,16 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.CBS.MyCompanion.R;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -87,6 +96,47 @@ public class TrackerFragment extends Fragment {
                 DisplayDateRange(calendar, trackerView, 7);
             }
         });
+
+        PieChart emotionChart = trackerView.findViewById(R.id.pieChart_emotion);
+
+        emotionChart.setDrawHoleEnabled(true);
+        emotionChart.setUsePercentValues(true);
+        emotionChart.setCenterText("Emotion Chart");
+        emotionChart.getDescription().setEnabled(false);
+        Legend emotionLegend = emotionChart.getLegend();
+        emotionLegend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+        emotionLegend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
+        emotionLegend.setWordWrapEnabled(true);
+
+        ArrayList<PieEntry> emotions = new ArrayList<>();
+        emotions.add(new PieEntry(1, "Stressed"));
+        emotions.add(new PieEntry(1, "Sad"));
+        emotions.add(new PieEntry(1, "Angry"));
+        emotions.add(new PieEntry(1, "Anxious"));
+        emotions.add(new PieEntry(1, "Happy"));
+        emotions.add(new PieEntry(1, "Lonely"));
+        emotions.add(new PieEntry(1, "Fearful"));
+        emotions.add(new PieEntry(1, "Withdrawn"));
+
+        ArrayList<Integer> colors = new ArrayList<>();
+        colors.add(Color.rgb(148, 62, 93));
+        colors.add(Color.rgb(96, 60, 105));
+        colors.add(Color.rgb(213, 91, 79));
+        colors.add(Color.rgb(255, 187, 105));
+        colors.add(Color.rgb(255, 234, 148));
+        colors.add(Color.rgb(109, 191, 154));
+        colors.add(Color.rgb(82, 173, 235));
+        colors.add(Color.rgb(93, 109, 143));
+
+        PieDataSet dataSet = new PieDataSet(emotions, "");
+        dataSet.setColors(colors);
+        PieData data = new PieData(dataSet);
+        data.setDrawValues(true);
+        data.setValueFormatter(new PercentFormatter(emotionChart));
+        data.setValueTextColor(Color.BLACK);
+        emotionChart.setData(data);
+        emotionChart.invalidate();
+
 
         return trackerView;
     }

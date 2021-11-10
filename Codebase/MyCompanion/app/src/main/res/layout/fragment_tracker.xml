@@ -37,6 +37,14 @@
         android:layout_marginStart="150dp"
         android:layout_marginBottom="240dp" />
 
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/pieChart_emotion"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="160dp" />
+
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs_tracker"
         android:layout_width="match_parent"
