@@ -1,18 +1,12 @@
 package com.CBS.MyCompanion;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.transition.Fade;
-import android.transition.Slide;
-import android.transition.TransitionInflater;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
 
-import com.CBS.MyCompanion.R;
+import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,6 +14,9 @@ import com.CBS.MyCompanion.R;
  * create an instance of this fragment.
  */
 public class CalendarFragment extends Fragment {
+
+    //CalendarView object for calender uses
+    private CalendarView mCalendarView;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -66,6 +63,10 @@ public class CalendarFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_calendar, container, false);
+        View calendarView = inflater.inflate(R.layout.fragment_calendar, container, false);
+
+        mCalendarView = calendarView.findViewById(R.id.calendarView);
+
+        return mCalendarView;
     }
 }
