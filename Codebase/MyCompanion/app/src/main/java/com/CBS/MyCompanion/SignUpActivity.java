@@ -41,6 +41,7 @@ public class SignUpActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.activity_signup_progressBar);
         mAuth = FirebaseAuth.getInstance();
 
+        // TODO: Delete before publishing
         mAuth.signOut();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
