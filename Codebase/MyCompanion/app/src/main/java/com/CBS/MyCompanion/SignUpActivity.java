@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.AuthResult;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -40,7 +42,6 @@ public class SignUpActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View v) {
                 Intent s = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(s);
@@ -53,6 +54,17 @@ public class SignUpActivity extends AppCompatActivity {
                 registerNewUser();
             }
         });
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user != null){
+            user.reload();
+            user = mAuth.getCurrentUser();
+        }
     }
 
     private void registerNewUser() {
@@ -84,7 +96,7 @@ public class SignUpActivity extends AppCompatActivity {
         // create new user or register new user
         mAuth
                 .createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
 
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task)
@@ -94,6 +106,8 @@ public class SignUpActivity extends AppCompatActivity {
                                     "Registration successful!",
                                     Toast.LENGTH_SHORT)
                                     .show();
+                            Log.d("Success", "createUserWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
 
                             // hide the progress bar
                             progressBar.setVisibility(View.GONE);
@@ -113,6 +127,7 @@ public class SignUpActivity extends AppCompatActivity {
                                             + " Please try again later",
                                     Toast.LENGTH_LONG)
                                     .show();
+                            Log.w("Failure", "createUserWithEmail:failure", task.getException());
 
                             // hide the progress bar
                             progressBar.setVisibility(View.GONE);
