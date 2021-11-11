@@ -10,16 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/MyCompanion">
         <activity
-            android:name="com.CBS.MyCompanion.TrackerActivity"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name="com.CBS.MyCompanion.JournalActivity"
+            android:name=".SignUpActivity"
+            android:exported="true" />
+        <activity
+            android:name=".TrackerActivity"
             android:exported="false" />
         <activity
-            android:name="com.CBS.MyCompanion.CalendarActivity"
+            android:name=".JournalActivity"
             android:exported="false" />
         <activity
-            android:name="com.CBS.MyCompanion.MainActivity"
+            android:name=".CalendarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
