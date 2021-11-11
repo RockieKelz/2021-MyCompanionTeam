@@ -80,6 +80,14 @@
                 android:textSize="14sp"
                 android:id="@+id/activity_main_loginButton" />
 
+            <ProgressBar
+                android:id="@+id/activity_main_progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:visibility="gone" />
+
 
         </LinearLayout>
 
