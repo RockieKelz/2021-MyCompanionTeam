@@ -23,6 +23,7 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -77,7 +78,7 @@ public class TrackerFragment_year extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View trackerView = inflater.inflate(R.layout.fragment_tracker, container, false);
+        View trackerView = inflater.inflate(R.layout.fragment_tracker_year, container, false);
 
         Calendar calendar = Calendar.getInstance();
         DisplayDateRange(calendar, trackerView, 0);
@@ -88,14 +89,14 @@ public class TrackerFragment_year extends Fragment {
         buttonPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DisplayDateRange(calendar, trackerView, -7);
+                DisplayDateRange(calendar, trackerView, -1);
             }
         });
 
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DisplayDateRange(calendar, trackerView, 7);
+                DisplayDateRange(calendar, trackerView, 1);
             }
         });
 
@@ -197,17 +198,11 @@ public class TrackerFragment_year extends Fragment {
 
         return trackerView;
     }
-    void DisplayDateRange(Calendar calendar, View view, int days)
+    void DisplayDateRange(Calendar calendar, View view, int move)
     {
-        while(calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY)
-        {
-            calendar.add(calendar.DATE, -1);
-        }
-        calendar.add(calendar.DATE, days);
-        String startDate = DateFormat.getDateInstance().format(calendar.getTime());
-        calendar.add(calendar.DATE, 6);
-        String endDate = DateFormat.getDateInstance().format(calendar.getTime());
+        calendar.add(calendar.YEAR, move);
+        String month = new SimpleDateFormat("yyyy").format(calendar.getTime());
         TextView textViewDate = view.findViewById(R.id.text_trackerDate);
-        textViewDate.setText(startDate + " - " + endDate);
+        textViewDate.setText(month);
     }
 }
