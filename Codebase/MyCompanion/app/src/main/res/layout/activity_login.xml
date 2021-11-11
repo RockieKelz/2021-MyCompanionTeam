@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:id="@+id/activity_main_emailEditText" />
+                android:id="@+id/activity_login_emailEditText" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -54,14 +54,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:id="@+id/activity_main_passwordEditText" />
+                android:id="@+id/activity_login_passwordEditText" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/login_form_loginButton"
                 android:textSize="22sp"
-                android:id="@+id/activity_main_signInButton"/>
+                android:id="@+id/activity_login_loginButton"/>
+
+            <ProgressBar
+                android:id="@+id/activity_login_progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:visibility="gone" />
 
 
         </LinearLayout>

@@ -34,11 +34,11 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        emailEditText = findViewById(R.id.activity_main_emailEditText);
-        passwordEditText = findViewById(R.id.activity_main_passwordEditText);
-        loginButton = findViewById(R.id.activity_main_loginButton);
-        registerButton = findViewById(R.id.activity_main_registerButton);
-        progressBar = findViewById(R.id.activity_main_progressBar);
+        emailEditText = findViewById(R.id.activity_signup_emailEditText);
+        passwordEditText = findViewById(R.id.activity_signup_passwordEditText);
+        loginButton = findViewById(R.id.activity_signup_loginButton);
+        registerButton = findViewById(R.id.activity_signup_registerButton);
+        progressBar = findViewById(R.id.activity_signup_progressBar);
         mAuth = FirebaseAuth.getInstance();
 
         loginButton.setOnClickListener(new View.OnClickListener() {

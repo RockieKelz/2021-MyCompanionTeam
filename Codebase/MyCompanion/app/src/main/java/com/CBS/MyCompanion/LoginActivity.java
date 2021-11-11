@@ -34,10 +34,10 @@ public class LoginActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        emailEditText = findViewById(R.id.activity_main_emailEditText);
-        passwordEditText = findViewById(R.id.activity_main_passwordEditText);
-        loginButton = findViewById(R.id.activity_main_loginButton);
-        progressBar = findViewById(R.id.activity_main_progressBar);
+        emailEditText = findViewById(R.id.activity_login_emailEditText);
+        passwordEditText = findViewById(R.id.activity_login_passwordEditText);
+        loginButton = findViewById(R.id.activity_login_loginButton);
+        progressBar = findViewById(R.id.activity_login_progressBar);
 
 
         loginButton.setOnClickListener(new View.OnClickListener() {
