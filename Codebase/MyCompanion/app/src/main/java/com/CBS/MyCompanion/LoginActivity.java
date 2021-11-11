@@ -52,9 +52,7 @@ public class LoginActivity extends AppCompatActivity {
     private void loginUserAccount()
     {
 
-
         progressBar.setVisibility(View.VISIBLE);
-
 
         String email, password;
         email = emailEditText.getText().toString();

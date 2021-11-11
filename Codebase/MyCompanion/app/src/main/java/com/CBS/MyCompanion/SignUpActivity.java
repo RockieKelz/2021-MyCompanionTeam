@@ -41,6 +41,8 @@ public class SignUpActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.activity_signup_progressBar);
         mAuth = FirebaseAuth.getInstance();
 
+        mAuth.signOut();
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent s = new Intent(getApplicationContext(), LoginActivity.class);
@@ -60,10 +62,12 @@ public class SignUpActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser user = mAuth.getCurrentUser();
-        if(user != null){
-            user.reload();
-            user = mAuth.getCurrentUser();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            currentUser.reload();
+            currentUser = mAuth.getCurrentUser();
+            Intent s = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(s);
         }
     }
 
@@ -91,11 +95,15 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT)
                     .show();
             return;
+        } else if (password.length() < 6) {
+            Toast.makeText(getApplicationContext(),
+                    "Password must be at least 6 characters",
+                    Toast.LENGTH_LONG).show();
+            return;
         }
 
         // create new user or register new user
-        mAuth
-                .createUserWithEmailAndPassword(email, password)
+        mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
 
                     @Override
