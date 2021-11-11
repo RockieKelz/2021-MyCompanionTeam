@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.CBS.MyCompanion.R;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -23,10 +24,15 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.utils.ViewPortHandler;
 
 import java.text.DateFormat;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -150,6 +156,7 @@ public class TrackerFragment extends Fragment {
         moodChart.getXAxis().setLabelCount(7);
         moodChart.getXAxis().setAxisMinimum(0);
         moodChart.getXAxis().setXOffset(1);
+        moodChart.getXAxis().setValueFormatter( new LineChartXAxisFormatter());
         moodChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         moodChart.getAxisLeft().setLabelCount(5);
         moodChart.getAxisRight().setEnabled(false);
@@ -214,4 +221,40 @@ public class TrackerFragment extends Fragment {
         TextView textViewDate = view.findViewById(R.id.text_trackerDate);
         textViewDate.setText(startDate + " - " + endDate);
     }
+
+    private class LineChartXAxisFormatter extends IndexAxisValueFormatter {
+
+        @Override
+        public String getFormattedValue(float value)
+        {
+            String weekday = "";
+            switch ((int)value)
+            {
+                case 1:
+                    weekday = "Sun";
+                    break;
+                case 2:
+                    weekday = "Mon";
+                    break;
+                case 3:
+                    weekday = "Tue";
+                    break;
+                case 4:
+                    weekday = "Wed";
+                    break;
+                case 5:
+                    weekday = "Thu";
+                    break;
+                case 6:
+                    weekday = "Fri";
+                    break;
+                case 7:
+                    weekday = "Sat";
+                    break;
+            }
+            return weekday;
+        }
+
+    }
+
 }

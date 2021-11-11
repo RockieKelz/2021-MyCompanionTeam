@@ -26,6 +26,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -78,7 +79,7 @@ public class TrackerFragment_month extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View trackerView = inflater.inflate(R.layout.fragment_tracker_month, container, false);
+        View trackerView = inflater.inflate(R.layout.fragment_tracker, container, false);
 
         Calendar calendar = Calendar.getInstance();
         DisplayDateRange(calendar, trackerView, 0);
@@ -153,14 +154,14 @@ public class TrackerFragment_month extends Fragment {
 
         moodChart.getLegend().setEnabled(false);
 
+
         ArrayList<Entry> moods = new ArrayList<>();
-        moods.add(new Entry(1, 1));
-        moods.add(new Entry(2, 2));
-        moods.add(new Entry(3, 3));
-        moods.add(new Entry(4, 4));
-        moods.add(new Entry(5, 5));
-        moods.add(new Entry(6, 2));
-        moods.add(new Entry(7, 3));
+        Random rand = new Random();
+        for (int ndx = 1; ndx <= 30; ndx++)
+        {
+            int randMood = rand.nextInt(5) + 1;
+            moods.add(new Entry(ndx, randMood));
+        }
 
         ArrayList<Integer> moodColors = new ArrayList<>();
         for (int i =0; i < moods.size(); i++)

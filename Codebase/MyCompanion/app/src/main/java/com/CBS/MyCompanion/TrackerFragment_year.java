@@ -20,12 +20,14 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -78,7 +80,7 @@ public class TrackerFragment_year extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View trackerView = inflater.inflate(R.layout.fragment_tracker_year, container, false);
+        View trackerView = inflater.inflate(R.layout.fragment_tracker, container, false);
 
         Calendar calendar = Calendar.getInstance();
         DisplayDateRange(calendar, trackerView, 0);
@@ -147,6 +149,7 @@ public class TrackerFragment_year extends Fragment {
         moodChart.getXAxis().setLabelCount(7);
         moodChart.getXAxis().setAxisMinimum(0);
         moodChart.getXAxis().setXOffset(1);
+        moodChart.getXAxis().setValueFormatter( new TrackerFragment_year.LineChartXAxisFormatter());
         moodChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         moodChart.getAxisLeft().setLabelCount(5);
         moodChart.getAxisRight().setEnabled(false);
@@ -154,13 +157,12 @@ public class TrackerFragment_year extends Fragment {
         moodChart.getLegend().setEnabled(false);
 
         ArrayList<Entry> moods = new ArrayList<>();
-        moods.add(new Entry(1, 1));
-        moods.add(new Entry(2, 2));
-        moods.add(new Entry(3, 3));
-        moods.add(new Entry(4, 4));
-        moods.add(new Entry(5, 5));
-        moods.add(new Entry(6, 2));
-        moods.add(new Entry(7, 3));
+        Random rand = new Random();
+        for (int ndx = 1; ndx <= 12; ndx++)
+        {
+            int randMood = rand.nextInt(5) + 1;
+            moods.add(new Entry(ndx, randMood));
+        }
 
         ArrayList<Integer> moodColors = new ArrayList<>();
         for (int i =0; i < moods.size(); i++)
@@ -204,5 +206,56 @@ public class TrackerFragment_year extends Fragment {
         String month = new SimpleDateFormat("yyyy").format(calendar.getTime());
         TextView textViewDate = view.findViewById(R.id.text_trackerDate);
         textViewDate.setText(month);
+    }
+
+    private class LineChartXAxisFormatter extends IndexAxisValueFormatter {
+
+        @Override
+        public String getFormattedValue(float value)
+        {
+            String month = "";
+            switch ((int)value)
+            {
+                case 1:
+                    month = "Jan";
+                    break;
+                case 2:
+                    month = "Feb";
+                    break;
+                case 3:
+                    month = "Mar";
+                    break;
+                case 4:
+                    month = "Apr";
+                    break;
+                case 5:
+                    month = "May";
+                    break;
+                case 6:
+                    month = "Jun";
+                    break;
+                case 7:
+                    month = "Jul";
+                    break;
+                case 8:
+                    month = "Aug";
+                    break;
+                case 9:
+                    month = "Sep";
+                    break;
+                case 10:
+                    month = "Oct";
+                    break;
+                case 11:
+                    month = "Nov";
+                    break;
+                case 12:
+                    month = "Dec";
+                    break;
+            }
+
+            return month;
+        }
+
     }
 }
