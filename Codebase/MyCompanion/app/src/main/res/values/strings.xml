@@ -15,4 +15,18 @@
     <string name="username">Mr. Pups</string>
     <string name="home_check1">Journal Entry</string>
     <string name="home_check2">Mood Entry</string>
+
+    <!-- SignUp Variables -->
+    <string name="sign_up_form_title">SignUp</string>
+    <string name="sign_up_form_email">Email</string>
+    <string name="sign_up_form_password">Password</string>
+    <string name="sign_up_form_loginButton">Log In</string>
+    <string name="sign_up_form_registerButton">Register</string>
+
+    <!-- Login Variables -->
+    <string name="login_form_title">Log In</string>
+    <string name="login_form_loginButton">Log In</string>
+    <string name="login_form_email">Email</string>
+    <string name="login_form_password">Password</string>
+
 </resources>
