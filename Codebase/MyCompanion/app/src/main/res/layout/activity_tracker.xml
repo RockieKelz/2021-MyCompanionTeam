@@ -16,28 +16,27 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-<!--
+
             <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabs_journal"
+                android:id="@+id/tabs_tracker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
             </com.google.android.material.tabs.TabLayout>
 
 
             <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/viewPager2_journal"
+                android:id="@+id/viewPager2_tracker"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-               android:layout_below="@id/tabs_journal"
+               android:layout_below="@id/tabs_tracker"
                 android:layout_above="@id/bottom_nav"/>
--->
+
             <FrameLayout
                 android:id="@+id/frameLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@+id/bottom_nav"/>
-   <!--             android:layout_below="@+id/viewPager2_journal"/>-->
+                android:layout_above="@+id/bottom_nav"
+                android:layout_below="@+id/viewPager2_tracker"/>
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_nav"

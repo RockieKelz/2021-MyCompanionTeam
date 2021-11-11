@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,8 +12,11 @@
         android:id="@+id/text_trackerDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="80dp"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="46dp"
+        android:ems="12"
+        android:textAlignment="center"
         android:text="Tracker Page"
         android:textColor="@color/black"
         android:background="@color/light_grey"
@@ -23,54 +26,40 @@
         android:id="@+id/button_trackerPrev"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_gravity="center"
         android:src="@drawable/ic_arrow_left"
-        android:layout_marginStart="-150dp"
-        android:layout_marginBottom="240dp" />
+        android:layout_marginTop="40dp"
+        android:layout_toStartOf="@+id/text_trackerDate"/>
 
     <ImageButton
         android:id="@+id/button_trackerNext"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_gravity="center"
         android:src="@drawable/ic_arrow_right"
-        android:layout_marginStart="150dp"
-        android:layout_marginBottom="240dp" />
+        android:layout_marginTop="40dp"
+        android:layout_toEndOf="@+id/text_trackerDate" />
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pieChart_emotion"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="160dp" />
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="100dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/light_grey"
+        android:layout_marginTop="360dp"/>
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/lineChart_moods"
-        android:layout_width="250dp"
+        android:layout_width="350dp"
         android:layout_height="250dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="420dp" />
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="380dp" />
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabs_tracker"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabMode="fixed">
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Week" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Month" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Year" />
-
-    </com.google.android.material.tabs.TabLayout>
-</FrameLayout>
+</RelativeLayout>

@@ -2,22 +2,18 @@ package com.CBS.MyCompanion;
 
 import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.CBS.MyCompanion.R;
+import androidx.fragment.app.Fragment;
+
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -26,22 +22,19 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.PercentFormatter;
-import com.github.mikephil.charting.utils.ColorTemplate;
-import com.github.mikephil.charting.utils.ViewPortHandler;
 
 import java.text.DateFormat;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.Month;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link TrackerFragment#newInstance} factory method to
+ * Use the {@link TrackerFragment_year#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TrackerFragment extends Fragment {
+public class TrackerFragment_year extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -52,7 +45,7 @@ public class TrackerFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public TrackerFragment() {
+    public TrackerFragment_year() {
         // Required empty public constructor
     }
 
@@ -65,8 +58,8 @@ public class TrackerFragment extends Fragment {
      * @return A new instance of fragment TrackerFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static TrackerFragment newInstance(String param1, String param2) {
-        TrackerFragment fragment = new TrackerFragment();
+    public static TrackerFragment_year newInstance(String param1, String param2) {
+        TrackerFragment_year fragment = new TrackerFragment_year();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -98,14 +91,14 @@ public class TrackerFragment extends Fragment {
         buttonPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DisplayDateRange(calendar, trackerView, -7);
+                DisplayDateRange(calendar, trackerView, -1);
             }
         });
 
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DisplayDateRange(calendar, trackerView, 7);
+                DisplayDateRange(calendar, trackerView, 1);
             }
         });
 
@@ -156,7 +149,7 @@ public class TrackerFragment extends Fragment {
         moodChart.getXAxis().setLabelCount(7);
         moodChart.getXAxis().setAxisMinimum(0);
         moodChart.getXAxis().setXOffset(1);
-        moodChart.getXAxis().setValueFormatter( new LineChartXAxisFormatter());
+        moodChart.getXAxis().setValueFormatter( new TrackerFragment_year.LineChartXAxisFormatter());
         moodChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         moodChart.getAxisLeft().setLabelCount(5);
         moodChart.getAxisRight().setEnabled(false);
@@ -164,13 +157,12 @@ public class TrackerFragment extends Fragment {
         moodChart.getLegend().setEnabled(false);
 
         ArrayList<Entry> moods = new ArrayList<>();
-        moods.add(new Entry(1, 1));
-        moods.add(new Entry(2, 2));
-        moods.add(new Entry(3, 3));
-        moods.add(new Entry(4, 4));
-        moods.add(new Entry(5, 5));
-        moods.add(new Entry(6, 2));
-        moods.add(new Entry(7, 3));
+        Random rand = new Random();
+        for (int ndx = 1; ndx <= 12; ndx++)
+        {
+            int randMood = rand.nextInt(5) + 1;
+            moods.add(new Entry(ndx, randMood));
+        }
 
         ArrayList<Integer> moodColors = new ArrayList<>();
         for (int i =0; i < moods.size(); i++)
@@ -208,18 +200,12 @@ public class TrackerFragment extends Fragment {
 
         return trackerView;
     }
-    void DisplayDateRange(Calendar calendar, View view, int days)
+    void DisplayDateRange(Calendar calendar, View view, int move)
     {
-        while(calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY)
-        {
-            calendar.add(calendar.DATE, -1);
-        }
-        calendar.add(calendar.DATE, days);
-        String startDate = DateFormat.getDateInstance().format(calendar.getTime());
-        calendar.add(calendar.DATE, 6);
-        String endDate = DateFormat.getDateInstance().format(calendar.getTime());
+        calendar.add(calendar.YEAR, move);
+        String month = new SimpleDateFormat("yyyy").format(calendar.getTime());
         TextView textViewDate = view.findViewById(R.id.text_trackerDate);
-        textViewDate.setText(startDate + " - " + endDate);
+        textViewDate.setText(month);
     }
 
     private class LineChartXAxisFormatter extends IndexAxisValueFormatter {
@@ -227,34 +213,49 @@ public class TrackerFragment extends Fragment {
         @Override
         public String getFormattedValue(float value)
         {
-            String weekday = "";
+            String month = "";
             switch ((int)value)
             {
                 case 1:
-                    weekday = "Sun";
+                    month = "Jan";
                     break;
                 case 2:
-                    weekday = "Mon";
+                    month = "Feb";
                     break;
                 case 3:
-                    weekday = "Tue";
+                    month = "Mar";
                     break;
                 case 4:
-                    weekday = "Wed";
+                    month = "Apr";
                     break;
                 case 5:
-                    weekday = "Thu";
+                    month = "May";
                     break;
                 case 6:
-                    weekday = "Fri";
+                    month = "Jun";
                     break;
                 case 7:
-                    weekday = "Sat";
+                    month = "Jul";
+                    break;
+                case 8:
+                    month = "Aug";
+                    break;
+                case 9:
+                    month = "Sep";
+                    break;
+                case 10:
+                    month = "Oct";
+                    break;
+                case 11:
+                    month = "Nov";
+                    break;
+                case 12:
+                    month = "Dec";
                     break;
             }
-            return weekday;
+
+            return month;
         }
 
     }
-
 }

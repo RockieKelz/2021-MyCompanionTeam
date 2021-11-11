@@ -15,10 +15,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 
 public class TrackerActivity extends AppCompatActivity {
 
@@ -38,6 +40,44 @@ public class TrackerActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.navigation_view);
         BottomNavigationView bottomNavView = findViewById(R.id.bottom_nav);
         bottomNavView.setSelectedItemId(R.id.bottom_nav_tracker);
+
+        TabLayout tabLayout_tracker = findViewById(R.id.tabs_tracker);
+        ViewPager2 pager2_tracker = findViewById(R.id.viewPager2_tracker);
+        FragmentManager fManager = getSupportFragmentManager();
+        ViewPager2Adapter_tracker adapter = new ViewPager2Adapter_tracker(fManager, getLifecycle());
+        pager2_tracker.setAdapter(adapter);
+
+        tabLayout_tracker.addTab(tabLayout_tracker.newTab().setText("Week"));
+        tabLayout_tracker.addTab(tabLayout_tracker.newTab().setText("Month"));
+        tabLayout_tracker.addTab(tabLayout_tracker.newTab().setText("Year"));
+
+        tabLayout_tracker.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener()
+        {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab)
+            {
+                pager2_tracker.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab)
+            {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab)
+            {
+
+            }
+        });
+
+        pager2_tracker.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                tabLayout_tracker.selectTab(tabLayout_tracker.getTabAt(position));
+            }
+        });
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
