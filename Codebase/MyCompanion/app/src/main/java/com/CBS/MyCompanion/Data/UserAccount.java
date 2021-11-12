@@ -11,7 +11,7 @@ import com.CBS.MyCompanion.Data.Logs.Log;
 import java.util.Date;
 import java.util.Vector;
 
-abstract class UserAccount {
+public class UserAccount {
 
     // Properties
 
@@ -49,6 +49,6 @@ abstract class UserAccount {
 
 
     // Methods
-    
+
 
 }
