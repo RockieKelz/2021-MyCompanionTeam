@@ -28,6 +28,7 @@ public class SignUpActivity extends AppCompatActivity {
     private Button loginButton, registerButton;
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
+    private Button bypass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +40,12 @@ public class SignUpActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.activity_signup_loginButton);
         registerButton = findViewById(R.id.activity_signup_registerButton);
         progressBar = findViewById(R.id.activity_signup_progressBar);
+        bypass = findViewById(R.id.activity_signup_Bypass);
         mAuth = FirebaseAuth.getInstance();
 
         // TODO: Delete before publishing
         mAuth.signOut();
+
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -55,6 +58,13 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 registerNewUser();
+            }
+        });
+
+        bypass.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent s = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(s);
             }
         });
     }
