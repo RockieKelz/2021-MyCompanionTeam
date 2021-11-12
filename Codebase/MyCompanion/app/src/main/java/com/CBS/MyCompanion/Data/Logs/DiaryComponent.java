@@ -4,7 +4,7 @@
     Last Modified: 11/5/2021
  */
 
-package com.CBS.Logs;
+package com.CBS.MyCompanion.Data.Logs;
 
 public class DiaryComponent {
 
