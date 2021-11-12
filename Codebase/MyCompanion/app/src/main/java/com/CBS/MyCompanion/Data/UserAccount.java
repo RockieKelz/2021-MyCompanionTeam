@@ -25,6 +25,18 @@ public class UserAccount {
     private Integer longestStreak;
     private Vector<Log> logs;
 
+    // Constructors
+    UserAccount(String _firstName, String _lastName, Date _birthday, String _id){
+        setFirstName(_firstName);
+        setLastName(_lastName);
+        setFullName(_firstName + " " + _lastName);
+        setBirthday(_birthday);
+        setId(_id);
+        setTotalLoginCount(0);
+        setCurrentLoginStreak(0);
+        setLongestStreak(0);
+        logs = new Vector<Log>();
+    }
 
     // Accessors
     public String getId() { return id; }
