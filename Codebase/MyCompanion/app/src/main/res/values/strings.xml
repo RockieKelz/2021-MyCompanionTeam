@@ -29,4 +29,10 @@
     <string name="login_form_email">Email</string>
     <string name="login_form_password">Password</string>
 
+    <!-- User Information -->
+    <string name="userinfo_form_title">User Info</string>
+    <string name="userinfo_form_firstName">First Name</string>
+    <string name="userinfo_form_lastName">Last Name</string>
+    <string name="userinfo_form_birthday">Birthday</string>
+
 </resources>
