@@ -1,18 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.CBS.MyCompanion.ProfHelpFragment"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="horizontal"
+    tools:context="com.CBS.MyCompanion.ProfHelpFragment">
 
     <!--//Text that will be displayed in middle of screen-->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Professional Help Page"
-        android:textColor="@color/black"
-        android:textSize="40sp"/>
 
-</FrameLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="79dp"
+        android:layout_marginTop="45dp"
+        android:text="Phone Numbers to Seek Professional Help"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="25dp" />
+    <TextView
+        android:id="@+id/Crisis"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="150dp"
+        android:text="@string/Crisis" />
+
+    <TextView
+        android:id="@+id/suicide"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Crisis"
+        android:paddingBottom="20dp"
+        android:layout_marginStart="23dp"
+        android:text="@string/Suicide" />
+
+        <TextView
+            android:id="@+id/veterans"
+            android:layout_below="@+id/suicide"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:layout_marginStart="23dp"
+            android:text="@string/Veterans" />
+
+        <TextView
+            android:id="@+id/veterans2"
+            android:layout_below="@+id/veterans"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:layout_marginStart="23dp"
+            android:text="@string/Veterans2" />
+
+        <TextView
+            android:id="@+id/child"
+            android:layout_below="@+id/veterans2"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:layout_marginStart="23dp"
+            android:text="@string/Child" />
+
+        <TextView
+            android:id="@+id/domestic"
+            android:layout_below="@+id/child"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:layout_marginStart="23dp"
+            android:text="@string/Domestic" />
+
+    <LinearLayout
+        android:id="@+id/profHelp_info_left"
+        android:layout_width="337dp"
+        android:layout_height="491dp"
+        android:layout_marginStart="23dp"
+        android:divider="#000"
+        android:dividerHeight="1dp"
+        android:footerDividersEnabled="false"
+        android:gravity="right"
+        android:headerDividersEnabled="false"
+        android:orientation="vertical"
+        android:paddingTop="150dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:text="@string/CrisisNum" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="35dp"
+            android:text="@string/SuicideNum" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:text="@string/VeteransNum" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:text="@string/VeteransText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:text="@string/ChildNum" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:text="@string/DomesticNum" />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
+
