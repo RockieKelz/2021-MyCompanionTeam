@@ -1,13 +1,22 @@
 package com.CBS.MyCompanion;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 import com.CBS.MyCompanion.R;
+
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,6 +69,82 @@ public class CheckUpFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_checkup, container, false);
+        View checkUpView = inflater.inflate(R.layout.fragment_checkup, container, false);
+
+        TextView textQuestion = checkUpView.findViewById(R.id.text_question);
+        Calendar calendar = Calendar.getInstance();
+        int dayNum = calendar.get(Calendar.DAY_OF_MONTH);
+        int monthNum = calendar.get(Calendar.MONTH);
+        int yearNum = calendar.get(Calendar.YEAR);
+        String dateIsToday = "How are you\nToday?";
+        textQuestion.setText(dateIsToday);
+
+        ImageButton dateChoice = checkUpView.findViewById(R.id.button_calendarPick_checkUp);
+
+        dateChoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        if (year == yearNum && month == yearNum && dayOfMonth == dayNum)
+                        {
+                            textQuestion.setText(dateIsToday);
+                        }
+                        else {
+                            textQuestion.setText("How were you on\n" + intMonthToString(month) + " " + dayOfMonth + ", " + year);
+                        }
+                    }
+                };
+                DatePickerDialog datePickerDialog = new DatePickerDialog(checkUpView.getContext(), dateSetListener, yearNum, monthNum, dayNum);
+                datePickerDialog.show();
+            }
+        });
+
+        return checkUpView;
+    }
+    String intMonthToString (int monthNum)
+    {
+        String month = "";
+        switch (monthNum + 1)
+        {
+            case 1:
+                month = "Jan";
+                break;
+            case 2:
+                month = "Feb";
+                break;
+            case 3:
+                month = "Mar";
+                break;
+            case 4:
+                month = "Apr";
+                break;
+            case 5:
+                month = "May";
+                break;
+            case 6:
+                month = "Jun";
+                break;
+            case 7:
+                month = "Jul";
+                break;
+            case 8:
+                month = "Aug";
+                break;
+            case 9:
+                month = "Sep";
+                break;
+            case 10:
+                month = "Oct";
+                break;
+            case 11:
+                month = "Nov";
+                break;
+            case 12:
+                month = "Dec";
+                break;
+        }
+        return month;
     }
 }
