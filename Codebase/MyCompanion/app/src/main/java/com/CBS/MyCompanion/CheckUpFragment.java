@@ -87,12 +87,13 @@ public class CheckUpFragment extends Fragment {
                 DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        if (year == yearNum && month == yearNum && dayOfMonth == dayNum)
+                        if (year == yearNum && month == monthNum && dayOfMonth == dayNum)
                         {
                             textQuestion.setText(dateIsToday);
                         }
                         else {
-                            textQuestion.setText("How were you on\n" + intMonthToString(month) + " " + dayOfMonth + ", " + year);
+                            String selectedDate = "How were you on\n" + intMonthToString(month) + " " + dayOfMonth + ", " + year;
+                            textQuestion.setText(selectedDate);
                         }
                     }
                 };
@@ -100,6 +101,8 @@ public class CheckUpFragment extends Fragment {
                 datePickerDialog.show();
             }
         });
+
+
 
         return checkUpView;
     }
