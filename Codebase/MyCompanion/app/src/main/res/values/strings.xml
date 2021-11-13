@@ -34,5 +34,6 @@
     <string name="userinfo_form_firstName">First Name</string>
     <string name="userinfo_form_lastName">Last Name</string>
     <string name="userinfo_form_birthday">Birthday</string>
+    <string name="userinfo_form_ctnButton">Continue</string>
 
 </resources>

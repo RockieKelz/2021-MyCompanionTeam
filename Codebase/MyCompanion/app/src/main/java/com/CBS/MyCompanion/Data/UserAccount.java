@@ -7,6 +7,7 @@
 package com.CBS.MyCompanion.Data;
 
 import com.CBS.MyCompanion.Data.Logs.Log;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Date;
 import java.util.Vector;
@@ -14,7 +15,7 @@ import java.util.Vector;
 public class UserAccount {
 
     // Properties
-
+    private static UserAccount instance = null;
     private String id;
     private String firstName;
     private String lastName;
@@ -26,41 +27,46 @@ public class UserAccount {
     private Vector<Log> logs;
 
     // Constructors
-    UserAccount(String _firstName, String _lastName, Date _birthday, String _id){
-        setFirstName(_firstName);
-        setLastName(_lastName);
-        setFullName(_firstName + " " + _lastName);
-        setBirthday(_birthday);
-        setId(_id);
-        setTotalLoginCount(0);
-        setCurrentLoginStreak(0);
-        setLongestStreak(0);
+    public UserAccount(){}
+
+    public UserAccount(String _firstName, String _lastName){
+        SetFirstName(_firstName);
+        SetLastName(_lastName);
+        SetFullName(_firstName + " " + _lastName);
+        SetTotalLoginCount(0);
+        SetCurrentLoginStreak(0);
+        SetLongestStreak(0);
         logs = new Vector<Log>();
     }
 
     // Accessors
-    public String getId() { return id; }
-    public String getFirstName() { return firstName; }
-    public String getLastName() { return lastName; }
-    public String getFullName() { return fullName; }
-    public Date getBirthday() { return birthday; }
-    public Integer getTotalLoginCount() { return totalLoginCount; }
-    public Integer getCurrentLoginStreak() { return currentLoginStreak; }
-    public Integer getLongestStreak() { return longestStreak; }
-    public Vector<Log> getLogs() { return logs; }
+    public String GetId() { return id; }
+    public String GetFirstName() { return firstName; }
+    public String GetLastName() { return lastName; }
+    public String GetFullName() { return fullName; }
+    public Date GetBirthday() { return birthday; }
+    public Integer GetTotalLoginCount() { return totalLoginCount; }
+    public Integer GetCurrentLoginStreak() { return currentLoginStreak; }
+    public Integer GetLongestStreak() { return longestStreak; }
+    public Vector<Log> GetLogs() { return logs; }
 
     // Mutators
-    public void setId(String _id) { id = _id; }
-    public void setFirstName(String _firstName) { firstName = _firstName; }
-    public void setLastName(String _lastName) { lastName = _lastName; }
-    public void setFullName(String _fullName) { fullName = _fullName; }
-    public void setBirthday(Date _birthday) { birthday = _birthday; }
-    public void setTotalLoginCount(Integer count) { totalLoginCount = count; }
-    public void setCurrentLoginStreak(Integer count) { currentLoginStreak = count; }
-    public void setLongestStreak(Integer count) { longestStreak = count; }
-
+    public void SetId(String _id) { id = _id; }
+    public void SetFirstName(String _firstName) { firstName = _firstName; }
+    public void SetLastName(String _lastName) { lastName = _lastName; }
+    public void SetFullName(String _fullName) { fullName = _fullName; }
+    public void SetBirthday(Date _birthday) { birthday = _birthday; }
+    public void SetTotalLoginCount(Integer count) { totalLoginCount = count; }
+    public void SetCurrentLoginStreak(Integer count) { currentLoginStreak = count; }
+    public void SetLongestStreak(Integer count) { longestStreak = count; }
 
     // Methods
 
+    public static UserAccount getInstance(){
+        if (instance == null) {
+            instance = new UserAccount();
+        }
+        return instance;
+    }
 
 }
