@@ -87,9 +87,9 @@
         android:layout_below="@id/text_neutral"
         android:layout_centerInParent="true"
         android:stepSize="1"
-        android:value="2"
-        android:valueFrom="0"
-        android:valueTo="4" />
+        android:value="3"
+        android:valueFrom="1"
+        android:valueTo="5" />
 
     <TableLayout
         android:id="@+id/table_checkUpButtons"
