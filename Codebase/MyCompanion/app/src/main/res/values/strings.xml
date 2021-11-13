@@ -1,20 +1,20 @@
 <resources>
     <string name="app_name">MyCompanion</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <!-- Screen Names -->
     <string name="calendar">Calendar</string>
     <string name="tracker">Tracker</string>
     <string name="home">Home</string>
     <string name="journal">Journal</string>
     <string name="menu">Menu</string>
-    <string name="journal_page">Journal Page</string>
     <string name="account">Account</string>
     <string name="professional_help">Professional Help</string>
     <string name="other">Other</string>
     <string name="settings">Settings</string>
     <string name="share">Share</string>
-    <string name="username">Mr. Pups</string>
-    <string name="home_check1">Journal Entry</string>
-    <string name="home_check2">Mood Entry</string>
+
+    <!-- Temporary Variables -->
+    <string name="usernames_name">Mr. Pups</string>
+    <string name="journal_page">Journal Page</string>
 
     <!-- SignUp Variables -->
     <string name="sign_up_form_title">SignUp</string>
@@ -29,7 +29,11 @@
     <string name="login_form_email">Email</string>
     <string name="login_form_password">Password</string>
 
+    <!-- Home Variables -->
+    <string name="home_check1">Journal Entry</string>
+    <string name="home_check2">Mood Entry</string>
 
+    <!-- Professional Help Variables -->
     <string name="Crisis">Crisis Text Line</string>
     <string name="Suicide">National Suicide Prevention LifeLine</string>
     <string name="Veterans">Veterans Crisis Line</string>
@@ -43,4 +47,11 @@
     <string name="VeteransText">838255</string>
     <string name="ChildNum">1–800–422–4453</string>
     <string name="DomesticNum">1–800–799–7233</string>
+
+    <!-- Account Variables -->
+    <string name="profile">Profile</string>
+    <string name="username">Username: </string>
+    <string name="email">Email: </string>
+    <string name="password">Password: </string>
+    <string name="logout">Logout</string>
 </resources>
