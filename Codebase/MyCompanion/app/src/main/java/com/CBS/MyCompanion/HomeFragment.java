@@ -49,7 +49,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View homeView = inflater.inflate(R.layout.fragment_home, container, false);
         TextView name = homeView.findViewById(R.id.userName_home);
-        name.setText(this.getResources().getString(R.string.username));
+        name.setText(this.getResources().getString(R.string.usernames_name));
 
         //Determine and display the date
         Calendar cal = Calendar.getInstance();
