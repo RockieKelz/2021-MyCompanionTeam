@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    tools:context="com.CBS.MyCompanion.JournalFragment">
+    tools:context="com.CBS.MyCompanion.JournalFragment"
+    android:layout_margin="15dp">
 
     <!--//Text that will be displayed in middle of screen-->
     <RelativeLayout
@@ -19,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="30dp"
         android:background="@color/light_grey">
 
         <TextView
