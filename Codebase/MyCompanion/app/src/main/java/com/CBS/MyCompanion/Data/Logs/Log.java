@@ -5,13 +5,7 @@
     Last Modified: 11/5/2021
  */
 
-package com.CBS.Logs;
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
+package com.CBS.MyCompanion.Data.Logs;
 
 import java.util.Date;
 import java.util.Vector;

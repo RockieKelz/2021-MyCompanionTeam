@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.CBS.MyCompanion.Data.UserAccount;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 

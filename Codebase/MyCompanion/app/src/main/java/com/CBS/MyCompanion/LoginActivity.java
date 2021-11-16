@@ -12,12 +12,15 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.CBS.MyCompanion.Data.UserAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -25,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginButton;
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
+    private FirebaseFirestore database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
+        database = FirebaseFirestore.getInstance();
 
         emailEditText = findViewById(R.id.activity_login_emailEditText);
         passwordEditText = findViewById(R.id.activity_login_passwordEditText);
@@ -83,23 +88,15 @@ public class LoginActivity extends AppCompatActivity {
                                     @NonNull Task<AuthResult> task)
                             {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(getApplicationContext(),
-                                            "Login successful!!",
-                                            Toast.LENGTH_LONG)
-                                            .show();
 
                                     // hide the progress bar
                                     progressBar.setVisibility(View.GONE);
 
-                                    // if sign-in is successful
-                                    // intent to home activity
-                                    Intent intent
-                                            = new Intent(LoginActivity.this,
+                                    Intent i = new Intent(LoginActivity.this,
                                             MainActivity.class);
-                                    startActivity(intent);
-                                }
+                                    startActivity(i);
 
-                                else {
+                                } else {
 
                                     // sign-in failed
                                     Toast.makeText(getApplicationContext(),

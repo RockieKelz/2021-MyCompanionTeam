@@ -29,6 +29,12 @@
     <string name="login_form_email">Email</string>
     <string name="login_form_password">Password</string>
 
+    <!-- User Information -->
+    <string name="userinfo_form_title">User Info</string>
+    <string name="userinfo_form_firstName">First Name</string>
+    <string name="userinfo_form_lastName">Last Name</string>
+    <string name="userinfo_form_birthday">Birthday</string>
+    <string name="userinfo_form_ctnButton">Continue</string>
     <!-- Home Variables -->
     <string name="home_check1">Journal Entry</string>
     <string name="home_check2">Mood Entry</string>
@@ -42,11 +48,11 @@
     <string name="Domestic">Domestic Abuse</string>
 
     <string name="CrisisNum">7417410</string>
-    <string name="SuicideNum">1â€“800â€“273â€“8255</string>
-    <string name="VeteransNum">1â€“800â€“273â€“8255</string>
+    <string name="SuicideNum">1–800–273–8255</string>
+    <string name="VeteransNum">1–800–273–8255</string>
     <string name="VeteransText">838255</string>
-    <string name="ChildNum">1â€“800â€“422â€“4453</string>
-    <string name="DomesticNum">1â€“800â€“799â€“7233</string>
+    <string name="ChildNum">1–800–422–4453</string>
+    <string name="DomesticNum">1–800–799–7233</string>
 
     <!-- Account Variables -->
     <string name="profile">Profile</string>
