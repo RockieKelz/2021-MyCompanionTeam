@@ -6,17 +6,25 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    tools:context="com.CBS.MyCompanion.JournalFragment">
+    tools:context="com.CBS.MyCompanion.JournalFragment"
+    android:layout_margin="15dp">
 
     <!--//Text that will be displayed in middle of screen-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <LinearLayout
+        android:id="@+id/questionLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:background="@color/light_grey"
-        android:layout_marginBottom="500dp" >
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:background="@color/light_grey">
 
         <TextView
+            android:id="@+id/text_question"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -30,61 +38,66 @@
         android:id="@+id/button_calendarPick_checkUp"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_gravity="center"
+        android:layout_alignEnd="@id/questionLayout"
+        android:layout_below="@id/questionLayout"
         android:src="@drawable/ic_calendar"
-        android:layout_marginStart="330dp"
-        android:layout_marginBottom="420dp" />
+        style="date" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/image_mascotCheckUp"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/profile_pic"
-        android:layout_marginBottom="300dp"
-        android:layout_gravity="center" />
+        android:layout_centerInParent="true"
+        android:layout_below="@id/button_calendarPick_checkUp"/>
 
     <TextView
         android:id="@+id/text_frown"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="250dp"
-        android:layout_marginEnd="360dp"
+        android:layout_below="@id/image_mascotCheckUp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignStart="@id/slider_checkUp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="35dp"
         android:text="n" />
     <TextView
         android:id="@+id/text_neutral"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="250dp"
+        android:layout_below="@id/image_mascotCheckUp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="35dp"
         android:text="-" />
     <TextView
         android:id="@+id/text_smile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="250dp"
-        android:layout_marginStart="360dp"
+        android:layout_below="@id/image_mascotCheckUp"
+        android:layout_alignParentRight="true"
+        android:layout_alignEnd="@id/slider_checkUp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="35dp"
         android:text="u" />
 
     <com.google.android.material.slider.Slider
         android:id="@+id/slider_checkUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="50dp"
+        android:layout_below="@id/text_neutral"
+        android:layout_centerInParent="true"
         android:stepSize="1"
-        android:value="2"
-        android:valueFrom="0"
-        android:valueTo="4" />
+        android:value="3"
+        android:valueFrom="1"
+        android:valueTo="5" />
 
     <TableLayout
         android:id="@+id/table_checkUpButtons"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:layout_centerInParent="true"
-        android:layout_gravity="center"
-        android:layout_marginBottom="-150dp">
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/slider_checkUp">
 
         <TableRow android:layout_width="match_parent">
 
@@ -95,6 +108,7 @@
 
                 <Button
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/button_stressed"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
@@ -103,6 +117,7 @@
 
                 <Button
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/button_sad"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
@@ -110,6 +125,7 @@
 
                 <Button
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/button_anxious"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
@@ -118,6 +134,7 @@
 
                 <Button
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/button_angry"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
@@ -136,6 +153,7 @@
 
                 <Button
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/button_withdraw"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
@@ -144,6 +162,7 @@
 
                 <Button
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/button_lonely"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
@@ -151,6 +170,7 @@
 
                 <Button
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/button_fearful"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
@@ -159,6 +179,7 @@
 
                 <Button
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:id="@+id/button_happy"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
@@ -174,10 +195,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/table_checkUpButtons"
-        android:layout_gravity="center"
-        android:layout_marginBottom="-400dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="50dp"
         android:text="Save" />
 
-
+    </RelativeLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

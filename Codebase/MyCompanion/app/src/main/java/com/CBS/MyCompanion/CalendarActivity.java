@@ -50,7 +50,8 @@ public class CalendarActivity extends AppCompatActivity {
                 switch (id)
                 {
                     case R.id.nav_home:
-                        replaceFragmentWithAnimation(new HomeFragment());
+                        Intent intent1 = new Intent(CalendarActivity.this, MainActivity.class);
+                        startActivity(intent1, ActivityOptions.makeSceneTransitionAnimation(CalendarActivity.this).toBundle());
                         break;
                     case R.id.nav_account:
                         replaceFragmentWithAnimation(new AccountFragment());
@@ -59,8 +60,8 @@ public class CalendarActivity extends AppCompatActivity {
                         replaceFragmentWithAnimation(new CalendarFragment());
                         break;
                     case R.id.nav_journal:
-                        Intent intent1 = new Intent(CalendarActivity.this, JournalActivity.class);
-                        startActivity(intent1, ActivityOptions.makeSceneTransitionAnimation(CalendarActivity.this).toBundle());
+                        Intent intent2 = new Intent(CalendarActivity.this, JournalActivity.class);
+                        startActivity(intent2, ActivityOptions.makeSceneTransitionAnimation(CalendarActivity.this).toBundle());
                         break;
                     case R.id.nav_help:
                         replaceFragmentWithAnimation(new ProfHelpFragment());

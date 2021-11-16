@@ -9,7 +9,7 @@ package com.CBS.MyCompanion.Data.Logs;
 import java.util.Date;
 
 enum EntryType { JOURNAL, CHECKUP }
-enum Emotions {SAD, HAPPY, ANXIOUS, CALM, ANGRY, EXCITED}
+enum Emotions {SAD, HAPPY, ANXIOUS, CALM, ANGRY, EXCITED, WITHDRAWN, FEARFUL}
 
 abstract class BaseEntry {
 

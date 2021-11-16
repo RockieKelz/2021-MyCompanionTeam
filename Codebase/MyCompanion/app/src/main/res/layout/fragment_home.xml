@@ -42,9 +42,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/userGreeting"
         android:layout_centerInParent="true"
-        android:background="@drawable/border"
         android:fontFamily="sans-serif"
-        android:text="@string/username"
+        android:text="UserName"
+        android:background="@drawable/filled_background"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="25sp" />
