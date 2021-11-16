@@ -1,7 +1,7 @@
 /*
     Created by: Sam Whorton
     Date Created: 11/12/2021
-    Last Modified: 11/12/2021
+    Last Modified: 11/16/2021
  */
 
 package com.CBS.MyCompanion.Data;
@@ -9,18 +9,15 @@ package com.CBS.MyCompanion.Data;
 import com.CBS.MyCompanion.Data.Logs.Log;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.Date;
 import java.util.Vector;
 
 public class UserAccount {
 
     // Properties
-    private static UserAccount instance = null;
     private String id;
     private String firstName;
     private String lastName;
     private String fullName;
-    private Date birthday;
     private Integer totalLoginCount;
     private Integer currentLoginStreak;
     private Integer longestStreak;
@@ -44,7 +41,6 @@ public class UserAccount {
     public String GetFirstName() { return firstName; }
     public String GetLastName() { return lastName; }
     public String GetFullName() { return fullName; }
-    public Date GetBirthday() { return birthday; }
     public Integer GetTotalLoginCount() { return totalLoginCount; }
     public Integer GetCurrentLoginStreak() { return currentLoginStreak; }
     public Integer GetLongestStreak() { return longestStreak; }
@@ -55,18 +51,12 @@ public class UserAccount {
     public void SetFirstName(String _firstName) { firstName = _firstName; }
     public void SetLastName(String _lastName) { lastName = _lastName; }
     public void SetFullName(String _fullName) { fullName = _fullName; }
-    public void SetBirthday(Date _birthday) { birthday = _birthday; }
     public void SetTotalLoginCount(Integer count) { totalLoginCount = count; }
     public void SetCurrentLoginStreak(Integer count) { currentLoginStreak = count; }
     public void SetLongestStreak(Integer count) { longestStreak = count; }
 
     // Methods
 
-    public static UserAccount getInstance(){
-        if (instance == null) {
-            instance = new UserAccount();
-        }
-        return instance;
-    }
+
 
 }
