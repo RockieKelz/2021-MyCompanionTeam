@@ -9,6 +9,9 @@ package com.CBS.MyCompanion.Data;
 import com.CBS.MyCompanion.Data.Logs.Log;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 
 public class UserAccount {
@@ -21,7 +24,7 @@ public class UserAccount {
     public Integer totalLoginCount;
     public Integer currentLoginStreak;
     public Integer longestStreak;
-    public Vector<Log> logs;                // Change to a map
+    public HashMap<Log, Date> logs;               // Change to a map
 
     // Constructors
     public UserAccount(){}
@@ -33,7 +36,6 @@ public class UserAccount {
         SetTotalLoginCount(0);
         SetCurrentLoginStreak(0);
         SetLongestStreak(0);
-        logs = new Vector<Log>();
     }
 
     // Accessors
@@ -44,7 +46,7 @@ public class UserAccount {
     public Integer GetTotalLoginCount() { return totalLoginCount; }
     public Integer GetCurrentLoginStreak() { return currentLoginStreak; }
     public Integer GetLongestStreak() { return longestStreak; }
-    public Vector<Log> GetLogs() { return logs; }
+    public HashMap<Log, Date> GetLogs() { return logs; }
 
     // Mutators
     public void SetId(String _id) { id = _id; }
@@ -56,7 +58,9 @@ public class UserAccount {
     public void SetLongestStreak(Integer count) { longestStreak = count; }
 
     // Methods
-
+    public void AddLog(Log _log){
+        logs.put(_log, _log.GetDate());
+    }
 
 
 }
