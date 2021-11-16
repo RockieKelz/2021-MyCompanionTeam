@@ -26,10 +26,9 @@ public class UserAccount {
     // Constructors
     public UserAccount(){}
 
-    public UserAccount(String _firstName, String _lastName, String _id){
-        SetFirstName(_firstName);
-        SetLastName(_lastName);
-        SetId(_id);
+    public UserAccount(String _firstName, String _lastName){
+        firstName = _firstName;
+        lastName = _lastName;
         SetFullName(_firstName + " " + _lastName);
         SetTotalLoginCount(0);
         SetCurrentLoginStreak(0);

@@ -56,9 +56,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                registerNewUser();
-            }
+            public void onClick(View v) { registerNewUser(); }
         });
 
         bypass.setOnClickListener(new View.OnClickListener() {
@@ -120,26 +118,23 @@ public class SignUpActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task)
                     {
+
+                        progressBar.setVisibility(View.GONE);
+
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(),
                                     "Registration successful!",
                                     Toast.LENGTH_SHORT)
                                     .show();
                             Log.d("Success", "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
 
-                            // hide the progress bar
-                            progressBar.setVisibility(View.GONE);
 
-                            // if the user created intent to login activity
                             Intent intent
                                     = new Intent(SignUpActivity.this,
                                     LoginActivity.class);
                             startActivity(intent);
                         }
                         else {
-
-                            // Registration failed
                             Toast.makeText(
                                     getApplicationContext(),
                                     "Registration failed!!"
@@ -148,8 +143,6 @@ public class SignUpActivity extends AppCompatActivity {
                                     .show();
                             Log.w("Failure", "createUserWithEmail:failure", task.getException());
 
-                            // hide the progress bar
-                            progressBar.setVisibility(View.GONE);
                         }
                     }
                 });

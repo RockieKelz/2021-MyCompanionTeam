@@ -24,6 +24,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import com.CBS.MyCompanion.Data.UserAccount;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class InputUserData extends AppCompatActivity {
 
@@ -59,29 +62,15 @@ public class InputUserData extends AppCompatActivity {
 
     }
 
-    private void addDataToFirestore(String _firstName, String _lastName, String _id) {
+    private void addDataToFirestore() {
 
 
-        UserAccount currentUser = new UserAccount(_firstName, _lastName, _id);
+        UserAccount currentUser = new UserAccount(firstnameEditText.getText().toString(),
+                lastNameEditText.getText().toString());
 
         CollectionReference dbUsers = database.collection("User_Data");
         dbUsers.document(mAuth.getUid()).set(currentUser);
 
-        dbUsers.document(mAuth.getUid()).update("firstName", firstName);
-
-        /*
-        dbUsers.add(currentUser).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-                Log.d("Success", "User Data added with ID: " + documentReference.getId());
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.w("Failure", "Error adding data", e);
-            }
-        });
-         */
     }
 
     public void Login() {
@@ -93,7 +82,7 @@ public class InputUserData extends AppCompatActivity {
             return;
         }
 
-        addDataToFirestore(firstName, lastName, mAuth.getUid());
+        addDataToFirestore();
 
         Intent i
                 = new Intent(InputUserData.this,
