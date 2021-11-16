@@ -50,10 +50,8 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View homeView = inflater.inflate(R.layout.fragment_home, container, false);
-        CharSequence c = UserAccount.getInstance().GetFirstName();
         TextView name = homeView.findViewById(R.id.userName_home);
-        //name.setText(this.getResources().getString(R.string.username));
-        name.setText(c);
+        name.setText(this.getResources().getString(R.string.username));
 
         //Determine and display the date
         Calendar cal = Calendar.getInstance();

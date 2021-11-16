@@ -14,21 +14,22 @@ import java.util.Vector;
 public class UserAccount {
 
     // Properties
-    private String id;
-    private String firstName;
-    private String lastName;
-    private String fullName;
-    private Integer totalLoginCount;
-    private Integer currentLoginStreak;
-    private Integer longestStreak;
-    private Vector<Log> logs;
+    public String id;
+    public String firstName;
+    public String lastName;
+    public String fullName;
+    public Integer totalLoginCount;
+    public Integer currentLoginStreak;
+    public Integer longestStreak;
+    public Vector<Log> logs;                // Change to a map
 
     // Constructors
     public UserAccount(){}
 
-    public UserAccount(String _firstName, String _lastName){
+    public UserAccount(String _firstName, String _lastName, String _id){
         SetFirstName(_firstName);
         SetLastName(_lastName);
+        SetId(_id);
         SetFullName(_firstName + " " + _lastName);
         SetTotalLoginCount(0);
         SetCurrentLoginStreak(0);
@@ -48,9 +49,9 @@ public class UserAccount {
 
     // Mutators
     public void SetId(String _id) { id = _id; }
-    public void SetFirstName(String _firstName) { firstName = _firstName; }
-    public void SetLastName(String _lastName) { lastName = _lastName; }
-    public void SetFullName(String _fullName) { fullName = _fullName; }
+    public void SetFirstName(String _firstName) { this.firstName = _firstName; }
+    public void SetLastName(String _lastName) { this.lastName = _lastName; }
+    public void SetFullName(String _fullName) { this.fullName = _fullName; }
     public void SetTotalLoginCount(Integer count) { totalLoginCount = count; }
     public void SetCurrentLoginStreak(Integer count) { currentLoginStreak = count; }
     public void SetLongestStreak(Integer count) { longestStreak = count; }

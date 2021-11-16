@@ -19,6 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -96,26 +97,20 @@ public class LoginActivity extends AppCompatActivity {
                                     progressBar.setVisibility(View.GONE);
 
                                     // Set the User Id to the current user
-                                    UserAccount currentUser = UserAccount.getInstance();
-                                    currentUser.SetId(mAuth.getUid());
+                                    Intent i
+                                            = new Intent(LoginActivity.this,
+                                            InputUserData.class);
+                                    startActivity(i);
 
-                                    if (currentUser.GetFirstName() == null){
-                                        Intent i
-                                                = new Intent(LoginActivity.this,
-                                                InputUserData.class);
-                                        startActivity(i);
-                                    } else {
-
-                                        // if sign-in is successful
-                                        // intent to home activity
-                                        Intent i
-                                                = new Intent(LoginActivity.this,
-                                                MainActivity.class);
-                                        startActivity(i);
-                                    }
-                                }
-
-                                else {
+                                    // if sign-in is successful
+                                    // intent to home activity
+                                    /*
+                                    Intent i
+                                            = new Intent(LoginActivity.this,
+                                            MainActivity.class);
+                                    startActivity(i);
+                                     */
+                                } else {
 
                                     // sign-in failed
                                     Toast.makeText(getApplicationContext(),
