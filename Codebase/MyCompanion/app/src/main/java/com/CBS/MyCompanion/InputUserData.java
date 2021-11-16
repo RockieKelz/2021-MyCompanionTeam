@@ -67,6 +67,7 @@ public class InputUserData extends AppCompatActivity {
 
         UserAccount currentUser = new UserAccount(firstnameEditText.getText().toString(),
                 lastNameEditText.getText().toString());
+        currentUser.SetId(mAuth.getUid());
 
         CollectionReference dbUsers = database.collection("User_Data");
         dbUsers.document(mAuth.getUid()).set(currentUser);

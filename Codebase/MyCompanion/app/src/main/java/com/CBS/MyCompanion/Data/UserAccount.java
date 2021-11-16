@@ -33,9 +33,9 @@ public class UserAccount {
         firstName = _firstName;
         lastName = _lastName;
         SetFullName(_firstName + " " + _lastName);
-        SetTotalLoginCount(0);
-        SetCurrentLoginStreak(0);
-        SetLongestStreak(0);
+        SetTotalLoginCount(1);
+        SetCurrentLoginStreak(1);
+        SetLongestStreak(1);
     }
 
     // Accessors
