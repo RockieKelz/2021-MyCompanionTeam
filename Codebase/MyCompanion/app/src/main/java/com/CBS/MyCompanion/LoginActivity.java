@@ -92,24 +92,10 @@ public class LoginActivity extends AppCompatActivity {
                                     // hide the progress bar
                                     progressBar.setVisibility(View.GONE);
 
-                                    database.collection("User_Data")
-                                            .whereEqualTo(mAuth.getUid(), true)
-                                            .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                                    if (task.isSuccessful()) {
-                                                        Intent i
-                                                                = new Intent(LoginActivity.this,
-                                                                MainActivity.class);
-                                                        startActivity(i);
-                                                    } else {
-                                                        Intent i
-                                                                = new Intent(LoginActivity.this,
-                                                                InputUserData.class);
-                                                        startActivity(i);
-                                                    }
-                                                }
-                                            });
+                                    Intent i = new Intent(LoginActivity.this,
+                                            MainActivity.class);
+                                    startActivity(i);
+
                                 } else {
 
                                     // sign-in failed

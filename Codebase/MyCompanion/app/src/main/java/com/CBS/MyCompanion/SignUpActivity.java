@@ -135,13 +135,34 @@ public class SignUpActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                         else {
-                            Toast.makeText(
-                                    getApplicationContext(),
-                                    "Registration failed!!"
-                                            + " Please try again later",
-                                    Toast.LENGTH_LONG)
-                                    .show();
-                            Log.w("Failure", "createUserWithEmail:failure", task.getException());
+                            mAuth.signInWithEmailAndPassword(email, password)
+                                    .addOnCompleteListener(
+                                            new OnCompleteListener<AuthResult>() {
+                                                @Override
+                                                public void onComplete(
+                                                        @NonNull Task<AuthResult> task)
+                                                {
+                                                    if (task.isSuccessful()) {
+
+                                                        // hide the progress bar
+                                                        progressBar.setVisibility(View.GONE);
+
+                                                        Intent i = new Intent(SignUpActivity.this,
+                                                                MainActivity.class);
+                                                        startActivity(i);
+
+                                                    } else {
+
+                                                        // sign-in failed
+                                                        Toast.makeText(getApplicationContext(),
+                                                                "Registration failed!!",
+                                                                Toast.LENGTH_LONG)
+                                                                .show();
+                                                        Log.w("Failure",
+                                                                "createUserWithEmail:failure");
+                                                    }
+                                                }
+                                            });
 
                         }
                     }
