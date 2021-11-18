@@ -26,7 +26,9 @@
         android:paddingBottom="20dp"
         android:layout_marginStart="23dp"
         android:layout_marginTop="150dp"
-        android:text="@string/Crisis" />
+        android:text="@string/Crisis"
+        android:textColor="@color/black"
+        />
 
     <TextView
         android:id="@+id/suicide"
@@ -35,7 +37,9 @@
         android:layout_below="@+id/Crisis"
         android:paddingBottom="20dp"
         android:layout_marginStart="23dp"
-        android:text="@string/Suicide" />
+        android:text="@string/Suicide"
+        android:textColor="@color/black"
+        />
 
         <TextView
             android:id="@+id/veterans"
@@ -44,7 +48,9 @@
             android:layout_height="wrap_content"
             android:paddingBottom="20dp"
             android:layout_marginStart="23dp"
-            android:text="@string/Veterans" />
+            android:text="@string/Veterans"
+            android:textColor="@color/black"
+            />
 
         <TextView
             android:id="@+id/veterans2"
@@ -53,7 +59,9 @@
             android:layout_height="wrap_content"
             android:paddingBottom="20dp"
             android:layout_marginStart="23dp"
-            android:text="@string/Veterans2" />
+            android:text="@string/Veterans2"
+            android:textColor="@color/black"
+            />
 
         <TextView
             android:id="@+id/child"
@@ -62,7 +70,9 @@
             android:layout_height="wrap_content"
             android:paddingBottom="20dp"
             android:layout_marginStart="23dp"
-            android:text="@string/Child" />
+            android:text="@string/Child"
+            android:textColor="@color/black"
+            />
 
         <TextView
             android:id="@+id/domestic"
@@ -71,12 +81,14 @@
             android:layout_height="wrap_content"
             android:paddingBottom="20dp"
             android:layout_marginStart="23dp"
-            android:text="@string/Domestic" />
+            android:text="@string/Domestic"
+            android:textColor="@color/black"
+            />
 
     <LinearLayout
         android:id="@+id/profHelp_info_left"
-        android:layout_width="337dp"
-        android:layout_height="491dp"
+        android:layout_width="358dp"
+        android:layout_height="490dp"
         android:layout_marginStart="23dp"
         android:divider="#000"
         android:dividerHeight="1dp"
@@ -90,37 +102,49 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="20dp"
-            android:text="@string/CrisisNum" />
+            android:text="@string/CrisisNum"
+            android:textColor="@color/black"
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="35dp"
-            android:text="@string/SuicideNum" />
+            android:text="@string/SuicideNum"
+            android:textColor="@color/black"
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="20dp"
-            android:text="@string/VeteransNum" />
+            android:text="@string/VeteransNum"
+            android:textColor="@color/black"
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="20dp"
-            android:text="@string/VeteransText" />
+            android:text="@string/VeteransText"
+            android:textColor="@color/black"
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="20dp"
-            android:text="@string/ChildNum" />
+            android:text="@string/ChildNum"
+            android:textColor="@color/black"
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="20dp"
-            android:text="@string/DomesticNum" />
+            android:text="@string/DomesticNum"
+            android:textColor="@color/black"
+            />
 
 
     </LinearLayout>
