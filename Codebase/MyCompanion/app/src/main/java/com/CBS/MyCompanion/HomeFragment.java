@@ -12,8 +12,6 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.CBS.MyCompanion.Data.UserAccount;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -58,12 +56,7 @@ public class HomeFragment extends Fragment {
         SimpleDateFormat simpleDate = new SimpleDateFormat("EEEE, MMM d, yyyy");
         getTimeFromAndroid(cal, homeView, 0);
 
-        //Generate Login Streak
-        sharedPreferences = getActivity().getApplicationContext().getSharedPreferences("streak", Context.MODE_PRIVATE);
-        int today = cal.get(Calendar.DAY_OF_YEAR);
-        int lastDay = sharedPreferences.getInt("last Login", 0);
-        int streak = sharedPreferences.getInt("current streak", 0);
-        getLoginStreak(today,lastDay, streak, homeView);
+        getLoginStreak(cal, homeView);
 
         //Change the date
         ImageButton buttonPrevious = homeView.findViewById(R.id.button_homePrev);
@@ -124,8 +117,14 @@ public class HomeFragment extends Fragment {
         boolean checked = ((CheckBox)view).isChecked();
 
     }
-    private void getLoginStreak(int currentLogin, int lastLogin, int streak, View view)
+    private void getLoginStreak(Calendar cal, View view)
     {
+        //Generate Login Streak
+        sharedPreferences = getActivity().getApplicationContext().getSharedPreferences("streak", Context.MODE_PRIVATE);
+        int currentLogin = cal.get(Calendar.DAY_OF_YEAR);
+        int lastLogin = sharedPreferences.getInt("last Login", 0);
+        int streak = sharedPreferences.getInt("current streak", 0);
+
         if (lastLogin == currentLogin-1)
         {
             streak += 1;

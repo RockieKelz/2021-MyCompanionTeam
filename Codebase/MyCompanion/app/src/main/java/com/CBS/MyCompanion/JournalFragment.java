@@ -1,15 +1,11 @@
 package com.CBS.MyCompanion;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.CBS.MyCompanion.R;
+import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,8 +59,11 @@ public class JournalFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_journal, container, false);
-    }
+        View journalView = inflater.inflate(R.layout.fragment_journal, container, false);
 
+        // TODO: Add functionality to tabs
+        // TODO: Add functionality to submit button
+        return journalView;
+    }
 
 }
