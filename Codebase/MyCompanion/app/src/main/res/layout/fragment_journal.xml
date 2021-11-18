@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.CBS.MyCompanion.JournalFragment">
+
+    //layered background
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
+        android:layout_width="350dp"
+        android:layout_height="500dp"
+        android:layout_gravity="center"
+        android:background="@drawable/border"
+        android:backgroundTint="@color/lightYellow">
+
+        //tabs for freewrite/preset decision
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/journal_tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tabview_bg"
+            app:tabGravity="fill"
+            app:tabMode="fixed"
+            android:layout_marginTop="-503dp"
+            app:tabTextColor="@color/black"
+            app:tabSelectedTextColor="@color/orange"
+            app:tabRippleColor="@color/orange">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FreeWrite" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Preset" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        //box for journal entry input
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/journal_Entry"
+            android:layout_width="335dp"
+            android:layout_height="447dp"
+            android:layout_marginTop="55dp"
+            android:background="@null"
+            android:gravity="top|left"
+            android:inputType="textMultiLine"
+            android:lines="15"
+            android:overScrollMode="always"
+            android:scrollbarStyle="insideInset"
+            android:scrollbars="vertical"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </com.google.android.material.textfield.TextInputLayout>
+    //button for submission
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:onClick="buttonClickedLogout"
+        android:textColor="@color/darkerBlue"
+        android:layout_gravity="bottom|right"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="5dp"
+        android:backgroundTint="@color/lightYellow" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

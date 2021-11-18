@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "81280082041",
+    "project_id": "my-companion-b834f",
+    "storage_bucket": "my-companion-b834f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:81280082041:android:434e9bb3bfc27af56834a8",
+        "android_client_info": {
+          "package_name": "com.CBS.MyCompanion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "81280082041-9aq8eucfviumbj2f66ta7ddba7ppi0nk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoWhTkYsxOBTANNSf-QDnrd3R_8tAlkyk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "81280082041-9aq8eucfviumbj2f66ta7ddba7ppi0nk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

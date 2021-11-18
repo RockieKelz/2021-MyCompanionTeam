@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context="com.CBS.MyCompanion.AccountFragment">
+
+    <!-- Top Bar Section -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/account_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="182dp">
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/account_toolbar">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity = "center_vertical"
+                android:src="@drawable/filled_background"
+                app:layout_constraintEnd_toEndOf = "parent"
+                app:layout_constraintStart_toStartOf = "parent"
+                app:layout_constraintTop_toTopOf = "parent"
+                />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/account_profile_pic"
+                android:layout_width="132dp"
+                android:layout_height="141dp"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:src="@drawable/profile_pic" />
+
+            <ImageButton
+                android:id="@+id/account_EditPic"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="225dp"
+                android:layout_marginTop="120dp"
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/border"
+                android:onClick="buttonClickedEditPic"
+                android:src="@drawable/ic_edit" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+    <!--Middle of Screen-->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:paddingTop="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp">
+            <TextView
+                android:id="@+id/account_profile_text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/profile"
+                android:textAppearance="?android:attr/textAppearance"
+                android:textColor="@color/black"
+                android:textSize="35sp"/>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+                <TextView
+                    android:id="@+id/account_Name_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:text="@string/username"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:paddingTop="30dp"/>
+            </TableRow>
+            <TableRow
+                android:background="#31989797"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:weightSum="1">
+                <TextView
+                    android:id="@+id/account_Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:text="@string/usernames_name"
+                    android:textColor="@color/black"
+                    android:textSize="23sp"/>
+
+                <Button
+                    android:id="@+id/account_EditName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf = "@+id/account_Name"
+                    android:drawableRight="@drawable/ic_edit"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:onClick="buttonClickedEditName"
+/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/account_Password_text"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:text="@string/password"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="10dp"/>
+            </TableRow>
+            <TableRow
+                android:background="#31989797"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:weightSum="1">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:text="**********"
+                    android:textColor="@color/black"
+                    android:textSize="23sp"/>
+
+                <Button
+                    android:id="@+id/account_EditPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf = "@+id/account_Password_text"
+                    android:drawableRight="@drawable/ic_edit"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:onClick="buttonClickedEditPassword"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+                <TextView
+                    android:id="@+id/account_Email_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:text="@string/email"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:paddingTop="20dp"/>
+            </TableRow>
+            <TableRow
+                android:background="#37989797"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:weightSum="1">
+                <TextView
+                    android:id="@+id/account_Email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:text="iLoveTreats@gmail.com"
+                    android:textColor="@color/black"
+                    android:textSize="23sp"
+                    />
+                <Button
+                    android:id="@+id/account_EditEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf = "@+id/account_Email_text"
+                    android:drawableRight="@drawable/ic_edit"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:onClick="buttonClickedEditEmail"/>
+            </TableRow>
+
+            <Button
+                android:id="@+id/account_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="90dp"
+                android:layout_marginStart="130dp"
+                android:text="@string/logout"
+                android:onClick="buttonClickedLogout"
+                android:textColor="@color/blue" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

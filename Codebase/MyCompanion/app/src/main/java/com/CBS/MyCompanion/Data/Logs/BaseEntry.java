@@ -1,0 +1,31 @@
+
+/*
+    Created by: Sam Whorton
+    Date Created: 10/6/2021
+    Last Modified: 11/5/2021
+ */
+
+package com.CBS.MyCompanion.Data.Logs;
+import java.util.Date;
+
+enum EntryType { JOURNAL, CHECKUP }
+enum Emotions {SAD, HAPPY, ANXIOUS, CALM, ANGRY, EXCITED, WITHDRAWN, FEARFUL}
+
+abstract class BaseEntry {
+
+    // Properties
+    private Date date;
+    private EntryType type;
+
+
+    /// METHODS ///
+
+    // Accessors
+    public Date GetDate() { return date; }
+    public EntryType GetType() { return type; }
+
+
+    // Mutators
+    public void SetDate(Date _date) { date = _date; }
+    public void SetType(EntryType _type) { type = _type; }
+}

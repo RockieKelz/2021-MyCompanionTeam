@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">MyCompanion</string>
+
+    <!-- Screen Names -->
+    <string name="calendar">Calendar</string>
+    <string name="tracker">Tracker</string>
+    <string name="home">Home</string>
+    <string name="journal">Journal</string>
+    <string name="menu">Menu</string>
+    <string name="account">Account</string>
+    <string name="professional_help">Professional Help</string>
+    <string name="other">Other</string>
+    <string name="settings">Settings</string>
+    <string name="share">Share</string>
+
+    <!-- Temporary Variables -->
+    <string name="usernames_name">Mr. Pups</string>
+    <string name="journal_page">Journal Page</string>
+
+    <!-- SignUp Variables -->
+    <string name="sign_up_form_title">SignUp</string>
+    <string name="sign_up_form_email">Email</string>
+    <string name="sign_up_form_password">Password</string>
+    <string name="sign_up_form_loginButton">Log In</string>
+    <string name="sign_up_form_registerButton">Register</string>
+
+    <!-- Login Variables -->
+    <string name="login_form_title">Log In</string>
+    <string name="login_form_loginButton">Log In</string>
+    <string name="login_form_email">Email</string>
+    <string name="login_form_password">Password</string>
+
+    <!-- User Information -->
+    <string name="userinfo_form_title">User Info</string>
+    <string name="userinfo_form_firstName">First Name</string>
+    <string name="userinfo_form_lastName">Last Name</string>
+    <string name="userinfo_form_birthday">Birthday</string>
+    <string name="userinfo_form_ctnButton">Continue</string>
+
+    <!-- Home Variables -->
+    <string name="home_check1">Journal Entry</string>
+    <string name="home_check2">Mood Entry</string>
+
+    <!-- Professional Help Variables -->
+    <string name="Crisis">Crisis Text Line</string>
+    <string name="Suicide">National Suicide Prevention LifeLine</string>
+    <string name="Veterans">Veterans Crisis Line</string>
+    <string name="Veterans2">Veterans Crisis Text</string>
+    <string name="Child">Child Abuse</string>
+    <string name="Domestic">Domestic Abuse</string>
+
+    <string name="CrisisNum">7417410</string>
+    <string name="SuicideNum">1–800–273–8255</string>
+    <string name="VeteransNum">1–800–273–8255</string>
+    <string name="VeteransText">838255</string>
+    <string name="ChildNum">1–800–422–4453</string>
+    <string name="DomesticNum">1–800–799–7233</string>
+
+    <!-- Account Variables -->
+    <string name="profile">Profile</string>
+    <string name="username">Username: </string>
+    <string name="email">Email: </string>
+    <string name="password">Password: </string>
+    <string name="logout">Logout</string>
+</resources>
