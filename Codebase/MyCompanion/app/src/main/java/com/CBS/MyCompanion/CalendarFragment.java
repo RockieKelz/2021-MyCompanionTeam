@@ -1,12 +1,18 @@
 package com.CBS.MyCompanion;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.google.android.material.tabs.TabLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,6 +23,7 @@ public class CalendarFragment extends Fragment {
 
     //CalendarView object for calender uses
     private CalendarView mCalendarView;
+    private static final String TAG = "CalendarFragment";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -63,10 +70,19 @@ public class CalendarFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View calendarView = inflater.inflate(R.layout.fragment_calendar, container, false);
+        View view = inflater.inflate(R.layout.fragment_calendar, container, false);
+        mCalendarView = view.findViewById(R.id.CalendarPageCalendar);
+        mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                String date =  year + "/" + (month + 1) + "/" + dayOfMonth;
+                Log.wtf("wtf","onSelectedDayChange" + date);
+            }
+        });
 
-        mCalendarView = calendarView.findViewById(R.id.calendarView);
 
-        return mCalendarView;
+        return view;
     }
+
+
 }
