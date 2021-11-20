@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.tabs.TabLayout;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +28,7 @@ public class CalendarFragment extends Fragment {
 
     //CalendarView object for calender uses
     private CalendarView mCalendarView;
+    private TextView mDateText;
     private static final String TAG = "CalendarFragment";
 
     // TODO: Rename parameter arguments, choose names that match
@@ -72,10 +78,17 @@ public class CalendarFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_calendar, container, false);
         mCalendarView = view.findViewById(R.id.CalendarPageCalendar);
+        mDateText = view.findViewById(R.id.infobox1);
+        //Get current date and set it in first infobox
+        String date = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).format(new Date());
+        mDateText.setText(date);
+
+        //Updates infobox if date is changed by user used later to show what user has input on that day
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 String date =  year + "/" + (month + 1) + "/" + dayOfMonth;
+                mDateText.setText(date);
                 Log.wtf("wtf","onSelectedDayChange" + date);
             }
         });
