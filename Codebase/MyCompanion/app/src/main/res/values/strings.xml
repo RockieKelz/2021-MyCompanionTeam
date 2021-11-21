@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">MyCompanion</string>
+
     <!-- Screen Names -->
     <string name="calendar">Calendar</string>
     <string name="tracker">Tracker</string>
@@ -28,6 +29,13 @@
     <string name="login_form_loginButton">Log In</string>
     <string name="login_form_email">Email</string>
     <string name="login_form_password">Password</string>
+
+    <!-- User Information -->
+    <string name="userinfo_form_title">User Info</string>
+    <string name="userinfo_form_firstName">First Name</string>
+    <string name="userinfo_form_lastName">Last Name</string>
+    <string name="userinfo_form_birthday">Birthday</string>
+    <string name="userinfo_form_ctnButton">Continue</string>
 
     <!-- Home Variables -->
     <string name="home_check1">Journal Entry</string>

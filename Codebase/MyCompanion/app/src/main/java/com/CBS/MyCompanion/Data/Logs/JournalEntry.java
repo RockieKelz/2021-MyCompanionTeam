@@ -5,8 +5,7 @@
     Last Modified: 11/5/2021
  */
 
-package com.CBS.Logs;
-import java.util.HashMap;
+package com.CBS.MyCompanion.Data.Logs;
 import java.util.Vector;
 
 public class JournalEntry extends BaseEntry {

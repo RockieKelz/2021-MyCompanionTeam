@@ -56,9 +56,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                registerNewUser();
-            }
+            public void onClick(View v) { registerNewUser(); }
         });
 
         bypass.setOnClickListener(new View.OnClickListener() {
@@ -120,36 +118,52 @@ public class SignUpActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task)
                     {
+
+                        progressBar.setVisibility(View.GONE);
+
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(),
                                     "Registration successful!",
                                     Toast.LENGTH_SHORT)
                                     .show();
                             Log.d("Success", "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
 
-                            // hide the progress bar
-                            progressBar.setVisibility(View.GONE);
 
-                            // if the user created intent to login activity
                             Intent intent
                                     = new Intent(SignUpActivity.this,
-                                    LoginActivity.class);
+                                    InputUserData.class);
                             startActivity(intent);
                         }
                         else {
+                            mAuth.signInWithEmailAndPassword(email, password)
+                                    .addOnCompleteListener(
+                                            new OnCompleteListener<AuthResult>() {
+                                                @Override
+                                                public void onComplete(
+                                                        @NonNull Task<AuthResult> task)
+                                                {
+                                                    if (task.isSuccessful()) {
 
-                            // Registration failed
-                            Toast.makeText(
-                                    getApplicationContext(),
-                                    "Registration failed!!"
-                                            + " Please try again later",
-                                    Toast.LENGTH_LONG)
-                                    .show();
-                            Log.w("Failure", "createUserWithEmail:failure", task.getException());
+                                                        // hide the progress bar
+                                                        progressBar.setVisibility(View.GONE);
 
-                            // hide the progress bar
-                            progressBar.setVisibility(View.GONE);
+                                                        Intent i = new Intent(SignUpActivity.this,
+                                                                MainActivity.class);
+                                                        startActivity(i);
+
+                                                    } else {
+
+                                                        // sign-in failed
+                                                        Toast.makeText(getApplicationContext(),
+                                                                "Registration failed!!",
+                                                                Toast.LENGTH_LONG)
+                                                                .show();
+                                                        Log.w("Failure",
+                                                                "createUserWithEmail:failure");
+                                                    }
+                                                }
+                                            });
+
                         }
                     }
                 });
