@@ -102,11 +102,12 @@
         <TableRow android:layout_width="match_parent">
 
             <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/buttonGroup_one"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center">
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:id="@+id/button_stressed"
                     android:layout_width="100dp"
@@ -115,7 +116,7 @@
                     android:autoSizeTextType="uniform"
                     android:text="Stressed" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:id="@+id/button_sad"
                     android:layout_width="100dp"
@@ -123,7 +124,7 @@
                     android:layout_gravity="center"
                     android:text="Sad" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:id="@+id/button_anxious"
                     android:layout_width="100dp"
@@ -132,7 +133,7 @@
                     android:autoSizeTextType="uniform"
                     android:text="Anxious" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:id="@+id/button_angry"
                     android:layout_width="100dp"
@@ -147,20 +148,21 @@
         <TableRow android:layout_width="match_parent">
 
             <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/buttonGroup_two"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center">
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:id="@+id/button_withdraw"
+                    android:id="@+id/button_withdrawn"
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:text="Withdrawn"
                     android:textSize="9dp" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:id="@+id/button_lonely"
                     android:layout_width="100dp"
@@ -168,7 +170,7 @@
                     android:layout_gravity="center"
                     android:text="Lonely" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:id="@+id/button_fearful"
                     android:layout_width="100dp"
@@ -177,7 +179,7 @@
                     android:autoSizeTextType="uniform"
                     android:text="Fearful" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:id="@+id/button_happy"
                     android:layout_width="100dp"

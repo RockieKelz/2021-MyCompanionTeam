@@ -23,7 +23,7 @@ public class CheckUpEntry extends BaseEntry {
 
     // Constructor
 
-    CheckUpEntry(){ this.SetType(EntryType.CHECKUP); }
+    public CheckUpEntry(){ this.SetType(EntryType.CHECKUP); }
 
     // Accessors
     public Vector<Emotions> GetEmotions() { return emotions; }

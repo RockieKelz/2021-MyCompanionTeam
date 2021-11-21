@@ -8,15 +8,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.CBS.Logs.CheckUpEntry;
 import com.CBS.MyCompanion.R;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.slider.Slider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -35,7 +40,8 @@ public class CheckUpFragment extends Fragment {
 
     int daySelected, monthSelected, yearSelected;   //months are 0 - 11
     int mood;                                       // mood rating from 1(sad) to 5(happy)
-    Vector<String> selectedEmotions;               //SAD, HAPPY, ANXIOUS, CALM, ANGRY, EXCITED, WITHDRAWN, FEARFUL
+    enum Emotions {SAD, HAPPY, ANXIOUS, STRESSED, ANGRY, LONELY, WITHDRAWN, FEARFUL}
+    Vector<Emotions> selectedEmotions;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -127,6 +133,7 @@ public class CheckUpFragment extends Fragment {
         });
 
         Slider sliderMood = checkUpView.findViewById(R.id.slider_checkUp);
+        mood = (int)sliderMood.getValue();
         //Change the mood
         sliderMood.addOnChangeListener(new Slider.OnChangeListener() {
             @Override
@@ -136,13 +143,138 @@ public class CheckUpFragment extends Fragment {
         });
 
         //TODO: Add java code for emotion toggle groups
+        selectedEmotions = new Vector<>();
 
+        MaterialButton stressedBtn = checkUpView.findViewById(R.id.button_stressed);
+        MaterialButton sadBtn = checkUpView.findViewById(R.id.button_sad);
+        MaterialButton anxiousBtn = checkUpView.findViewById(R.id.button_anxious);
+        MaterialButton angryBtn = checkUpView.findViewById(R.id.button_angry);
+        MaterialButton withdrawnBtn = checkUpView.findViewById(R.id.button_withdrawn);
+        MaterialButton lonelyBtn = checkUpView.findViewById(R.id.button_lonely);
+        MaterialButton fearfulBtn = checkUpView.findViewById(R.id.button_fearful);
+        MaterialButton happyBtn = checkUpView.findViewById(R.id.button_happy);
+
+        stressedBtn.addOnCheckedChangeListener(new MaterialButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(MaterialButton button, boolean isChecked) {
+                if (isChecked)
+                {
+                    selectedEmotions.add(Emotions.STRESSED);
+                }
+                else
+                {
+                    //remove from vector
+                    selectedEmotions.remove(Emotions.STRESSED);
+                }
+            }
+        });
+        sadBtn.addOnCheckedChangeListener(new MaterialButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(MaterialButton button, boolean isChecked) {
+                if (isChecked)
+                {
+                    selectedEmotions.add(Emotions.SAD);
+                }
+                else
+                {
+                    //remove from vector
+                    selectedEmotions.remove(Emotions.SAD);
+                }
+            }
+        });
+        anxiousBtn.addOnCheckedChangeListener(new MaterialButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(MaterialButton button, boolean isChecked) {
+                if (isChecked)
+                {
+                    selectedEmotions.add(Emotions.ANXIOUS);
+                }
+                else
+                {
+                    //remove from vector
+                    selectedEmotions.remove(Emotions.ANXIOUS);
+                }
+            }
+        });
+        angryBtn.addOnCheckedChangeListener(new MaterialButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(MaterialButton button, boolean isChecked) {
+                if (isChecked)
+                {
+                    selectedEmotions.add(Emotions.ANGRY);
+                }
+                else
+                {
+                    //remove from vector
+                    selectedEmotions.remove(Emotions.ANGRY);
+                }
+            }
+        });
+        withdrawnBtn.addOnCheckedChangeListener(new MaterialButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(MaterialButton button, boolean isChecked) {
+                if (isChecked)
+                {
+                    selectedEmotions.add(Emotions.WITHDRAWN);
+                }
+                else
+                {
+                    //remove from vector
+                    selectedEmotions.remove(Emotions.WITHDRAWN);
+                }
+            }
+        });
+        lonelyBtn.addOnCheckedChangeListener(new MaterialButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(MaterialButton button, boolean isChecked) {
+                if (isChecked)
+                {
+                    selectedEmotions.add(Emotions.LONELY);
+                }
+                else
+                {
+                    //remove from vector
+                    selectedEmotions.remove(Emotions.LONELY);
+                }
+            }
+        });
+        fearfulBtn.addOnCheckedChangeListener(new MaterialButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(MaterialButton button, boolean isChecked) {
+                if (isChecked)
+                {
+                    selectedEmotions.add(Emotions.FEARFUL);
+                }
+                else
+                {
+                    //remove from vector
+                    selectedEmotions.remove(Emotions.FEARFUL);
+                }
+            }
+        });
+        happyBtn.addOnCheckedChangeListener(new MaterialButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(MaterialButton button, boolean isChecked) {
+                if (isChecked)
+                {
+                    selectedEmotions.add(Emotions.HAPPY);
+                }
+                else
+                {
+                    //remove from vector
+                    selectedEmotions.remove(Emotions.HAPPY);
+                }
+            }
+        });
+
+        //Save button actions
+        CheckUpEntry newEntry = new CheckUpEntry();
         Button saveCheckup = checkUpView.findViewById(R.id.button_save_checkUp);
         saveCheckup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //TODO: Remove test string
-                String test = "mood:" + mood + " Date:" + daySelected +" "+ monthSelected +" "+ yearSelected;
+                String test = "mood:" + mood + " Date:" + daySelected +" "+ monthSelected +" "+ yearSelected + " " + selectedEmotions.size();
                 Toast.makeText(checkUpView.getContext(), test, Toast.LENGTH_LONG).show();
             }
         });
