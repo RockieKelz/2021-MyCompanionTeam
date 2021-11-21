@@ -18,7 +18,7 @@ import android.widget.ToggleButton;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.CBS.Logs.CheckUpEntry;
+import com.CBS.MyCompanion.Data.Logs.CheckUpEntry;
 import com.CBS.MyCompanion.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
