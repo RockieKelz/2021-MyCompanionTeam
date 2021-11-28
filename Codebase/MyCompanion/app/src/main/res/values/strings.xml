@@ -62,4 +62,8 @@
     <string name="email">Email: </string>
     <string name="password">Password: </string>
     <string name="logout">Logout</string>
+    <string name="update_password">Update Password:</string>
+    <string name="update_email">Update Email:</string>
+    <string name="update_name">Update Name:</string>
+    <string name="edit">EDIT</string>
 </resources>

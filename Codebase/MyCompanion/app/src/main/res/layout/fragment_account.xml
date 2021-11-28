@@ -73,6 +73,19 @@
                 android:textAppearance="?android:attr/textAppearance"
                 android:textColor="@color/black"
                 android:textSize="35sp"/>
+
+            <Button
+                android:id="@+id/edit_Account_Button"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="-50dp"
+                android:onClick="buttonClickedEditName"
+                android:text="@string/edit"
+                android:textColor="@color/darkerBlue"
+                android:textSize="12sp" />
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -103,16 +116,6 @@
                     android:text="@string/usernames_name"
                     android:textColor="@color/black"
                     android:textSize="23sp"/>
-
-                <Button
-                    android:id="@+id/account_EditName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf = "@+id/account_Name"
-                    android:drawableRight="@drawable/ic_edit"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:onClick="buttonClickedEditName"
-/>
             </TableRow>
             <TableRow
                 android:layout_width="match_parent"
@@ -137,25 +140,17 @@
                 android:layout_height="40dp"
                 android:weightSum="1">
                 <TextView
+                    android:id="@+id/account_Password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="5dp"
                     android:layout_marginTop="1dp"
                     android:layout_marginBottom="1dp"
                     android:text="**********"
+                    android:password="true"
                     android:textColor="@color/black"
                     android:textSize="23sp"/>
 
-                <Button
-                    android:id="@+id/account_EditPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf = "@+id/account_Password_text"
-                    android:drawableRight="@drawable/ic_edit"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:onClick="buttonClickedEditPassword"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginBottom="1dp"/>
             </TableRow>
             <TableRow
                 android:layout_width="fill_parent"
@@ -188,14 +183,7 @@
                     android:textColor="@color/black"
                     android:textSize="23sp"
                     />
-                <Button
-                    android:id="@+id/account_EditEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf = "@+id/account_Email_text"
-                    android:drawableRight="@drawable/ic_edit"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:onClick="buttonClickedEditEmail"/>
+
             </TableRow>
 
             <Button
