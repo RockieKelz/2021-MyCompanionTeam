@@ -29,6 +29,7 @@ public class SignUpActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
     private Button bypass;
+    private FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,7 @@ public class SignUpActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         // TODO: Delete before publishing
-        mAuth.signOut();
+        //mAuth.signOut();
 
 
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -71,10 +72,10 @@ public class SignUpActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        currentUser = mAuth.getCurrentUser();
+
         if(currentUser != null){
             currentUser.reload();
-            currentUser = mAuth.getCurrentUser();
             Intent s = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(s);
         }
