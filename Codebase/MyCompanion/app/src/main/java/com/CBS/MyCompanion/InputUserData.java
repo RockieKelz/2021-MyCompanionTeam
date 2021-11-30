@@ -68,9 +68,11 @@ public class InputUserData extends AppCompatActivity {
         UserAccount currentUser = new UserAccount(firstnameEditText.getText().toString(),
                 lastNameEditText.getText().toString());
         currentUser.SetId(mAuth.getUid());
+        Map<Integer, Object> Logs = new HashMap<>();
 
         CollectionReference dbUsers = database.collection("User_Data");
         dbUsers.document(mAuth.getUid()).set(currentUser);
+        dbUsers.document(mAuth.getUid()).update("Logs", Logs);
 
     }
 
