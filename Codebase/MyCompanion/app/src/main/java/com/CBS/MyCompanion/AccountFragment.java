@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +16,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
@@ -35,8 +41,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AccountFragment extends Fragment {
 
-    private FirebaseAuth firebaseAuth;
-    FirebaseUser user;
+    private FirebaseAuth mAuth;
+    FirebaseUser currentUser;
     FirebaseStorage firebaseStorage;
     StorageReference storageReference, profileRef;
     private DatabaseReference databaseReference;
@@ -45,6 +51,7 @@ public class AccountFragment extends Fragment {
     private TextView usersName, usersEmail, usersPassword;
     private CircleImageView acctProfileImage;
     Uri imagePath;
+    String passwordUpdate;
 
     public AccountFragment() {
         // Required empty public constructor
@@ -61,25 +68,29 @@ public class AccountFragment extends Fragment {
         View accountView = inflater.inflate(R.layout.fragment_account, container, false);
 
         //get the Firebase user information
-        firebaseAuth = FirebaseAuth.getInstance();
-        user = firebaseAuth.getCurrentUser();
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference();
         firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference();
 
-        if (user != null) {
+        if (currentUser != null) {
             //initialise views and set text to current user
             usersName = accountView.findViewById(R.id.account_Name);
-            usersName.setText(user.getDisplayName());
+            usersName.setText(currentUser.getDisplayName());
 
             usersPassword = accountView.findViewById(R.id.account_Password);
+            if (passwordUpdate != null)
+            {
+                usersPassword.setText(passwordUpdate);
+            }
 
             usersEmail = accountView.findViewById(R.id.account_Email);
-            usersEmail.setText(user.getEmail());
+            usersEmail.setText(currentUser.getEmail());
             acctProfileImage = accountView.findViewById(R.id.account_profile_pic);
 
             //load profile image from cloud data
-            profileRef = storageReference.child("users/" + Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid() + "/profile.jpg");
+            profileRef = storageReference.child("users/" + Objects.requireNonNull(mAuth.getCurrentUser()).getUid() + "/profile.jpg");
             profileRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(acctProfileImage));
 
             //add functionality to buttons to edit account
@@ -92,8 +103,8 @@ public class AccountFragment extends Fragment {
             //logout of account
             Button logoutButton = accountView.findViewById(R.id.account_logout);
             logoutButton.setOnClickListener(v -> {
-                if (firebaseAuth.getCurrentUser() != null)
-                    firebaseAuth.signOut();
+                if (mAuth.getCurrentUser() != null)
+                    mAuth.signOut();
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
             });
@@ -128,8 +139,8 @@ public class AccountFragment extends Fragment {
                 //logout of account
                 Button logoutButton = accountView.findViewById(R.id.account_logout);
                 logoutButton.setOnClickListener(v -> {
-                    if (firebaseAuth.getCurrentUser() != null)
-                        firebaseAuth.signOut();
+                    if (mAuth.getCurrentUser() != null)
+                        mAuth.signOut();
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
                 });
@@ -146,8 +157,8 @@ public class AccountFragment extends Fragment {
         editName.setText(usersName.getText());
         final EditText editEmail = alertLayout.findViewById(R.id.edit_email);
         editEmail.setText((CharSequence) usersEmail.getText());
-        final TextView editPassword = alertLayout.findViewById(R.id.edit_password);
-        //editPassword.setText((CharSequence) usersPassword.getText());
+        final EditText editPassword = alertLayout.findViewById(R.id.edit_password);
+        editPassword.setText((CharSequence) usersPassword.getText());
         //create dialog pop up
         AlertDialog.Builder alert = new AlertDialog.Builder(requireActivity());
         alert.setTitle("Edit Account");
@@ -160,24 +171,45 @@ public class AccountFragment extends Fragment {
         });
         //allow user to save changes and store data to cloud
         alert.setPositiveButton("OK", (dialog, which) -> {
-            user = firebaseAuth.getCurrentUser();
-            if (user != null) {
+            currentUser = mAuth.getCurrentUser();
+            if (currentUser != null) {
                 String nameUpdate = editName.getText().toString();
                 UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().setDisplayName(nameUpdate).build();
-                user.updateProfile(profileUpdates);
+                currentUser.updateProfile(profileUpdates);
                 usersName.setText(nameUpdate);
 
                 String emailUpdate = editEmail.getText().toString();
-                user.updateEmail(emailUpdate);
-                usersEmail.setText(user.getEmail());
-
-                String passwordUpdate = editPassword.getText().toString();
-                //user.updatePassword(passwordUpdate);
-                usersPassword.setText(passwordUpdate);
+                passwordUpdate = editPassword.getText().toString();
+                if (TextUtils.isEmpty(passwordUpdate))
+                {
+                    Toast.makeText(requireActivity().getApplicationContext(),
+                            "Account Not Updated, \nPlease enter password!",
+                            Toast.LENGTH_LONG)
+                            .show();
+                    return;
+                }
+                else if (passwordUpdate.length() < 6)
+                {
+                    Toast.makeText(requireActivity().getApplicationContext(),
+                            "Account Not Updated, \nPassword must be at least 6 characters",
+                            Toast.LENGTH_LONG).show();
+                    return;
+                }
+                AuthCredential credential = EmailAuthProvider.getCredential(emailUpdate, passwordUpdate);
+                currentUser.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        currentUser.updateEmail(emailUpdate);
+                        currentUser.updatePassword(passwordUpdate);
+                        usersEmail.setText(emailUpdate);
+                        usersPassword.setText(passwordUpdate);
+                        mAuth.signInWithEmailAndPassword(emailUpdate, passwordUpdate);
+                        Toast.makeText(getActivity(), "Account Updated Successfully", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
-        AlertDialog dialog = alert.create();
-        dialog.show();
+        alert.create().show();
     }
 
     public void buttonClickedEditImage(View view) {
@@ -188,6 +220,7 @@ public class AccountFragment extends Fragment {
         //uploadImageBtn= view.findViewById(R.id.btnUploadImage);
         //selectImageBtn = view.findViewById(R.id.btnSelectImage);
         //create dialog pop up
+
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(requireActivity());
         alertDialog.setView(editLayout);
         alertDialog.setCancelable(false);
@@ -227,10 +260,10 @@ public class AccountFragment extends Fragment {
 
     private void uploadImageAndSaveUri(Uri uri) {
         //upload image to firebase storage
-        UploadTask uploadTask = storageReference.child(("users/" + Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid()+"/profile.jpg")).putFile(uri);
+        UploadTask uploadTask = storageReference.child(("users/" + Objects.requireNonNull(mAuth.getCurrentUser()).getUid()+"/profile.jpg")).putFile(uri);
         uploadTask.addOnFailureListener(e -> Toast.makeText(getActivity(), "Error: Uploading profile picture", Toast.LENGTH_SHORT).show()).addOnSuccessListener(taskSnapshot -> {
             //uploads pic stored under users id
-            storageReference.child("users/" + firebaseAuth.getCurrentUser().getUid()+"/profile.jpg").getDownloadUrl().addOnSuccessListener(uri1 -> {
+            storageReference.child("users/" + mAuth.getCurrentUser().getUid()+"/profile.jpg").getDownloadUrl().addOnSuccessListener(uri1 -> {
                 Picasso.get().load(uri1).into(acctProfileImage);
                 Toast.makeText(getActivity(), "Profile picture uploaded", Toast.LENGTH_SHORT).show();
             });
