@@ -1,53 +1,54 @@
 package com.CBS.MyCompanion;
 
-import android.content.DialogInterface;
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
-import com.CBS.MyCompanion.Data.UserAccount;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AccountFragment extends Fragment {
 
     private FirebaseAuth firebaseAuth;
+    FirebaseUser user;
+    FirebaseStorage firebaseStorage;
+    StorageReference storageReference, profileRef;
     private DatabaseReference databaseReference;
-    private FirebaseStorage firebaseStorage;
-    private StorageReference storageReference;
-    Button editAccountButton, editPic;
+    Button editAccountBtn, selectImageBtn, uploadImageBtn, cancelImageBtn;
+    ImageButton editPicBtn;
     private TextView usersName, usersEmail, usersPassword;
-    private CircleImageView profileImage;
+    private CircleImageView acctProfileImage;
     Uri imagePath;
 
     public AccountFragment() {
         // Required empty public constructor
     }
-
-    // TODO: Rename and change types and number of parameters
-    public static AccountFragment newInstance(String param1, String param2) {
-        AccountFragment fragment = new AccountFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,82 +60,181 @@ public class AccountFragment extends Fragment {
         // Inflate the layout for this fragment
         View accountView = inflater.inflate(R.layout.fragment_account, container, false);
 
+        //get the Firebase user information
         firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference();
         firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference();
 
-        usersName = accountView.findViewById(R.id.account_Name);
-        usersPassword = accountView.findViewById(R.id.account_Password);
-        usersEmail = accountView.findViewById(R.id.account_Email);
-        profileImage = accountView.findViewById(R.id.account_profile_pic);
+        if (user != null) {
+            //initialise views and set text to current user
+            usersName = accountView.findViewById(R.id.account_Name);
+            usersName.setText(user.getDisplayName());
 
-        editAccountButton = accountView.findViewById(R.id.edit_Account_Button);
-        editAccountButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buttonClickedEditAccount(v);
-            }
-        });
+            usersPassword = accountView.findViewById(R.id.account_Password);
 
-        Button logoutButton = accountView.findViewById(R.id.account_logout);
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            usersEmail = accountView.findViewById(R.id.account_Email);
+            usersEmail.setText(user.getEmail());
+            acctProfileImage = accountView.findViewById(R.id.account_profile_pic);
+
+            //load profile image from cloud data
+            profileRef = storageReference.child("users/" + Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid() + "/profile.jpg");
+            profileRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(acctProfileImage));
+
+            //add functionality to buttons to edit account
+            editAccountBtn = accountView.findViewById(R.id.edit_Account_Button);
+            editAccountBtn.setOnClickListener(this::buttonClickedEditAccount);
+
+            editPicBtn = accountView.findViewById(R.id.account_EditPic);
+            editPicBtn.setOnClickListener(this::buttonClickedEditImage);
+
+            //logout of account
+            Button logoutButton = accountView.findViewById(R.id.account_logout);
+            logoutButton.setOnClickListener(v -> {
                 if (firebaseAuth.getCurrentUser() != null)
                     firebaseAuth.signOut();
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
-            }
-        });
+            });
+        }
+        else //TODO Delete Else Condition When Bypass Mode Is Remove
+            {
+                //initialise views and set text to current user
+                usersName = accountView.findViewById(R.id.account_Name);
+                usersName.setText("Please Login to Edit Account");
 
-        
+                usersEmail = accountView.findViewById(R.id.account_Email);
+
+                acctProfileImage = accountView.findViewById(R.id.account_profile_pic);
+                acctProfileImage.setImageResource(R.drawable.default_profile_pic);
+
+                editAccountBtn = accountView.findViewById(R.id.edit_Account_Button);
+                editAccountBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+
+                editPicBtn = accountView.findViewById(R.id.account_EditPic);
+                editPicBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+
+                //logout of account
+                Button logoutButton = accountView.findViewById(R.id.account_logout);
+                logoutButton.setOnClickListener(v -> {
+                    if (firebaseAuth.getCurrentUser() != null)
+                        firebaseAuth.signOut();
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
+                });
+            }
         return accountView;
     }
+
     public void buttonClickedEditAccount(View view) {
-
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-
+        //set view to dialog layout
         LayoutInflater inflater = getLayoutInflater();
         View alertLayout = inflater.inflate(R.layout.edit_account_popup, null);
-        final EditText editUsername = alertLayout.findViewById(R.id.edit_username);
-        editUsername.setText(usersName.getText());
-        final EditText textEmail = alertLayout.findViewById(R.id.edit_email);
-        textEmail.setText((CharSequence) usersEmail.getText());
-        final EditText textPassword = alertLayout.findViewById(R.id.edit_password);
-        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+        //initialise editing views to current user
+        final EditText editName = alertLayout.findViewById(R.id.edit_name);
+        editName.setText(usersName.getText());
+        final EditText editEmail = alertLayout.findViewById(R.id.edit_email);
+        editEmail.setText((CharSequence) usersEmail.getText());
+        final TextView editPassword = alertLayout.findViewById(R.id.edit_password);
+        //editPassword.setText((CharSequence) usersPassword.getText());
+        //create dialog pop up
+        AlertDialog.Builder alert = new AlertDialog.Builder(requireActivity());
         alert.setTitle("Edit Account");
         // this is set the view from XML inside AlertDialog
         alert.setView(alertLayout);
         // disallow cancel of AlertDialog on click of back button and outside touch
         alert.setCancelable(false);
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
+        //allow user to cancel
+        alert.setNegativeButton("Cancel", (dialog, which) -> {
         });
-        alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String nameUpdate = editUsername.getText().toString();
-                UserAccount userAccount = new UserAccount();
-                userAccount.SetFirstName(nameUpdate);
-                usersName.setText(user.getDisplayName());
+        //allow user to save changes and store data to cloud
+        alert.setPositiveButton("OK", (dialog, which) -> {
+            user = firebaseAuth.getCurrentUser();
+            if (user != null) {
+                String nameUpdate = editName.getText().toString();
+                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().setDisplayName(nameUpdate).build();
+                user.updateProfile(profileUpdates);
+                usersName.setText(nameUpdate);
 
-                String emailUpdate = textEmail.getText().toString();
+                String emailUpdate = editEmail.getText().toString();
                 user.updateEmail(emailUpdate);
                 usersEmail.setText(user.getEmail());
 
-                String passwordUpdate = textPassword.getText().toString();
-                user.updatePassword(passwordUpdate);
+                String passwordUpdate = editPassword.getText().toString();
+                //user.updatePassword(passwordUpdate);
                 usersPassword.setText(passwordUpdate);
-
-                databaseReference.child(user.getUid()).setValue(userAccount);
-                editUsername.onEditorAction(EditorInfo.IME_ACTION_DONE);
             }
         });
         AlertDialog dialog = alert.create();
         dialog.show();
+    }
+
+    public void buttonClickedEditImage(View view) {
+        //set view to dialog layout
+        LayoutInflater inflater = getLayoutInflater();
+        View editLayout = inflater.inflate(R.layout.image_select_popup, null);
+        //temporary comment for custom buttons
+        //uploadImageBtn= view.findViewById(R.id.btnUploadImage);
+        //selectImageBtn = view.findViewById(R.id.btnSelectImage);
+        //create dialog pop up
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(requireActivity());
+        alertDialog.setView(editLayout);
+        alertDialog.setCancelable(false);
+        //allows user to select image
+        alertDialog.setPositiveButton("Select Image", (dialog, which) ->
+        {
+            //open image gallery
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(intent, 1000);
+        });
+        //allow user to cancel
+        alertDialog.setNeutralButton("Cancel", (dialog, which) -> {
+
+        });
+        alertDialog.create();
+        alertDialog.show();
+    }
+    @Override
+    public void onActivityResult ( int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1000 && resultCode == Activity.RESULT_OK && data != null) {
+            //get the images file path
+            imagePath = data.getData();
+            try
+            {   //set the image path to user profile image
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(requireActivity().getContentResolver(), imagePath);
+                acctProfileImage.setImageBitmap(bitmap);
+                uploadImageAndSaveUri(imagePath);
+            }
+            catch (IOException e) {
+                // Log the exception
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void uploadImageAndSaveUri(Uri uri) {
+        //upload image to firebase storage
+        UploadTask uploadTask = storageReference.child(("users/" + Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid()+"/profile.jpg")).putFile(uri);
+        uploadTask.addOnFailureListener(e -> Toast.makeText(getActivity(), "Error: Uploading profile picture", Toast.LENGTH_SHORT).show()).addOnSuccessListener(taskSnapshot -> {
+            //uploads pic stored under users id
+            storageReference.child("users/" + firebaseAuth.getCurrentUser().getUid()+"/profile.jpg").getDownloadUrl().addOnSuccessListener(uri1 -> {
+                Picasso.get().load(uri1).into(acctProfileImage);
+                Toast.makeText(getActivity(), "Profile picture uploaded", Toast.LENGTH_SHORT).show();
+            });
+        });
     }
 
 }

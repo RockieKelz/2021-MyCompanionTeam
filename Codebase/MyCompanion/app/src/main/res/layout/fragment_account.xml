@@ -33,7 +33,7 @@
                 android:layout_height="141dp"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
-                android:src="@drawable/profile_pic" />
+                android:src="@drawable/default_profile_pic" />
 
             <ImageButton
                 android:id="@+id/account_EditPic"
@@ -46,9 +46,6 @@
                 android:onClick="buttonClickedEditPic"
                 android:src="@drawable/ic_edit" />
 
-            <androidx.appcompat.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
     <!--Middle of Screen-->
@@ -91,12 +88,12 @@
                 android:layout_height="wrap_content"
                 android:weightSum="2">
                 <TextView
-                    android:id="@+id/account_Name_text"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/account_text_FirstName"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1dp"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/username"
+                    android:text="@string/name"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:paddingTop="30dp"/>
@@ -108,12 +105,41 @@
                 android:weightSum="1">
                 <TextView
                     android:id="@+id/account_Name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="5dp"
                     android:layout_marginTop="1dp"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/usernames_name"
+                    android:textColor="@color/black"
+                    android:textSize="23sp"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
+                <TextView
+                    android:id="@+id/account_Email_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:text="@string/email"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:paddingTop="20dp"/>
+            </TableRow>
+            <TableRow
+                android:background="#37989797"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:weightSum="1">
+                <TextView
+                    android:id="@+id/account_Email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
                     android:textColor="@color/black"
                     android:textSize="23sp"/>
             </TableRow>
@@ -121,10 +147,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:weightSum="2">
-
                 <TextView
                     android:id="@+id/account_Password_text"
-                    android:layout_width="280dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1dp"
                     android:layout_marginBottom="1dp"
@@ -141,49 +166,14 @@
                 android:weightSum="1">
                 <TextView
                     android:id="@+id/account_Password"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="5dp"
                     android:layout_marginTop="1dp"
                     android:layout_marginBottom="1dp"
-                    android:text="**********"
                     android:password="true"
                     android:textColor="@color/black"
                     android:textSize="23sp"/>
-
-            </TableRow>
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="2">
-                <TextView
-                    android:id="@+id/account_Email_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginBottom="1dp"
-                    android:text="@string/email"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:paddingTop="20dp"/>
-            </TableRow>
-            <TableRow
-                android:background="#37989797"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:weightSum="1">
-                <TextView
-                    android:id="@+id/account_Email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginBottom="1dp"
-                    android:text="iLoveTreats@gmail.com"
-                    android:textColor="@color/black"
-                    android:textSize="23sp"
-                    />
-
             </TableRow>
 
             <Button
@@ -194,7 +184,7 @@
                 android:layout_marginStart="130dp"
                 android:text="@string/logout"
                 android:onClick="buttonClickedLogout"
-                android:textColor="@color/blue" />
+                android:textColor="@color/darkerBlue" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

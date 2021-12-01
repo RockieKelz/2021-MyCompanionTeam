@@ -19,7 +19,7 @@
         android:layout_gravity="center"
         android:layout_marginStart="140dp"
         android:layout_marginBottom="57dp"
-        android:src="@drawable/profile_pic" />
+        android:src="@drawable/default_profile_pic" />
 
     <TextView
         android:id="@+id/userGreeting"
@@ -42,9 +42,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/userGreeting"
         android:layout_centerInParent="true"
-        android:fontFamily="sans-serif"
-        android:text="UserName"
         android:background="@drawable/filled_background"
+        android:fontFamily="sans-serif"
+        android:text="and have a great day!"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="25sp" />

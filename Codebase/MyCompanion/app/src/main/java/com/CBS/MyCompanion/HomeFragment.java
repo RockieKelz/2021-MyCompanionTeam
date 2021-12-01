@@ -1,5 +1,6 @@
 package com.CBS.MyCompanion;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,8 +13,18 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Objects;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,7 +33,11 @@ import java.util.Calendar;
  */
 public class HomeFragment extends Fragment {
 
+    FirebaseUser user;
+    FirebaseFirestore database;
     SharedPreferences sharedPreferences;
+    String name;        int streak = 1;
+
     public static final String currentStreak = "streak";
 
     public HomeFragment() {
@@ -48,12 +63,14 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View homeView = inflater.inflate(R.layout.fragment_home, container, false);
-        TextView name = homeView.findViewById(R.id.userName_home);
-        name.setText(this.getResources().getString(R.string.usernames_name));
+
+        //Update user information from firebase
+        pullUserInfoFromFirebase(homeView);
+
 
         //Determine and display the date
         Calendar cal = Calendar.getInstance();
-        SimpleDateFormat simpleDate = new SimpleDateFormat("EEEE, MMM d, yyyy");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDate = new SimpleDateFormat("EEEE, MMM d, yyyy");
         getTimeFromAndroid(cal, homeView, 0);
 
         getLoginStreak(cal, homeView);
@@ -120,25 +137,45 @@ public class HomeFragment extends Fragment {
     private void getLoginStreak(Calendar cal, View view)
     {
         //Generate Login Streak
-        sharedPreferences = getActivity().getApplicationContext().getSharedPreferences("streak", Context.MODE_PRIVATE);
+        sharedPreferences = requireActivity().getApplicationContext().getSharedPreferences("streak", Context.MODE_PRIVATE);
         int currentLogin = cal.get(Calendar.DAY_OF_YEAR);
-        int lastLogin = sharedPreferences.getInt("last Login", 0);
-        int streak = sharedPreferences.getInt("current streak", 0);
+        int lastLogin = cal.get(Calendar.DAY_OF_YEAR);
 
         if (lastLogin == currentLogin-1)
         {
             streak += 1;
-            sharedPreferences.edit().putInt("last login", currentLogin).apply();
-            sharedPreferences.edit().putInt("streak", streak).apply();
         }
         else
         {
-            sharedPreferences.edit().putInt("last login", currentLogin).apply();
-            sharedPreferences.edit().putInt("streak", 1).apply();
             streak=1;
         }
         TextView streakCount = view.findViewById(R.id.homeStreaks);
         streakCount.setText("Current Login Streak: " + streak);
 
     }
+    public void pullUserInfoFromFirebase(View view)
+    {
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        TextView homeName = view.findViewById(R.id.userName_home);
+
+        CircleImageView homePic = view.findViewById(R.id.homePic);
+        CircleImageView headerProfileImage = view.findViewById(R.id.header_profile_picture);
+
+        StorageReference profileRef;
+        //adds user's name and picture to homepage
+        if (user !=null) {
+           name = user.getDisplayName();
+           homeName.setText((CharSequence) name);
+           profileRef = FirebaseStorage.getInstance().getReference().child("users/" + Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()+"/profile.jpg");
+           profileRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(homePic));
+        }
+        else
+        {
+            homeName.setText(requireActivity().getResources().getString(R.string.bypass_name));
+            homePic.setImageResource(R.drawable.default_profile_pic);
+            //headerProfileImage.setImageResource(R.drawable.default_profile_pic);
+        }
+
+    }
+
 }

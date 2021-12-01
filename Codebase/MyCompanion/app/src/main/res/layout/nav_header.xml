@@ -5,27 +5,27 @@
     android:background="@drawable/filled_background">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_picture"
-        android:layout_width="58dp"
+        android:id="@+id/header_profile_picture"
+        android:layout_width="63dp"
         android:layout_height="58dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/profile_pic"/>
+        android:src="@drawable/default_profile_pic" />
 
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/usernames_name"
-            android:layout_below="@+id/profile_picture"
-            android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:layout_marginStart="20dp"/>
+    <TextView
+        android:id="@+id/userName_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header_profile_picture"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/bypass_name"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <View
-        android:layout_below="@+id/name"
+        android:layout_below="@+id/userName_header"
         android:layout_width="match_parent"
         style="@style/line"/>
 </RelativeLayout>
