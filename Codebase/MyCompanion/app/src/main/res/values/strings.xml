@@ -29,6 +29,7 @@
     <string name="login_form_loginButton">Log In</string>
     <string name="login_form_email">Email</string>
     <string name="login_form_password">Password</string>
+    <string name="login_form_reset_password">Reset Password</string>
 
     <!-- User Information -->
     <string name="userinfo_form_title">User Info</string>
