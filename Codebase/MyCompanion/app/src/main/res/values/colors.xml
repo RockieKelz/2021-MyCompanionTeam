@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="lightYellow">#CEFFF38B</color>
+    <color name="lightYellowTrans">#CEFFF38B</color>
     <color name="yellow">#EEC600</color>
+    <color name="orangeTrans">#A9D5891A</color>
+    <color name="lightOrangeTrans">#B5FB7A08</color>
     <color name="orange">#FF7700</color>
     <color name="blue">#0727FB</color>
     <color name="darkerBlue">#0002A7</color>

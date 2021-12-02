@@ -157,7 +157,6 @@ public class HomeFragment extends Fragment {
     {
         user = FirebaseAuth.getInstance().getCurrentUser();
         TextView homeName = view.findViewById(R.id.userName_home);
-
         CircleImageView homePic = view.findViewById(R.id.homePic);
         CircleImageView headerProfileImage = view.findViewById(R.id.header_profile_picture);
 

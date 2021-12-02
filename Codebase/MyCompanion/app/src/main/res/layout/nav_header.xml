@@ -2,13 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/filled_background">
+    android:background="@drawable/background_bordered">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/header_profile_picture"
-        android:layout_width="63dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="40dp"
+        android:layout_width="97dp"
+        android:layout_height="89dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="16dp"
         android:src="@drawable/default_profile_pic" />
 
@@ -16,16 +16,20 @@
         android:id="@+id/userName_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/header_profile_picture"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_alignTop="@+id/header_profile_picture"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/header_profile_picture"
+        android:fontFamily="@font/alegreya_bold_italic"
+        android:letterSpacing=".05"
         android:text="@string/bypass_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display4"
         android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:textSize="20sp"
+        android:textStyle="italic|bold" />
 
     <View
-        android:layout_below="@+id/userName_header"
+        style="@style/line"
         android:layout_width="match_parent"
-        style="@style/line"/>
+        android:paddingTop="15dp"
+        android:layout_below="@+id/header_profile_picture" />
 </RelativeLayout>

@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity = "center_vertical"
-                android:src="@drawable/filled_background"
+                android:src="@drawable/background_bordered"
                 app:layout_constraintEnd_toEndOf = "parent"
                 app:layout_constraintStart_toStartOf = "parent"
                 app:layout_constraintTop_toTopOf = "parent"

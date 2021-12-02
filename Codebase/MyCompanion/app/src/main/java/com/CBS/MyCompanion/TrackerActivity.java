@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.transition.Fade;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,6 +23,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
+
+import java.util.Objects;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class TrackerActivity extends AppCompatActivity {
 
@@ -40,7 +51,16 @@ public class TrackerActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.navigation_view);
         BottomNavigationView bottomNavView = findViewById(R.id.bottom_nav);
         bottomNavView.setSelectedItemId(R.id.bottom_nav_tracker);
-
+        //Display users name and image in navigation drawer
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            View header = navigationView.getHeaderView(0);
+            CircleImageView headerProfileImage = header.findViewById(R.id.header_profile_picture);
+            StorageReference profileRef = FirebaseStorage.getInstance().getReference().child("users/" + Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid() + "/profile.jpg");
+            profileRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(headerProfileImage));
+            TextView headerUsername = header.findViewById(R.id.userName_header);
+            headerUsername.setText(user.getDisplayName() + "'s Companion");
+        }
         TabLayout tabLayout_tracker = findViewById(R.id.tabs_tracker);
         ViewPager2 pager2_tracker = findViewById(R.id.viewPager2_tracker);
         FragmentManager fManager = getSupportFragmentManager();

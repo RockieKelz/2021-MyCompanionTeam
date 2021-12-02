@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="MyCompanion" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/lightYellow</item>
+        <item name="colorPrimary">@color/lightYellowTrans</item>
         <item name="colorPrimaryVariant">@color/orange</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
