@@ -70,9 +70,7 @@ public class InputUserData extends AppCompatActivity {
         currentUser.SetId(mAuth.getUid());
         Map<Integer, Object> Logs = new HashMap<>();
 
-        CollectionReference dbUsers = database.collection("User_Data");
-        dbUsers.document(mAuth.getUid()).set(currentUser);
-        dbUsers.document(mAuth.getUid()).update("Logs", Logs);
+        Database.AddUser(currentUser);
 
     }
 
