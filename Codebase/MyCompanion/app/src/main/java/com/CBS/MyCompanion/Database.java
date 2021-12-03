@@ -1,17 +1,22 @@
 package com.CBS.MyCompanion;
 
+import com.CBS.MyCompanion.Data.Logs.CheckUpEntry;
 import com.CBS.MyCompanion.Data.Logs.DiaryComponent;
 import com.CBS.MyCompanion.Data.Logs.Emotions;
+import com.CBS.MyCompanion.Data.Logs.JournalEntry;
 import com.CBS.MyCompanion.Data.Logs.Log;
 import com.CBS.MyCompanion.Data.UserAccount;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
@@ -39,12 +44,15 @@ public class Database {
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         FirebaseAuth user = FirebaseAuth.getInstance();
         Timestamp timestamp = Timestamp.now();
+        String date = new SimpleDateFormat("MM-dd-yyyy")
+                .format(timestamp.toDate());
+
         Map<String, Integer> rating = new HashMap<>();
         rating.put("Rating", log.GetCheckUp().GetRating());
 
         DocumentReference userData = database.collection("User_Data")
                 .document(user.getUid()).collection("Logs")
-                .document(timestamp.toDate().toString());
+                .document(date);
         userData.set(rating);
 
         // Adds the Emotions as an array in Firestore
@@ -76,12 +84,22 @@ public class Database {
     public static Log GetLog(Date _date) {
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         FirebaseAuth user = FirebaseAuth.getInstance();
-        String date = Integer.toString((int) _date.getTime()/1000);
+        Log log = new Log();
+        CheckUpEntry checkUp = new CheckUpEntry();
+        JournalEntry journal = new JournalEntry();
 
-        DocumentReference userData = database.collection("User_data")
-                .document(user.getUid());
+        String date = new SimpleDateFormat("MM-dd-yyyy").format(_date);
 
-        Log log = null;
+        DocumentReference userData = database.collection("User_Data")
+                .document(user.getUid()).collection("Logs")
+                .document(date);
+        DocumentSnapshot document = userData.get().getResult();
+
+        Integer rating = Integer.parseInt(document.getString("Rating"));
+
+        Vector<String> emotions = (Vector<String>) document.get("Emotions");
+        checkUp.SetRating(rating);
+
         return log;
     }
 
