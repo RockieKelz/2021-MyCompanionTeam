@@ -5,13 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.CBS.MyCompanion.Data.Logs.CheckUpEntry;
+import com.CBS.MyCompanion.Data.Logs.DiaryComponent;
+import com.CBS.MyCompanion.Data.Logs.Emotions;
+import com.CBS.MyCompanion.Data.Logs.JournalEntry;
+import com.CBS.MyCompanion.Data.Logs.Log;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,8 +29,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import com.CBS.MyCompanion.Data.UserAccount;
 
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Vector;
 
 
 public class InputUserData extends AppCompatActivity {
@@ -84,6 +93,7 @@ public class InputUserData extends AppCompatActivity {
         }
 
         addDataToFirestore();
+        BuildTestLog();
 
         Intent i
                 = new Intent(InputUserData.this,
@@ -91,4 +101,28 @@ public class InputUserData extends AppCompatActivity {
         startActivity(i);
 
     }
+
+    public void BuildTestLog() {
+        Timestamp timestamp = Timestamp.now();
+        String defaultFreeWrite = "This is a default Journal Entry";
+        JournalEntry journalEntry = new JournalEntry();
+        DiaryComponent diary = new DiaryComponent("Free Write", defaultFreeWrite);
+        journalEntry.AddComponent(diary);
+        Integer rating = 3;
+        Vector<Emotions> emotions = new Vector<>();
+        emotions.add(Emotions.HAPPY);
+        emotions.add(Emotions.LONELY);
+        CheckUpEntry checkUp = new CheckUpEntry();
+        checkUp.SetEmotions(emotions);
+        checkUp.SetRating(rating);
+
+        Log log = new Log();
+        log.SetDate(timestamp.toDate());
+        log.SetCheckUp(checkUp);
+        log.SetJournal(journalEntry);
+
+        Database.AddLog(log);
+
+    }
+
 }

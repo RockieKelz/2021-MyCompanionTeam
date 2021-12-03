@@ -1,29 +1,36 @@
 package com.CBS.MyCompanion;
 
+import com.CBS.MyCompanion.Data.Logs.DiaryComponent;
+import com.CBS.MyCompanion.Data.Logs.Emotions;
 import com.CBS.MyCompanion.Data.Logs.Log;
 import com.CBS.MyCompanion.Data.UserAccount;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Vector;
 
 public class Database {
 
-    public static void AddUser(UserAccount user){
+    public static void AddUser(UserAccount currentUser){
 
         FirebaseFirestore database = FirebaseFirestore.getInstance();
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseAuth user = FirebaseAuth.getInstance();
 
         Map<Integer, Object> Logs = new HashMap<>();
 
         CollectionReference dbUsers = database.collection("User_Data");
-        dbUsers.document(mAuth.getUid()).set(user);
-        dbUsers.document(mAuth.getUid()).collection("Logs")
+        dbUsers.document(user.getUid()).set(currentUser);
+        dbUsers.document(user.getUid()).collection("Logs")
                 .document("Initial").set(Logs);
 
     }
@@ -31,21 +38,39 @@ public class Database {
     public static void AddLog(Log log) {
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         FirebaseAuth user = FirebaseAuth.getInstance();
-        String date = Integer.toString((int)(log.GetDate().getTime())/1000);
+        Timestamp timestamp = Timestamp.now();
+        Map<String, Integer> rating = new HashMap<>();
+        rating.put("Rating", log.GetCheckUp().GetRating());
 
-        /*
-            TODO:
-                1. Add an array for the CheckUp Entry
-                2. Add a map for "Free Write" or "Guided"
-                    A. For "Free Write"
-                        a. the field is the Time of Day
-                        b. the value is the answer
-                    B. For "Guided"
-                        a. The field is the question
-                        b. The value is the answer
-                     ** There can only be one Guided response
-         */
+        DocumentReference userData = database.collection("User_Data")
+                .document(user.getUid()).collection("Logs")
+                .document(timestamp.toDate().toString());
+        userData.set(rating);
 
+        // Adds the Emotions as an array in Firestore
+        {
+            Vector<Integer> emotions = new Vector<Integer>();
+            for (Emotions e : log.GetCheckUp().GetEmotions()) {
+                emotions.add(e.getIndex());
+            }
+            userData.update("Emotions",emotions);
+        }
+
+        // Adds the Journal Entries
+        {
+            if (log.GetJournal().GetComponents().size() == 1) {
+                Map<String, String> freeWrite = new HashMap<>();
+                freeWrite.put("Free Write", log.GetJournal().GetComponents()
+                        .firstElement().GetResponse());
+                userData.update("Free Write", freeWrite);
+            } else if (log.GetJournal().GetComponents().size() > 1) {
+                Map<String, String> guided = new HashMap<>();
+                for (DiaryComponent c: log.GetJournal().GetComponents()) {
+                    guided.put(c.GetQuestion(), c.GetResponse());
+                }
+                userData.update("Guided", guided);
+            }
+        }
     }
 
     public static Log GetLog(Date _date) {
