@@ -42,6 +42,7 @@
         </com.google.android.material.tabs.TabLayout>
 
         //box for journal entry input
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/journal_Entry"
             android:layout_width="335dp"
@@ -55,6 +56,19 @@
             android:scrollbarStyle="insideInset"
             android:scrollbars="vertical"
             android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/currentDate"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_marginTop="7dp"
+            android:height="15dp"
+            android:background="@drawable/border"
+            android:text="today's date"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        />
+
     </com.google.android.material.textfield.TextInputLayout>
     //button for submission
     <Button
