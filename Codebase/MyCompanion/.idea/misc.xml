@@ -15,20 +15,18 @@
         <entry key="..\:/AHCI/2110-2112---Cold-blooded-Saints-CS-/Codebase/NavDrawer/app/src/main/res/layout/fragment_tracker.xml" value="0.20104166666666667" />
         <entry key="..\:/AHCI/2110-2112---Cold-blooded-Saints-CS-/Codebase/NavDrawer/app/src/main/res/layout/nav_header.xml" value="0.36666666666666664" />
         <entry key="..\:/AHCI/2110-2112---Cold-blooded-Saints-CS-/Codebase/NavDrawer/app/src/main/res/menu/navigation_items.xml" value="0.5" />
-        <entry key="..\:/Fullsail/Applied Human and Computer Interaction/MidTermProject/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/activity_input_user_data.xml" value="0.16875" />
         <entry key="..\:/Fullsail/Applied Human and Computer Interaction/MidTermProject/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/activity_login.xml" value="0.1953551912568306" />
         <entry key="..\:/Fullsail/Applied Human and Computer Interaction/MidTermProject/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/activity_main.xml" value="0.14617486338797814" />
         <entry key="..\:/Fullsail/Applied Human and Computer Interaction/MidTermProject/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/activity_sign_in.xml" value="0.16875" />
         <entry key="..\:/Fullsail/Applied Human and Computer Interaction/MidTermProject/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/activity_signup.xml" value="0.14856557377049182" />
-        <entry key="..\:/Fullsail/Applied Human and Computer Interaction/MidTermProject/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/fragment_account.xml" value="0.1" />
-        <entry key="..\:/Fullsail/Applied Human and Computer Interaction/MidTermProject/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/fragment_home.xml" value="0.22894736842105262" />
-        <entry key="..\:/Fullsail/Applied Human and Computer Interaction/MidTermProject/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/nav_header.xml" value="0.1" />
+        <entry key="..\:/MidTermProject/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/activity_calendar.xml" value="0.14907407407407408" />
         <entry key="..\:/MidTermProject/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/activity_journal.xml" value="0.36666666666666664" />
         <entry key="..\:/MidTermProject/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/MidTermProject/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/activity_tracker.xml" value="0.33" />
         <entry key="..\:/MidTermProject/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/activity_tracker_month.xml" value="0.36666666666666664" />
         <entry key="..\:/MidTermProject/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/activity_tracker_year.xml" value="0.36666666666666664" />
         <entry key="..\:/MidTermProject/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/fragment_account.xml" value="0.36666666666666664" />
+        <entry key="..\:/MidTermProject/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/fragment_calendar.xml" value="0.36666666666666664" />
         <entry key="..\:/MidTermProject/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/fragment_checkup.xml" value="0.33" />
         <entry key="..\:/MidTermProject/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/MidTermProject/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/fragment_journal.xml" value="0.36666666666666664" />
@@ -58,26 +56,13 @@
         <entry key="..\:/MidTermProject/2110-2112---Cold-blooded-Saints-CS-/Codebase/NavDrawer/app/src/main/res/menu/bottom_navigation_items.xml" value="0.36666666666666664" />
         <entry key="..\:/MidTermProject/2110-2112---Cold-blooded-Saints-CS-/Codebase/NavDrawer/app/src/main/res/menu/navigation_items.xml" value="0.36666666666666664" />
         <entry key="..\:/MidTermProject/2110-2112---Cold-blooded-Saints-CS-/Codebase/NavDrawer/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3828125" />
-        <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/drawable/background.xml" value="0.3828125" />
-        <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/drawable/background_bordered.xml" value="0.3828125" />
-        <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/drawable/filled_background.xml" value="0.3828125" />
-        <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/drawable/tab_bg_normal.xml" value="0.3828125" />
-        <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/drawable/tab_bg_normal_fill.xml" value="0.3828125" />
-        <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/drawable/tabview_bg.xml" value="0.3828125" />
         <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/activity_calendar.xml" value="0.15217391304347827" />
-        <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/activity_input_user_data.xml" value="0.28940217391304346" />
-        <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/activity_journal.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/activity_main.xml" value="0.2020389249304912" />
         <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/activity_prof_help.xml" value="0.1" />
-        <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/activity_signup.xml" value="0.25" />
-        <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/activity_tracker.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/edit_account_popup.xml" value="0.448207171314741" />
         <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/fragment_account.xml" value="0.25" />
         <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/fragment_calendar.xml" value="0.1762917933130699" />
-        <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/fragment_checkup.xml" value="0.28940217391304346" />
-        <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/fragment_home.xml" value="0.17831813576494426" />
-        <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/fragment_journal.xml" value="0.25" />
         <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/fragment_prof_help.xml" value="0.25" />
         <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/fragment_tracker.xml" value="0.15217391304347827" />
         <entry key="..\:/Users/Racquel/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/image_select_popup.xml" value="0.25052083333333336" />
@@ -89,16 +74,6 @@
         <entry key="..\:/Users/Racquel/Documents/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/activity_main.xml" value="0.33106884057971014" />
         <entry key="..\:/Users/Racquel/Documents/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/fragment_home.xml" value="0.33106884057971014" />
         <entry key="..\:/Users/Racquel/Documents/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/nav_header.xml" value="0.33106884057971014" />
-        <entry key="..\:/Users/hockj/OneDrive/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2046875" />
-        <entry key="..\:/Users/hockj/OneDrive/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/drawable/calendar_infoboxes.xml" value="0.2046875" />
-        <entry key="..\:/Users/hockj/OneDrive/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/drawable/filled_background.xml" value="0.2046875" />
-        <entry key="..\:/Users/hockj/OneDrive/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/drawable/ic_calendar.xml" value="0.2046875" />
-        <entry key="..\:/Users/hockj/OneDrive/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2046875" />
-        <entry key="..\:/Users/hockj/OneDrive/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/drawable/ic_menu.xml" value="0.2046875" />
-        <entry key="..\:/Users/hockj/OneDrive/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/activity_calendar.xml" value="0.11096014492753623" />
-        <entry key="..\:/Users/hockj/OneDrive/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/fragment_calendar.xml" value="0.25" />
-        <entry key="..\:/Users/hockj/OneDrive/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/fragment_checkup.xml" value="0.18297101449275363" />
-        <entry key="..\:/Users/hockj/OneDrive/Desktop/2110-2112---Cold-blooded-Saints-CS-/Codebase/MyCompanion/app/src/main/res/layout/fragment_home.xml" value="0.18297101449275363" />
       </map>
     </option>
   </component>

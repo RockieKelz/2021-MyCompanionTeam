@@ -6,6 +6,7 @@
  */
 
 package com.CBS.MyCompanion.Data.Logs;
+import java.util.Calendar;
 import java.util.Date;
 
 enum EntryType { JOURNAL, CHECKUP }
@@ -14,18 +15,18 @@ enum Emotions {SAD, HAPPY, ANXIOUS, STRESSED, ANGRY, LONELY, WITHDRAWN, FEARFUL}
 abstract class BaseEntry {
 
     // Properties
-    private Date date;
+    private Calendar date;
     private EntryType type;
 
 
     /// METHODS ///
 
     // Accessors
-    public Date GetDate() { return date; }
+    public Calendar GetDate() { return date; }
     public EntryType GetType() { return type; }
 
 
     // Mutators
-    public void SetDate(Date _date) { date = _date; }
+    public void SetDate(Calendar _date) { date = _date; }
     public void SetType(EntryType _type) { type = _type; }
 }

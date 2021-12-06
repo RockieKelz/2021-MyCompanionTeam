@@ -29,6 +29,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Vector;
 
 /**
@@ -42,6 +43,7 @@ public class CheckUpFragment extends Fragment {
     int mood;                                       // mood rating from 1(sad) to 5(happy)
     enum Emotions {SAD, HAPPY, ANXIOUS, STRESSED, ANGRY, LONELY, WITHDRAWN, FEARFUL}
     Vector<Emotions> selectedEmotions;
+    CheckUpEntry newEntry;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -268,7 +270,6 @@ public class CheckUpFragment extends Fragment {
         });
 
         //Save button actions
-        CheckUpEntry newEntry = new CheckUpEntry();
         Button saveCheckup = checkUpView.findViewById(R.id.button_save_checkUp);
         saveCheckup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -276,6 +277,13 @@ public class CheckUpFragment extends Fragment {
                 //TODO: Remove test string
                 String test = "mood:" + mood + " Date:" + daySelected +" "+ monthSelected +" "+ yearSelected + " " + selectedEmotions.size();
                 Toast.makeText(checkUpView.getContext(), test, Toast.LENGTH_LONG).show();
+
+                newEntry = new CheckUpEntry();
+                Calendar selectedDate = Calendar.getInstance();
+                selectedDate.set(yearSelected, monthSelected, daySelected);
+                newEntry.SetDate(selectedDate);
+                newEntry.SetEmotions((Vector)selectedEmotions);
+                newEntry.SetRating(mood);
             }
         });
 

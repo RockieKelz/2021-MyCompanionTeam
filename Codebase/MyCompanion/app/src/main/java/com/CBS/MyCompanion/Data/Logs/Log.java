@@ -8,13 +8,14 @@
 package com.CBS.MyCompanion.Data.Logs;
 
 import java.util.Date;
+import java.util.Calendar;
 import java.util.Vector;
 
 public class Log {
 
     // Properties
     private Vector<BaseEntry> Entries;
-    private Date date;
+    private Calendar date;
     private boolean HasCheckUp;
     private boolean HasJournal;
 
@@ -31,13 +32,13 @@ public class Log {
 
     // Accessors
     public Vector<BaseEntry> GetEntries() { return Entries; }
-    public Date GetDate() { return date; }
+    public Calendar GetDate() { return date; }
     public boolean CheckUpStatus() { return HasCheckUp; }
     public boolean JournalStatus() { return HasJournal; }
 
     // Mutators
     public void SetEntries(Vector<BaseEntry> _entries) { Entries = _entries; }
-    public void SetDate(Date _date) { date = _date; }
+    public void SetDate(Calendar _date) { date = _date; }
 
 
     public void AddEntry(BaseEntry entry) {
