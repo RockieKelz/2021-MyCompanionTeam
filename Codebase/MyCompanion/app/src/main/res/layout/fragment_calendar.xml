@@ -9,7 +9,7 @@
 
 
     <TextView
-        android:id="@+id/selectDateText"
+        android:id="@+id/currentDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="135dp"
@@ -24,9 +24,9 @@
         android:id="@+id/CalendarPageCalendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/selectDateText"
-        android:layout_alignStart="@+id/selectDateText"
-        android:layout_alignEnd="@+id/selectDateText"
+        android:layout_below="@+id/currentDate"
+        android:layout_alignStart="@+id/currentDate"
+        android:layout_alignEnd="@+id/currentDate"
         android:layout_marginStart="-124dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="7dp"
