@@ -104,7 +104,7 @@ public class CheckUpFragment extends Fragment {
         daySelected = calendar.get(Calendar.DAY_OF_MONTH);
         monthSelected = calendar.get(Calendar.MONTH);
         yearSelected = calendar.get(Calendar.YEAR);
-        String dateIsToday = "How are you\nToday?";
+        String dateIsToday = "How are you\nToday?\n";
         textQuestion.setText(dateIsToday);
 
         ImageButton dateChoice = checkUpView.findViewById(R.id.button_calendarPick_checkUp);
@@ -121,7 +121,7 @@ public class CheckUpFragment extends Fragment {
                             textQuestion.setText(dateIsToday);
                         }
                         else {
-                            String selectedDate = "How were you on\n" + intMonthToString(month) + " " + dayOfMonth + ", " + year;
+                            String selectedDate = "How were you on\n" + intMonthToString(month) + " " + dayOfMonth + ", " + year +"\n";
                             textQuestion.setText(selectedDate);
                         }
                         daySelected = dayOfMonth;
