@@ -110,9 +110,12 @@ public class TrackerActivity extends AppCompatActivity {
                 switch (id)
                 {
                     case R.id.nav_home:
-                        replaceFragmentWithAnimation(new HomeFragment());
+                        Intent intent1 = new Intent(TrackerActivity.this, MainActivity.class);
+                        startActivity(intent1, ActivityOptions.makeSceneTransitionAnimation(TrackerActivity.this).toBundle());
                         break;
                     case R.id.nav_account:
+                        tabLayout_tracker.setVisibility(View.GONE);
+                        pager2_tracker.setVisibility(View.GONE);
                         replaceFragmentWithAnimation(new AccountFragment());
                         break;
                     case R.id.nav_calendar:
@@ -120,13 +123,17 @@ public class TrackerActivity extends AppCompatActivity {
                         startActivity(intent2, ActivityOptions.makeSceneTransitionAnimation(TrackerActivity.this).toBundle());
                         break;
                     case R.id.nav_journal:
-                        Intent intent1 = new Intent(TrackerActivity.this, JournalActivity.class);
-                        startActivity(intent1, ActivityOptions.makeSceneTransitionAnimation(TrackerActivity.this).toBundle());
+                        Intent intent3 = new Intent(TrackerActivity.this, JournalActivity.class);
+                        startActivity(intent3, ActivityOptions.makeSceneTransitionAnimation(TrackerActivity.this).toBundle());
                         break;
                     case R.id.nav_help:
+                        tabLayout_tracker.setVisibility(View.GONE);
+                        pager2_tracker.setVisibility(View.GONE);
                         replaceFragmentWithAnimation(new ProfHelpFragment());
                         break;
                     case R.id.nav_settings:
+                        tabLayout_tracker.setVisibility(View.GONE);
+                        pager2_tracker.setVisibility(View.GONE);
                         replaceFragmentWithAnimation(new SettingsFragment());
                         break;
                     case R.id.nav_tracker:
