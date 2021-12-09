@@ -81,16 +81,20 @@
             android:layout_marginEnd="25dp"
             android:src="@drawable/mood_5" />
 
-    <com.google.android.material.slider.Slider
-        android:id="@+id/slider_checkUp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/text_neutral"
-        android:layout_centerInParent="true"
-        android:stepSize="1"
-        android:value="3"
-        android:valueFrom="1"
-        android:valueTo="5" />
+        <com.google.android.material.slider.Slider
+            android:id="@+id/slider_checkUp"
+            android:background="@drawable/slider_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_neutral"
+            android:layout_centerInParent="true"
+            android:stepSize="1"
+            android:value="3"
+            android:valueFrom="1"
+            android:valueTo="5"
+            app:tickColor="@color/black"
+            app:trackColor="@color/fui_transparent"
+            app:trackHeight="10dp" />
 
     <TableLayout
         android:id="@+id/table_checkUpButtons"

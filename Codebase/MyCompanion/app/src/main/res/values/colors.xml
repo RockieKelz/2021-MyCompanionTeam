@@ -13,5 +13,8 @@
     <color name="light_grey">#989797</color>
     <color name="underline">#080606</color>
 
+    <color name="mood1Color">#d61f1f</color>
+    <color name="mood3Color">#ffd301</color>
+    <color name="mood5Color">#59d34b</color>
 
 </resources>
