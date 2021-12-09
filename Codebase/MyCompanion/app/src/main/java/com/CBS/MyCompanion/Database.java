@@ -70,6 +70,7 @@ public class Database {
 
         // Adds the Journal Entries
         {
+            /*
             if (log.GetJournal().GetComponents().size() == 1) {
                 Map<String, String> freeWrite = new HashMap<>();
                 freeWrite.put("Free Write", log.GetJournal().GetComponents()
@@ -84,6 +85,7 @@ public class Database {
                 }
                 userData.update("Guided", guided);
             }
+             */
         }
     }
 

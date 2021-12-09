@@ -45,5 +45,7 @@ public class Log {
     public void SetCheckUp(CheckUpEntry _checkUp) { checkUpEntry = _checkUp; }
     public void SetJournal(JournalEntry _journalEntry) { journalEntry = _journalEntry; }
     public void SetDate(Date _date) { date = _date; }
+    public void SetEmotions(Vector<Emotions> emotions) { checkUpEntry.SetEmotions(emotions); }
+    public void SetRating(Integer rating) { checkUpEntry.SetRating(rating); }
 
 }
