@@ -11,17 +11,25 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Source;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -36,7 +44,8 @@ public class HomeFragment extends Fragment {
     FirebaseUser user;
     FirebaseFirestore database;
     SharedPreferences sharedPreferences;
-    String name;        int streak = 1;
+    String name;
+    int streak;
 
     public static final String currentStreak = "streak";
 
@@ -134,21 +143,46 @@ public class HomeFragment extends Fragment {
         boolean checked = ((CheckBox)view).isChecked();
 
     }
+    @SuppressLint("SetTextI18n")
     private void getLoginStreak(Calendar cal, View view)
     {
+        /* Access the user's storage field and update their login streak
+        DocumentReference documentReference = FirebaseFirestore.getInstance().collection("User_data").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot != null)
+                {
+                    streak = documentSnapshot.get("currentLoginStreak");
+                }
+            }
+        }); */
         //Generate Login Streak
-        sharedPreferences = requireActivity().getApplicationContext().getSharedPreferences("streak", Context.MODE_PRIVATE);
-        int currentLogin = cal.get(Calendar.DAY_OF_YEAR);
-        int lastLogin = cal.get(Calendar.DAY_OF_YEAR);
+        Date yesterday;
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDate = new SimpleDateFormat("MM, dd, yyyy");
 
-        if (lastLogin == currentLogin-1)
+        //get the last sign in date and format it to a string
+        Date lastLogin = new Date(Objects.requireNonNull(user.getMetadata()).getLastSignInTimestamp());
+        String formatLogin = simpleDate.format(lastLogin);
+        //check if the last sign in is the current date
+        if (!formatLogin.equals(simpleDate.format(cal.getTime())))
         {
-            streak += 1;
+            //get yesterday's date and format it to a string
+            cal.add(Calendar.DATE, -1);
+            yesterday = cal.getTime();
+            String formatYesterday = simpleDate.format(yesterday);
+            //determine if user's login streak should reset or go up
+            if (formatYesterday.equals(formatLogin))
+            {
+                ++streak;
+            }
+            else
+            {
+                streak=1;
+            }
         }
-        else
-        {
-            streak=1;
-        }
+        /*Update their streak count
+        FirebaseFirestore.getInstance().collection("User_data").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).update("currentLoginStreak:", streak);*/
         TextView streakCount = view.findViewById(R.id.homeStreaks);
         streakCount.setText("Current Login Streak: " + streak);
 
