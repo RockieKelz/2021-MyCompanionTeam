@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity = "center_vertical"
-                android:src="@drawable/background_bordered"
+                android:src="@drawable/background_bluegreen"
                 app:layout_constraintEnd_toEndOf = "parent"
                 app:layout_constraintStart_toStartOf = "parent"
                 app:layout_constraintTop_toTopOf = "parent"
@@ -81,7 +81,7 @@
                 android:onClick="buttonClickedEditName"
                 android:text="@string/edit"
                 android:textColor="@color/darkerBlue"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
 
             <TableRow
                 android:layout_width="match_parent"
@@ -184,7 +184,8 @@
                 android:layout_marginStart="130dp"
                 android:text="@string/logout"
                 android:onClick="buttonClickedLogout"
-                android:textColor="@color/darkerBlue" />
+                android:textColor="@color/darkerBlue"
+                android:backgroundTint="@color/lightBlue"  />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -9,63 +9,75 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="2dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="5dp"
+            android:paddingBottom="5dp"
+            android:background="@color/lightestGrey"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/freeWrite"
-                android:layout_width="wrap_content"
+                android:layout_width="400dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="44dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginEnd="30dp"
-                android:layout_marginTop="10dp"
-                android:text="Free Write"
+                android:background="@color/lightGreen"
+                android:backgroundTint="@color/lightestBlue"
+                android:backgroundTintMode="src_in"
+                android:fontFamily="@font/alegreya_italic"
+                android:gravity="center"
+
+                android:text="Freewrite"
                 android:textColor="@color/black"
                 android:textSize="30dp" />
 
-            <Button
-                android:id="@+id/preset_questions_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="30dp"
-                android:text="Preset Questions"/>
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/currentDate"
-            android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            android:layout_marginStart="20dp"
-            android:height="15dp"
-            android:background="@drawable/border"
-            android:text="today's date"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/blue"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/currentDate"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="15dp"
+                android:height="15dp"
+                android:background="@drawable/border"
+                android:text="today's date"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/freewriteInputLayout"
             android:layout_width="340dp"
             android:layout_height="415dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginTop="7dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_gravity="center"
             android:background="@drawable/border"
-            android:backgroundTint="@color/lightYellowTrans"
+            android:backgroundTint="@color/lightBlue"
             android:backgroundTintMode="src_over">
 
             //box for journal entry input
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/journal_Entry"
                 android:layout_width="330dp"
-                android:layout_height="395dp"
+                android:layout_height="400dp"
                 android:background="@null"
                 android:gravity="top|left"
                 android:inputType="textMultiLine"
@@ -77,16 +89,30 @@
                 tools:ignore = "RTLHardcoded">
             </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
-    //button for submission
-    <Button
-        android:id="@+id/submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        android:textColor="@color/darkerBlue"
-        android:layout_gravity="bottom|right"
-        android:layout_marginEnd="25dp"
-        android:paddingBottom="5dp"
-        android:backgroundTint="@color/lightYellowTrans" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="5dp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/preset_questions_button"
+                style="@style/Cut"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:backgroundTint="@color/lightestBlue"
+                android:text="Preset Questions"
+                android:textColor="@color/darkerBlue" />
+            //button for submission
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:layout_marginStart="115dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/darkerBlue"
+                android:backgroundTint="@color/lightBlue" />
+        </LinearLayout>
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

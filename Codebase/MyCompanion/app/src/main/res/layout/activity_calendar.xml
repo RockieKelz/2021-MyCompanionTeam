@@ -21,24 +21,7 @@
             android:id="@+id/frameLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/bottom_nav" >
-
-            <TextView
-                android:id="@+id/currentDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Select Date"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="135dp"
-                >
-
-            </TextView>
-
-
-
-        </FrameLayout>
+            android:layout_above="@+id/bottom_nav" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav"
@@ -55,8 +38,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end"
-            android:background="@drawable/background"
-            android:backgroundTint="@color/orangeTrans"
+            android:background="@drawable/background_bluegreen"
+            android:backgroundTint="@color/lightGreen"
             android:backgroundTintMode="screen"
             app:headerLayout="@layout/nav_header"
             app:itemIconPadding="20dp"
