@@ -1,5 +1,6 @@
 package com.CBS.MyCompanion;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -99,6 +100,13 @@ public class CalendarFragment extends Fragment {
             }
         });
 
+        mBottomButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                 Intent i = new Intent(getActivity(), JournalActivity.class);
+                 startActivity(i);
+            }
+        });
 
         return view;
     }
