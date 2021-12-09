@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="lightYellowTrans">#CEFFF38B</color>
-    <color name="yellow">#ECC400</color>
-    <color name="orangeTrans">#BED5891A</color>
-    <color name="lightOrangeTrans">#B5FB7A08</color>
-    <color name="orange">#FF7700</color>
+    <color name="lightestBlue">#CE5EE4F6</color>
+    <color name="lightBlue">#CE0FCBEC</color>
     <color name="blue">#0727FB</color>
     <color name="darkerBlue">#0002A7</color>
+    <color name="lightGreen">#BE56FF30</color>
+    <color name="Green">#B51E7C03</color>
+    <color name="darkerGreen">#0E4000</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
+    <color name="lightestGrey">#BEC4C6C6</color>
     <color name="light_grey">#989797</color>
-    <color name="underline">#080606</color>
 
     <color name="mood1Color">#d61f1f</color>
     <color name="mood3Color">#ffd301</color>

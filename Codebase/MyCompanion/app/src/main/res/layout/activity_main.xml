@@ -40,7 +40,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="end"
             android:background="@drawable/background"
-            android:backgroundTint="@color/orangeTrans"
+            android:backgroundTint="@color/lightGreen"
             android:backgroundTintMode="screen"
             app:headerLayout="@layout/nav_header"
             app:itemIconPadding="20dp"

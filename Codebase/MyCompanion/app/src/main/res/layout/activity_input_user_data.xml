@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000"
+    android:background="@drawable/background_blues"
     tools:context=".InputUserData">
 
     <androidx.cardview.widget.CardView
@@ -63,8 +63,6 @@
                 android:text="@string/userinfo_form_ctnButton"
                 android:textSize="22sp"
                 android:id="@+id/activity_inputUserData_ctnButton"/>
-
-
 
         </LinearLayout>
 
