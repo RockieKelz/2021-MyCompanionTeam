@@ -21,7 +21,8 @@ public class JournalEntry extends BaseEntry {
 
     // Constructor
 
-    JournalEntry(){
+    public JournalEntry(){
+        Components = new Vector<>();
         this.SetType(EntryType.JOURNAL);
     }
 

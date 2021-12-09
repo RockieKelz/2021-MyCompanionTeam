@@ -25,7 +25,6 @@ public class UserAccount {
     public Integer totalLoginCount;
     public Integer currentLoginStreak;
     public Integer longestStreak;
-    public HashMap<Log, Calendar> logs;               // Change to a map
 
     // Constructors
     public UserAccount(){}
@@ -47,7 +46,6 @@ public class UserAccount {
     public Integer GetTotalLoginCount() { return totalLoginCount; }
     public Integer GetCurrentLoginStreak() { return currentLoginStreak; }
     public Integer GetLongestStreak() { return longestStreak; }
-    public HashMap<Log, Calendar> GetLogs() { return logs; }
 
     // Mutators
     public void SetId(String _id) { id = _id; }
@@ -57,11 +55,6 @@ public class UserAccount {
     public void SetTotalLoginCount(Integer count) { totalLoginCount = count; }
     public void SetCurrentLoginStreak(Integer count) { currentLoginStreak = count; }
     public void SetLongestStreak(Integer count) { longestStreak = count; }
-
-    // Methods
-    public void AddLog(Log _log){
-        logs.put(_log, _log.GetDate());
-    }
 
 
 }
