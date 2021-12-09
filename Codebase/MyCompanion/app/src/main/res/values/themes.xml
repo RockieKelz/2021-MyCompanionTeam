@@ -26,5 +26,19 @@
         <item name="android:letterSpacing">.1</item>
         <item name="android:textSize">18dp</item>
     </style>
+    <style name="ListFont" parent="android:Widget.ListView">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">12sp</item>
+    </style>
 
+    <style name="Animation_PopUp">
+        <item name="android:windowEnterAnimation">@anim/view_show</item>
+        <item name="android:windowExitAnimation">@anim/view_hide</item>
+        <item name="android:duration">1800</item>
+    </style>
+
+    <style name="Cut" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">14dp</item>
+    </style>
 </resources>

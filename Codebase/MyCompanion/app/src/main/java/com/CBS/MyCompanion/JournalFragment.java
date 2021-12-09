@@ -1,59 +1,29 @@
 package com.CBS.MyCompanion;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.PopupWindow;
 
 import androidx.fragment.app.Fragment;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link JournalFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class JournalFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private Button presetSelectionButton, closePresetButton;
+    private ArrayList<String> presetQuestionsList;
+    private ListView presetListView;
+    protected ArrayAdapter<String> adapter;
+    public EditText presetInput, journalInput;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public JournalFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment JournalFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static JournalFragment newInstance(String param1, String param2) {
-        JournalFragment fragment = new JournalFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,9 +31,69 @@ public class JournalFragment extends Fragment {
         // Inflate the layout for this fragment
         View journalView = inflater.inflate(R.layout.fragment_journal, container, false);
 
-        // TODO: Add functionality to tabs
+        presetSelectionButton = journalView.findViewById(R.id.preset_questions_button);
+        presetSelectionButton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("UseCompatLoadingForDrawables")
+            @Override
+            public void onClick(View v) {
+                //create the pop up
+                View presetLayout = getLayoutInflater().inflate(R.layout.activity_preset_popup, null);
+                PopupWindow presetDialog = new PopupWindow(presetLayout, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                presetDialog.setFocusable(true);
+                presetDialog.setAnimationStyle(R.style.Animation_PopUp);
+
+                //create the preset questions section
+                presetListView = presetLayout.findViewById(R.id.preset_list_view);
+                presetQuestionsList = new ArrayList<>();
+                createPresetList();
+                setAdapter();
+
+                //allow for any text written in freewrite to be displayed in the pop up's input area
+                presetInput = presetLayout.findViewById(R.id.presetInputBox);
+                journalInput = journalView.findViewById(R.id.journal_Entry);
+                presetInput.setText(journalInput.getText());
+                presetInput.setFocusableInTouchMode(true);
+                presetInput.requestFocusFromTouch();
+
+                presetDialog.update(0,0, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                presetDialog.showAtLocation(journalView, Gravity.TOP, 0, 0);
+                //close the pop up window
+                closePresetButton = presetLayout.findViewById(R.id.close_presetButton);
+                closePresetButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        journalInput.setText(presetInput.getText());
+                        presetDialog.dismiss();
+                    }
+                });
+            }
+        });
         // TODO: Add functionality to submit button
         return journalView;
     }
+    private void createPresetList()
+    {
+        //add the questions to be displayed in the list
+        presetQuestionsList.add("How many hours did I sleep? \nWas the sleep restful or restless?");
+        presetQuestionsList.add("What mood did I wake up in? Why do I believe I woke up in that mood?");
+        presetQuestionsList.add("Did any unexpected events occur today? If so, how did the make you feel?");
+        presetQuestionsList.add("What did I dream about last?");
+        presetQuestionsList.add("When did I feel most like myself today? When did I feel least like myself?");
+        presetQuestionsList.add("What's 3 things you'd like other's to know about yourself?");
+        presetQuestionsList.add("What would you like to accomplish this week? How would you like to accomplish it?");
+        presetQuestionsList.add("Finish this sentence, \"My life would be incomplete without...\"");
+        presetQuestionsList.add("What did I eat today? Do I regret what I ate/didn't eat?");
+        presetQuestionsList.add("What's something that makes me smile? Why does it bring a smile to my face?");
+        presetQuestionsList.add("What type of work/life balance do I have? How can I improve it?");
+        presetQuestionsList.add("Have I/will I spend any quality time with someone this week? (Express what is planned and how I feel about it)");
+        presetQuestionsList.add("Have I had any feelings of self-harm?");
 
+    }
+    private void setAdapter()
+    {
+        //transfer the questions list into the layout's view
+        adapter = new ArrayAdapter<String>(requireActivity().getApplicationContext(), android.R.layout.simple_selectable_list_item, presetQuestionsList);
+        presetListView.setAdapter(adapter);
+
+    }
 }
