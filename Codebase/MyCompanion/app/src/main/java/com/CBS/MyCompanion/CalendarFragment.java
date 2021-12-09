@@ -31,6 +31,8 @@ public class CalendarFragment extends Fragment {
     private CalendarView mCalendarView;
     private TextView mDateText;
     private Button mBottomButton;
+    private String mBottomButtonStringFalse = "Tap here to write journal entry";
+    private String mBottomButtonStringTrue= "Tap here to view full entry";
     private static final String TAG = "CalendarFragment";
 
     // TODO: Rename parameter arguments, choose names that match
@@ -85,7 +87,7 @@ public class CalendarFragment extends Fragment {
         //Get current date and set it in first infobox
         String date = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).format(new Date());
         mDateText.setText(date);
-        mBottomButton.setText("");
+        mBottomButton.setText(mBottomButtonStringFalse);
 
         //Updates infobox if date is changed by user used later to show what user has input on that day
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
