@@ -66,4 +66,8 @@
     <string name="edit">EDIT</string>
 
     <string name="close">Close</string>
+
+    <!-- Calendar Page Strings -->
+    <string name="select_date">Select Date</string>
+
 </resources>
