@@ -44,7 +44,11 @@ public class Database {
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         FirebaseAuth user = FirebaseAuth.getInstance();
         Timestamp timestamp = Timestamp.now();
-        String date = new SimpleDateFormat("MM-dd-yyyy")
+        String year = new SimpleDateFormat("yyyy")
+                .format(timestamp.toDate());
+        String month = new SimpleDateFormat("MM")
+                .format(timestamp.toDate());
+        String day = new SimpleDateFormat("dd")
                 .format(timestamp.toDate());
 
         Map<String, Integer> rating = new HashMap<>();
@@ -52,7 +56,7 @@ public class Database {
 
         DocumentReference userData = database.collection("User_Data")
                 .document(user.getUid()).collection("Logs")
-                .document(date);
+                .document(year).collection(month).document(day);
         userData.set(rating);
 
         // Adds the Emotions as an array in Firestore
@@ -70,7 +74,9 @@ public class Database {
                 Map<String, String> freeWrite = new HashMap<>();
                 freeWrite.put("Free Write", log.GetJournal().GetComponents()
                         .firstElement().GetResponse());
-                userData.update("Free Write", freeWrite);
+                userData.collection("Journals")
+                        .document("Free Write")
+                        .set(freeWrite);
             } else if (log.GetJournal().GetComponents().size() > 1) {
                 Map<String, String> guided = new HashMap<>();
                 for (DiaryComponent c: log.GetJournal().GetComponents()) {
