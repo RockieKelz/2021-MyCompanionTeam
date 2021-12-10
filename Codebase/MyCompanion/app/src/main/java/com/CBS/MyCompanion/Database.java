@@ -20,6 +20,7 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Vector;
@@ -43,6 +44,7 @@ public class Database {
     public static void AddLog(Log log) {
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         FirebaseAuth user = FirebaseAuth.getInstance();
+        /*
         Timestamp timestamp = Timestamp.now();
         String year = new SimpleDateFormat("yyyy")
                 .format(timestamp.toDate());
@@ -50,6 +52,14 @@ public class Database {
                 .format(timestamp.toDate());
         String day = new SimpleDateFormat("dd")
                 .format(timestamp.toDate());
+         */
+        int y = log.GetDate().get(Calendar.YEAR);
+        int m = log.GetDate().get(Calendar.MONTH);
+        int d = log.GetDate().get(Calendar.DAY_OF_MONTH);
+
+        String year = String.valueOf(y);
+        String month = String.format("%02d",(m + 1));
+        String day = String.format("%02d",d);
 
         Map<String, Integer> rating = new HashMap<>();
         rating.put("Rating", log.GetCheckUp().GetRating());

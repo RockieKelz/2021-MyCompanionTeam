@@ -280,8 +280,12 @@ public class CheckUpFragment extends Fragment {
         saveCheckup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Calendar selectedDate = Calendar.getInstance();
+                selectedDate.set(yearSelected, monthSelected, daySelected);
+
                 checkUp.SetEmotions(selectedEmotions);
                 checkUp.SetRating(mood);
+                log.SetDate(selectedDate);
                 log.SetCheckUp(checkUp);
 
                 Database.AddLog(log);
@@ -291,8 +295,7 @@ public class CheckUpFragment extends Fragment {
                 Toast.makeText(checkUpView.getContext(), test, Toast.LENGTH_LONG).show();
 
                 newEntry = new CheckUpEntry();
-                Calendar selectedDate = Calendar.getInstance();
-                selectedDate.set(yearSelected, monthSelected, daySelected);
+
                 newEntry.SetDate(selectedDate);
                 newEntry.SetEmotions((Vector)selectedEmotions);
                 newEntry.SetRating(mood);
