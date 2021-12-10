@@ -10,7 +10,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 enum EntryType { JOURNAL, CHECKUP }
-enum Emotions {SAD, HAPPY, ANXIOUS, STRESSED, ANGRY, LONELY, WITHDRAWN, FEARFUL}
 
 abstract class BaseEntry {
 

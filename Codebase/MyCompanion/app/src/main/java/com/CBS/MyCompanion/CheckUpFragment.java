@@ -19,6 +19,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.CBS.MyCompanion.Data.Logs.CheckUpEntry;
+import com.CBS.MyCompanion.Data.Logs.Emotions;
+import com.CBS.MyCompanion.Data.Logs.Log;
 import com.CBS.MyCompanion.R;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
@@ -28,6 +30,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import com.CBS.MyCompanion.Data.Logs.Emotions;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Vector;
@@ -41,7 +44,7 @@ public class CheckUpFragment extends Fragment {
 
     int daySelected, monthSelected, yearSelected;   //months are 0 - 11
     int mood;                                       // mood rating from 1(sad) to 5(happy)
-    enum Emotions {SAD, HAPPY, ANXIOUS, STRESSED, ANGRY, LONELY, WITHDRAWN, FEARFUL}
+    //enum Emotions {SAD, HAPPY, ANXIOUS, STRESSED, ANGRY, LONELY, WITHDRAWN, FEARFUL}
     Vector<Emotions> selectedEmotions;
     CheckUpEntry newEntry;
 
@@ -106,6 +109,9 @@ public class CheckUpFragment extends Fragment {
         yearSelected = calendar.get(Calendar.YEAR);
         String dateIsToday = "How are you\nToday?\n";
         textQuestion.setText(dateIsToday);
+
+        Log log = new Log();
+        CheckUpEntry checkUp = new CheckUpEntry();
 
         ImageButton dateChoice = checkUpView.findViewById(R.id.button_calendarPick_checkUp);
 
@@ -274,6 +280,12 @@ public class CheckUpFragment extends Fragment {
         saveCheckup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                checkUp.SetEmotions(selectedEmotions);
+                checkUp.SetRating(mood);
+                log.SetCheckUp(checkUp);
+
+                Database.AddLog(log);
+
                 //TODO: Remove test string
                 String test = "mood:" + mood + " Date:" + daySelected +" "+ monthSelected +" "+ yearSelected + " " + selectedEmotions.size();
                 Toast.makeText(checkUpView.getContext(), test, Toast.LENGTH_LONG).show();
