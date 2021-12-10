@@ -40,6 +40,8 @@ public class InputUserData extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_input_user_data);
 
         firstnameEditText = findViewById(R.id.activity_inputUserData_firstName);

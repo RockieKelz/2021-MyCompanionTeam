@@ -41,6 +41,7 @@ public class CalendarActivity extends AppCompatActivity {
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         getWindow().setEnterTransition(new Fade());
         getWindow().setAllowEnterTransitionOverlap(true);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_calendar);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
