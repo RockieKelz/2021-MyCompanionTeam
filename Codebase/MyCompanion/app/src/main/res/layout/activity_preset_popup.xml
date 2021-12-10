@@ -62,8 +62,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="30dp"
-            android:backgroundTint="@color/darkerGreen"
-            android:textColor="@color/darkerBlue"
+            android:backgroundTint="@color/darkerBlue"
+            android:textColor="@color/lightestBlue"
             android:text="@string/close" />
     </LinearLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
