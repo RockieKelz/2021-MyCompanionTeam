@@ -14,7 +14,7 @@ tools:context="com.CBS.MyCompanion.CreditFragment">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="79dp"
-        android:layout_marginTop="-80dp"
+        android:layout_marginTop="-100dp"
         android:text="Thank you to our wonderful creators."
         android:textAlignment="center"
         android:textColor="@color/black"
@@ -27,42 +27,42 @@ tools:context="com.CBS.MyCompanion.CreditFragment">
         android:text="Sam Whorton"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="15dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="79dp"
-        android:layout_marginTop="10dp"
-        android:text="Raquel McCall"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="15dp" />
+        android:textSize="20dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="79dp"
         android:layout_marginTop="20dp"
-        android:text="Amber Xiong"
+        android:text="Raquel McCall"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="15dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="79dp"
-        android:layout_marginTop="30dp"
-        android:text="Alex Roeder"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="15dp" />
+        android:textSize="20dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="79dp"
         android:layout_marginTop="40dp"
+        android:text="Amber Xiong"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="79dp"
+        android:layout_marginTop="60dp"
+        android:text="Alex Roeder"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="79dp"
+        android:layout_marginTop="80dp"
         android:text="Adam Deye"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="15dp" />
+        android:textSize="20dp" />
 
 </RelativeLayout>
