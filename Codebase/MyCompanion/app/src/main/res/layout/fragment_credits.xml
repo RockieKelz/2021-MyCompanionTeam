@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/white"
+android:gravity="center"
+android:orientation="horizontal"
+tools:context="com.CBS.MyCompanion.CreditFragment">
+
+<!--//Text that will be displayed in middle of screen-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="79dp"
+        android:layout_marginTop="-80dp"
+        android:text="Thank you to our wonderful creators."
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="25dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="79dp"
+        android:layout_marginTop="0dp"
+        android:text="Sam Whorton"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="79dp"
+        android:layout_marginTop="10dp"
+        android:text="Raquel McCall"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="79dp"
+        android:layout_marginTop="20dp"
+        android:text="Amber Xiong"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="79dp"
+        android:layout_marginTop="30dp"
+        android:text="Alex Roeder"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="79dp"
+        android:layout_marginTop="40dp"
+        android:text="Adam Deye"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="15dp" />
+
+</RelativeLayout>

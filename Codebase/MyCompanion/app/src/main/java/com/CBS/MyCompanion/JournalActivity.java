@@ -143,6 +143,9 @@ public class JournalActivity extends AppCompatActivity {
                     case R.id.nav_share:
                         Toast.makeText(JournalActivity.this, "Share Pop Up Under Construction", Toast.LENGTH_SHORT).show();
                         break;
+                    case R.id.nav_credits:
+                        Toast.makeText(JournalActivity.this, "Credits Pop Up Under Construction", Toast.LENGTH_SHORT).show();
+                        break;
                     default:
                         return true;
                 }
