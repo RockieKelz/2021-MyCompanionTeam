@@ -5,8 +5,20 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.CBS.MyCompanion.TrackerFragment"
-    android:background="@color/white">
+    android:background="@drawable/background_lightbluesgrey">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:paddingBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
     <!--//Text that will be displayed in middle of screen-->
     <TextView
         android:id="@+id/text_trackerDate"
@@ -14,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="30dp"
         android:ems="12"
         android:textAlignment="center"
         android:text="Tracker Page"
@@ -27,7 +39,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/ic_arrow_left"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:layout_toStartOf="@+id/text_trackerDate"/>
 
     <ImageButton
@@ -35,17 +47,17 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/ic_arrow_right"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:layout_toEndOf="@+id/text_trackerDate" />
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pieChart_emotion"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="270dp"
+        android:layout_height="270dp"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="80dp"/>
 
     <View
         android:layout_width="match_parent"
@@ -55,11 +67,13 @@
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/lineChart_moods"
-        android:layout_width="350dp"
+        android:layout_width="355dp"
         android:layout_height="250dp"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:layout_marginTop="380dp" />
-
+        android:layout_marginTop="380dp"
+        android:paddingBottom="20dp"/>
+    </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
 </RelativeLayout>

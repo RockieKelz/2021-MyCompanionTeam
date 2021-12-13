@@ -1,47 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="com.CBS.MyCompanion.JournalFragment">
+    tools:context="com.CBS.MyCompanion.JournalFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="2dp"
         android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
-            android:paddingEnd="5dp"
             android:paddingBottom="5dp"
-            android:background="@color/lightestGrey"
+            android:background="@color/lightestBlue"
+            android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:background="@color/white"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/freeWrite"
-                android:layout_width="400dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:layout_marginEnd="30dp"
-                android:background="@color/lightGreen"
-                android:backgroundTint="@color/lightestBlue"
-                android:backgroundTintMode="src_in"
+                android:layout_marginEnd="5dp"
+                android:background="@color/lightestBlue"
                 android:fontFamily="@font/alegreya_italic"
                 android:gravity="center"
-
                 android:text="Freewrite"
                 android:textColor="@color/black"
-                android:textSize="30dp" />
-
-        </LinearLayout>
+                android:textSize="30sp" />
+        </RelativeLayout>
+        </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="1dp"
             android:background="@color/blue"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,7 +75,7 @@
             android:id="@+id/freewriteInputLayout"
             android:layout_width="340dp"
             android:layout_height="415dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="22dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
             android:layout_gravity="center"
             android:background="@drawable/border"
@@ -99,8 +108,8 @@
                 style="@style/Cut"
                 android:layout_width="125dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
-                android:backgroundTint="@color/lightestBlue"
+                android:layout_marginStart="30dp"
+                android:backgroundTint="@color/lightBlue"
                 android:text="Preset Questions"
                 android:textColor="@color/darkerBlue" />
             //button for submission
@@ -115,4 +124,5 @@
                 android:backgroundTint="@color/lightBlue" />
         </LinearLayout>
     </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

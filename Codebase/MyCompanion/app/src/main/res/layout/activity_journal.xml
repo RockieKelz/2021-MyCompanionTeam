@@ -20,10 +20,10 @@
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs_journal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@color/lightestBlue">
 
             </com.google.android.material.tabs.TabLayout>
-
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPager2_journal"
@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:background="@color/white"
+                android:background="@color/lightestBlue"
                 app:menu="@menu/bottom_navigation_items" />
 
         </RelativeLayout>
