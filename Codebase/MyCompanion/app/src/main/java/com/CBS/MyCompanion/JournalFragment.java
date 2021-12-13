@@ -1,11 +1,13 @@
 package com.CBS.MyCompanion;
 
 import android.annotation.SuppressLint;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +15,8 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 
 import androidx.fragment.app.Fragment;
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 
 import java.util.ArrayList;
 
@@ -33,7 +37,6 @@ public class JournalFragment extends Fragment {
 
         presetSelectionButton = journalView.findViewById(R.id.preset_questions_button);
         presetSelectionButton.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("UseCompatLoadingForDrawables")
             @Override
             public void onClick(View v) {
                 //create the pop up
@@ -52,8 +55,20 @@ public class JournalFragment extends Fragment {
                 presetInput = presetLayout.findViewById(R.id.presetInputBox);
                 journalInput = journalView.findViewById(R.id.journal_Entry);
                 presetInput.setText(journalInput.getText());
-                presetInput.setFocusableInTouchMode(true);
                 presetInput.requestFocusFromTouch();
+
+                KeyboardVisibilityEvent.setEventListener(
+                    requireActivity(),
+                    new KeyboardVisibilityEventListener() {
+                        @SuppressLint("WrongConstant")
+                        @Override
+                        public void onVisibilityChanged(boolean isOpen) {
+                            if(isOpen){
+                                ((JournalActivity) requireActivity()).getNav().setVisibility(View.GONE);
+                                requireActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE|WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+                            }
+                        }
+                    });
 
                 presetDialog.update(0,0, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 presetDialog.showAtLocation(journalView, Gravity.TOP, 0, 0);

@@ -29,12 +29,15 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
+
 import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class JournalActivity extends AppCompatActivity {
-
+    BottomNavigationView bottomNavView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,8 +54,21 @@ public class JournalActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new JournalFragment()).commit();
 
         NavigationView navigationView = findViewById(R.id.navigation_view);
-        BottomNavigationView bottomNavView = findViewById(R.id.bottom_nav);
+        bottomNavView = findViewById(R.id.bottom_nav);
         bottomNavView.setSelectedItemId(R.id.bottom_nav_journal);
+
+        KeyboardVisibilityEvent.setEventListener(
+                this,
+                new KeyboardVisibilityEventListener() {
+                    @Override
+                    public void onVisibilityChanged(boolean isOpen) {
+                        if(isOpen){
+                            bottomNavView.setVisibility(View.INVISIBLE);
+                        }else{
+                            bottomNavView.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
         //Display users name and image in navigation drawer
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -191,5 +207,9 @@ public class JournalActivity extends AppCompatActivity {
         transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right, R.anim.slide_in_right,R.anim.slide_out_left);
         transaction.replace(R.id.frameLayout, fragment);
         transaction.commit();
+    }
+    public BottomNavigationView getNav()
+    {
+        return bottomNavView;
     }
 }

@@ -196,7 +196,7 @@ public class HomeFragment extends Fragment {
 
         StorageReference profileRef;
         //adds user's name and picture to homepage
-        if (user !=null) {
+        if (user != null) {
            name = user.getDisplayName();
            homeName.setText((CharSequence) name);
            profileRef = FirebaseStorage.getInstance().getReference().child("users/" + Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()+"/profile.jpg");
