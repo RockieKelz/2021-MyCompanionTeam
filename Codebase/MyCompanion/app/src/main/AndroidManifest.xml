@@ -35,6 +35,8 @@
             android:exported="false" />
         <activity
             android:name=".JournalActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false" />
         <activity
             android:name=".CalendarActivity"
