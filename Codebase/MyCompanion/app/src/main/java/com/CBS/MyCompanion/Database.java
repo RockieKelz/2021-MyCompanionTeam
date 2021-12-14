@@ -99,14 +99,14 @@ public class Database {
         }
     }
 
-    public static Log GetLog(Date _date) {
+    public static Log GetLog(Calendar _date) {
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         FirebaseAuth user = FirebaseAuth.getInstance();
         Log log = new Log();
         CheckUpEntry checkUp = new CheckUpEntry();
         JournalEntry journal = new JournalEntry();
 
-        String date = new SimpleDateFormat("MM-dd-yyyy").format(_date);
+        String date = new SimpleDateFormat("MM-dd-yyyy").format(_date.getTime());
 
         DocumentReference userData = database.collection("User_Data")
                 .document(user.getUid()).collection("Logs")
