@@ -79,7 +79,6 @@ public class HomeFragment extends Fragment {
 
         //Determine and display the date
         Calendar cal = Calendar.getInstance();
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDate = new SimpleDateFormat("EEEE, MMM d, yyyy");
         getTimeFromAndroid(cal, homeView, 0);
 
         getLoginStreak(cal, homeView);
