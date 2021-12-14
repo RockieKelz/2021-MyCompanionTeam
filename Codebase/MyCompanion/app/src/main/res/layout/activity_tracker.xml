@@ -20,7 +20,8 @@
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs_tracker"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@color/lightestBlue">
             </com.google.android.material.tabs.TabLayout>
 
 
@@ -43,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:background="@color/white"
+                android:background="@color/lightestBlue"
                 app:menu="@menu/bottom_navigation_items" />
 
         </RelativeLayout>

@@ -143,6 +143,10 @@ public class TrackerActivity extends AppCompatActivity {
                     case R.id.nav_share:
                         Toast.makeText(TrackerActivity.this, "Share Pop Up Under Construction", Toast.LENGTH_SHORT).show();
                         break;
+                    case R.id.nav_credits:
+                        //Toast.makeText(TrackerActivity.this, "Credits Pop Up Under Construction", Toast.LENGTH_SHORT).show();
+                        replaceFragmentWithAnimation(new CreditsFragment());
+                        break;
                     default:
                         return true;
                 }

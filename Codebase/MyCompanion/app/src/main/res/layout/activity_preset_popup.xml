@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/preset_question_frame"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -13,9 +12,8 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/preset_question_container"
-        android:fitsSystemWindows="true">
+        android:layout_height="wrap_content"
+        android:id="@+id/preset_question_container">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,23 +24,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
         <ListView
             android:id="@+id/preset_list_view"
             android:layout_width="375dp"
             android:layout_height="400dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="30dp"
+            android:background="@color/white"
+            android:choiceMode="singleChoice"
+            android:drawingCacheQuality="auto"
+            android:focusable="auto"
+            android:listSelector="@color/lightestGrey"
+            android:scrollbarSize="4dp"
             android:scrollbarStyle="insideInset"
             android:scrollbars="vertical"
-            android:background="@color/white"
+            android:scrollingCache="true"
+            android:smoothScrollbar="true"
             android:textAppearance="@style/ListFont"/>
-
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="10dp"
+            android:focusableInTouchMode="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/presetInputBox"
@@ -52,7 +56,11 @@
                 android:backgroundTint="@color/white"
                 android:gravity="top|start"
                 android:inputType="textMultiLine"
-                android:lines="5" />
+                android:lines="5"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:nestedScrollingEnabled="true"
+                android:selectAllOnFocus="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -67,4 +75,4 @@
             android:text="@string/close" />
     </LinearLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-</androidx.core.widget.NestedScrollView>
+</ScrollView>

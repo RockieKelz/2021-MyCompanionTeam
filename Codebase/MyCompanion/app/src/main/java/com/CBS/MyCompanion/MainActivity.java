@@ -98,6 +98,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_share:
                         Toast.makeText(MainActivity.this, "Share Pop Up Under Construction", Toast.LENGTH_SHORT).show();
                         break;
+                    case R.id.nav_credits:
+                        //Toast.makeText(MainActivity.this, "Credits Pop Up Under Construction", Toast.LENGTH_SHORT).show();
+                        replaceFragmentWithAnimation(new CreditsFragment());
+                        break;
                     default:
                         return true;
                 }

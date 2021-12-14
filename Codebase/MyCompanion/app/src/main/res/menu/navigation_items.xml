@@ -45,6 +45,10 @@
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_baseline_share_24"
                 android:title="@string/share"/>
+                <item
+                    android:id="@+id/nav_credits"
+                    android:icon="@drawable/ic_launcher_foreground"
+                    android:title="@string/credits" />
             </group>
         </menu>
     </item>
