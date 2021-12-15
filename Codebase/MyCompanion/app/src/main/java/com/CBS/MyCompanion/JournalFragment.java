@@ -13,12 +13,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class JournalFragment extends Fragment {
 
@@ -26,6 +29,7 @@ public class JournalFragment extends Fragment {
     private ArrayList<String> presetQuestionsList;
     private ListView presetListView;
     protected ArrayAdapter<String> adapter;
+    public TextView journalDate;
     public EditText presetInput, journalInput;
 
 
@@ -34,6 +38,11 @@ public class JournalFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View journalView = inflater.inflate(R.layout.fragment_journal, container, false);
+        //display date
+        journalDate = journalView.findViewById(R.id.currentDate);
+        Calendar calendar = Calendar.getInstance();
+        String today = DateFormat.getDateInstance().format(calendar.getTime());
+        journalDate.setText(today);
 
         presetSelectionButton = journalView.findViewById(R.id.preset_questions_button);
         presetSelectionButton.setOnClickListener(new View.OnClickListener() {
