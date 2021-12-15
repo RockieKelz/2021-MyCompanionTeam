@@ -93,7 +93,8 @@ public class MainActivity extends AppCompatActivity {
                         replaceFragmentWithAnimation(new SettingsFragment());
                         break;
                     case R.id.nav_tracker:
-                        replaceFragmentWithAnimation(new TrackerFragment());
+                        Intent intent3 = new Intent(MainActivity.this, TrackerActivity.class);
+                        startActivity(intent3, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
                         break;
                     case R.id.nav_share:
                         Toast.makeText(MainActivity.this, "Share Pop Up Under Construction", Toast.LENGTH_SHORT).show();

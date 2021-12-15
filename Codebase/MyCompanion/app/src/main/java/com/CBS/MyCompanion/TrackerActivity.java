@@ -138,6 +138,8 @@ public class TrackerActivity extends AppCompatActivity {
                         replaceFragmentWithAnimation(new SettingsFragment());
                         break;
                     case R.id.nav_tracker:
+                        tabLayout_tracker.setVisibility(View.VISIBLE);
+                        pager2_tracker.setVisibility(View.VISIBLE);
                         replaceFragmentWithAnimation(new TrackerFragment());
                         break;
                     case R.id.nav_share:

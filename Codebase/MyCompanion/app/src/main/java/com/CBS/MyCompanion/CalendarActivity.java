@@ -91,7 +91,8 @@ public class CalendarActivity extends AppCompatActivity {
                         replaceFragmentWithAnimation(new SettingsFragment());
                         break;
                     case R.id.nav_tracker:
-                        replaceFragmentWithAnimation(new TrackerFragment());
+                        Intent intent3 = new Intent(CalendarActivity.this, TrackerActivity.class);
+                        startActivity(intent3, ActivityOptions.makeSceneTransitionAnimation(CalendarActivity.this).toBundle());
                         break;
                     case R.id.nav_share:
                         Toast.makeText(CalendarActivity.this, "Share Pop Up Under Construction", Toast.LENGTH_SHORT).show();

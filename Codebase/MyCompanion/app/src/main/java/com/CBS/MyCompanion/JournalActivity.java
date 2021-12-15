@@ -142,6 +142,8 @@ public class JournalActivity extends AppCompatActivity {
                         startActivity(intent2, ActivityOptions.makeSceneTransitionAnimation(JournalActivity.this).toBundle());
                         break;
                     case R.id.nav_journal:
+                        tabLayout_journal.setVisibility(View.VISIBLE);
+                        pager2_journal.setVisibility(View.VISIBLE);
                         replaceFragmentWithAnimation(new JournalFragment());
                         break;
                     case R.id.nav_help:
