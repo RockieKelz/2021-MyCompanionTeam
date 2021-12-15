@@ -130,7 +130,6 @@ public class TrackerActivity extends AppCompatActivity {
                         pager2_tracker.setVisibility(View.GONE);
                         replaceFragmentWithAnimation(new FeedbackFragment());
                         break;
-                        Toast.makeText(TrackerActivity.this, "Share Pop Up Under Construction", Toast.LENGTH_SHORT).show();
                     case R.id.nav_credits:
                         tabLayout_tracker.setVisibility(View.GONE);
                         pager2_tracker.setVisibility(View.GONE);
