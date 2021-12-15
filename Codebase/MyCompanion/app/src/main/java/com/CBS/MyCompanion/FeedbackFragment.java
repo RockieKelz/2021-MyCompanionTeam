@@ -9,14 +9,19 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -45,6 +50,18 @@ public class FeedbackFragment extends Fragment {
         feedbackText.setText("We're always looking for ways to improve your in-app experience. " +
                 "If you have any opinions, feedback, or requests you'd like to share, we'd love to hear it. " +
                 "We can't guarantee that every request will be granted, but we will take everything you send us into consideration.");
+
+        KeyboardVisibilityEvent.setEventListener(
+                requireActivity(),
+                new KeyboardVisibilityEventListener() {
+                    @SuppressLint("WrongConstant")
+                    @Override
+                    public void onVisibilityChanged(boolean isOpen) {
+                        if(isOpen){
+                            requireActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE|WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+                        }
+                    }
+                });
 
         feedbackSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
