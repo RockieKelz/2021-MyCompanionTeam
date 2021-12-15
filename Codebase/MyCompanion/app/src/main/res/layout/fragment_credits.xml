@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@color/white"
-android:gravity="center"
-android:orientation="horizontal"
-tools:context="com.CBS.MyCompanion.CreditFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_lightbluesgrey"
+    android:gravity="center"
+    android:orientation="horizontal"
+    tools:context="com.CBS.MyCompanion.CreditFragment">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/white"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp">
 
-<!--//Text that will be displayed in middle of screen-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp">
+
+        <!--//Text that will be displayed in middle of screen-->
 
     <TextView
         android:layout_width="match_parent"
@@ -64,5 +84,6 @@ tools:context="com.CBS.MyCompanion.CreditFragment">
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20dp" />
-
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>
