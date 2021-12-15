@@ -4,6 +4,7 @@
 *Example: “Asset Name by AuthorName from website.com”*
 
 Textures/Materials/Sprites:
+Credit Icon by @jjjjj from onlinewebfont.com
 
 Models:
 
