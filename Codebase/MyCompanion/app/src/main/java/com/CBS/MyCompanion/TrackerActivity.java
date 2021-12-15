@@ -110,22 +110,10 @@ public class TrackerActivity extends AppCompatActivity {
                 //Navigation switch case to determine which page was selected
                 switch (id)
                 {
-                    case R.id.nav_home:
-                        Intent intent1 = new Intent(TrackerActivity.this, MainActivity.class);
-                        startActivity(intent1, ActivityOptions.makeSceneTransitionAnimation(TrackerActivity.this).toBundle());
-                        break;
                     case R.id.nav_account:
                         tabLayout_tracker.setVisibility(View.GONE);
                         pager2_tracker.setVisibility(View.GONE);
                         replaceFragmentWithAnimation(new AccountFragment());
-                        break;
-                    case R.id.nav_calendar:
-                        Intent intent2 = new Intent(TrackerActivity.this, CalendarActivity.class);
-                        startActivity(intent2, ActivityOptions.makeSceneTransitionAnimation(TrackerActivity.this).toBundle());
-                        break;
-                    case R.id.nav_journal:
-                        Intent intent3 = new Intent(TrackerActivity.this, JournalActivity.class);
-                        startActivity(intent3, ActivityOptions.makeSceneTransitionAnimation(TrackerActivity.this).toBundle());
                         break;
                     case R.id.nav_help:
                         tabLayout_tracker.setVisibility(View.GONE);
@@ -137,11 +125,15 @@ public class TrackerActivity extends AppCompatActivity {
                         pager2_tracker.setVisibility(View.GONE);
                         replaceFragmentWithAnimation(new SettingsFragment());
                         break;
-                    case R.id.nav_tracker:
-                        replaceFragmentWithAnimation(new TrackerFragment());
+                    case R.id.nav_feedback:
+                        tabLayout_tracker.setVisibility(View.GONE);
+                        pager2_tracker.setVisibility(View.GONE);
+                        replaceFragmentWithAnimation(new FeedbackFragment());
                         break;
-                    case R.id.nav_share:
-                        Toast.makeText(TrackerActivity.this, "Share Pop Up Under Construction", Toast.LENGTH_SHORT).show();
+                    case R.id.nav_credits:
+                        tabLayout_tracker.setVisibility(View.GONE);
+                        pager2_tracker.setVisibility(View.GONE);
+                        replaceFragmentWithAnimation(new CreditsFragment());
                         break;
                     default:
                         return true;

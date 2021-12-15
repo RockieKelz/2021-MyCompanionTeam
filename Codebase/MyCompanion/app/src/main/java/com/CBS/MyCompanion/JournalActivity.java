@@ -128,21 +128,10 @@ public class JournalActivity extends AppCompatActivity {
                 //Navigation switch case to determine which page was selected
                 switch (id)
                 {
-                    case R.id.nav_home:
-                        Intent intent1 = new Intent(JournalActivity.this, MainActivity.class);
-                        startActivity(intent1, ActivityOptions.makeSceneTransitionAnimation(JournalActivity.this).toBundle());
-                        break;
                     case R.id.nav_account:
                         tabLayout_journal.setVisibility(View.GONE);
                         pager2_journal.setVisibility(View.GONE);
                         replaceFragmentWithAnimation(new AccountFragment());
-                        break;
-                    case R.id.nav_calendar:
-                        Intent intent2 = new Intent(JournalActivity.this, CalendarActivity.class);
-                        startActivity(intent2, ActivityOptions.makeSceneTransitionAnimation(JournalActivity.this).toBundle());
-                        break;
-                    case R.id.nav_journal:
-                        replaceFragmentWithAnimation(new JournalFragment());
                         break;
                     case R.id.nav_help:
                         tabLayout_journal.setVisibility(View.GONE);
@@ -154,13 +143,18 @@ public class JournalActivity extends AppCompatActivity {
                         pager2_journal.setVisibility(View.GONE);
                         replaceFragmentWithAnimation(new SettingsFragment());
                         break;
-                    case R.id.nav_tracker:
-                        Intent intent3 = new Intent(JournalActivity.this, TrackerActivity.class);
-                        startActivity(intent3, ActivityOptions.makeSceneTransitionAnimation(JournalActivity.this).toBundle());
+                    case R.id.nav_feedback:
+                        tabLayout_journal.setVisibility(View.GONE);
+                        pager2_journal.setVisibility(View.GONE);
+                        replaceFragmentWithAnimation(new FeedbackFragment());
                         break;
-                    case R.id.nav_share:
-                        Toast.makeText(JournalActivity.this, "Share Pop Up Under Construction", Toast.LENGTH_SHORT).show();
+                    case R.id.nav_credits:
+                        //Toast.makeText(JournalActivity.this, "Credits Pop Up Under Construction", Toast.LENGTH_SHORT).show();
+                        tabLayout_journal.setVisibility(View.GONE);
+                        pager2_journal.setVisibility(View.GONE);
+                        replaceFragmentWithAnimation(new CreditsFragment());
                         break;
+
                     default:
                         return true;
                 }

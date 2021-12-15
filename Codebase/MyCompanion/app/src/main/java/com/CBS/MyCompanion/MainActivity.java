@@ -72,19 +72,8 @@ public class MainActivity extends AppCompatActivity {
                 //Navigation switch case to determine which page was selected
                 switch (id)
                 {
-                    case R.id.nav_home:
-                        replaceFragmentWithAnimation(new HomeFragment());
-                        break;
                     case R.id.nav_account:
                         replaceFragmentWithAnimation(new AccountFragment());
-                        break;
-                    case R.id.nav_calendar:
-                        Intent intent2 = new Intent(MainActivity.this, CalendarActivity.class);
-                        startActivity(intent2, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
-                        break;
-                    case R.id.nav_journal:
-                        Intent intent1 = new Intent(MainActivity.this, JournalActivity.class);
-                        startActivity(intent1, ActivityOptions.makeSceneTransitionAnimation(MainActivity.this).toBundle());
                         break;
                     case R.id.nav_help:
                         replaceFragmentWithAnimation(new ProfHelpFragment());
@@ -92,11 +81,11 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_settings:
                         replaceFragmentWithAnimation(new SettingsFragment());
                         break;
-                    case R.id.nav_tracker:
-                        replaceFragmentWithAnimation(new TrackerFragment());
+                    case R.id.nav_feedback:
+                        replaceFragmentWithAnimation(new FeedbackFragment());
                         break;
-                    case R.id.nav_share:
-                        Toast.makeText(MainActivity.this, "Share Pop Up Under Construction", Toast.LENGTH_SHORT).show();
+                    case R.id.nav_credits:
+                        replaceFragmentWithAnimation(new CreditsFragment());
                         break;
                     default:
                         return true;

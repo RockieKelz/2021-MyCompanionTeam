@@ -70,19 +70,8 @@ public class CalendarActivity extends AppCompatActivity {
                 //Navigation switch case to determine which page was selected
                 switch (id)
                 {
-                    case R.id.nav_home:
-                        Intent intent1 = new Intent(CalendarActivity.this, MainActivity.class);
-                        startActivity(intent1, ActivityOptions.makeSceneTransitionAnimation(CalendarActivity.this).toBundle());
-                        break;
                     case R.id.nav_account:
                         replaceFragmentWithAnimation(new AccountFragment());
-                        break;
-                    case R.id.nav_calendar:
-                        replaceFragmentWithAnimation(new CalendarFragment());
-                        break;
-                    case R.id.nav_journal:
-                        Intent intent2 = new Intent(CalendarActivity.this, JournalActivity.class);
-                        startActivity(intent2, ActivityOptions.makeSceneTransitionAnimation(CalendarActivity.this).toBundle());
                         break;
                     case R.id.nav_help:
                         replaceFragmentWithAnimation(new ProfHelpFragment());
@@ -90,11 +79,11 @@ public class CalendarActivity extends AppCompatActivity {
                     case R.id.nav_settings:
                         replaceFragmentWithAnimation(new SettingsFragment());
                         break;
-                    case R.id.nav_tracker:
-                        replaceFragmentWithAnimation(new TrackerFragment());
+                    case R.id.nav_feedback:
+                        replaceFragmentWithAnimation(new FeedbackFragment());
                         break;
-                    case R.id.nav_share:
-                        Toast.makeText(CalendarActivity.this, "Share Pop Up Under Construction", Toast.LENGTH_SHORT).show();
+                    case R.id.nav_credits:
+                        replaceFragmentWithAnimation(new CreditsFragment());
                         break;
                     default:
                         return true;
