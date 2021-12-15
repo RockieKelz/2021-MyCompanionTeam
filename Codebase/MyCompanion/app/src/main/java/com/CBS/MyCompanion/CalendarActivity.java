@@ -73,15 +73,16 @@ public class CalendarActivity extends AppCompatActivity {
                     case R.id.nav_account:
                         replaceFragmentWithAnimation(new AccountFragment());
                         break;
+
                     case R.id.nav_help:
                         replaceFragmentWithAnimation(new ProfHelpFragment());
                         break;
                     case R.id.nav_settings:
                         replaceFragmentWithAnimation(new SettingsFragment());
                         break;
+
                     case R.id.nav_feedback:
                         replaceFragmentWithAnimation(new FeedbackFragment());
-                        break;
                     case R.id.nav_credits:
                         replaceFragmentWithAnimation(new CreditsFragment());
                         break;

@@ -149,13 +149,11 @@ public class JournalActivity extends AppCompatActivity {
                         replaceFragmentWithAnimation(new FeedbackFragment());
                         break;
                     case R.id.nav_credits:
-                        //Toast.makeText(JournalActivity.this, "Credits Pop Up Under Construction", Toast.LENGTH_SHORT).show();
+
                         tabLayout_journal.setVisibility(View.GONE);
                         pager2_journal.setVisibility(View.GONE);
                         replaceFragmentWithAnimation(new CreditsFragment());
-                        break;
-
-                    default:
+                        break;                    default:
                         return true;
                 }
                 return true;
