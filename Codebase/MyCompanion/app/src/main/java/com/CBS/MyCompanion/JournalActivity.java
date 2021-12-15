@@ -81,6 +81,7 @@ public class JournalActivity extends AppCompatActivity {
             TextView headerUsername = header.findViewById(R.id.userName_header);
             headerUsername.setText(user.getDisplayName() + "'s Companion");
         }
+        
        TabLayout tabLayout_journal = findViewById(R.id.tabs_journal);
         ViewPager2 pager2_journal = findViewById(R.id.viewPager2_journal);
         FragmentManager fManager = getSupportFragmentManager();
@@ -149,7 +150,6 @@ public class JournalActivity extends AppCompatActivity {
                         replaceFragmentWithAnimation(new FeedbackFragment());
                         break;
                     case R.id.nav_credits:
-
                         tabLayout_journal.setVisibility(View.GONE);
                         pager2_journal.setVisibility(View.GONE);
                         replaceFragmentWithAnimation(new CreditsFragment());
@@ -181,6 +181,8 @@ public class JournalActivity extends AppCompatActivity {
                         startActivity(intent1, ActivityOptions.makeSceneTransitionAnimation(JournalActivity.this).toBundle());
                         break;
                     case R.id.bottom_nav_journal:
+                        tabLayout_journal.setVisibility(View.VISIBLE);
+                        pager2_journal.setVisibility(View.VISIBLE);
                         replaceFragmentWithAnimation(new JournalFragment());
                         break;
                     case R.id.bottom_nav_menu:

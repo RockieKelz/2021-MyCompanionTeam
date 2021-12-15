@@ -154,6 +154,8 @@ public class TrackerActivity extends AppCompatActivity {
                         startActivity(intent2, ActivityOptions.makeSceneTransitionAnimation(TrackerActivity.this).toBundle());
                         break;
                     case R.id.bottom_nav_tracker:
+                        tabLayout_tracker.setVisibility(View.VISIBLE);
+                        pager2_tracker.setVisibility(View.VISIBLE);
                         replaceFragmentWithAnimation(new TrackerFragment());
                         break;
                     case R.id.bottom_nav_home:
