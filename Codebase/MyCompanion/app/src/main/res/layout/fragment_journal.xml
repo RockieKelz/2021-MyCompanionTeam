@@ -114,7 +114,7 @@
                 android:textColor="@color/darkerBlue" />
             //button for submission
             <Button
-                android:id="@+id/submit"
+                android:id="@+id/submitJournal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Submit"

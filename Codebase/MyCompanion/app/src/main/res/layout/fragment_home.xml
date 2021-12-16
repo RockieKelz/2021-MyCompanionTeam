@@ -124,7 +124,6 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="13dp"
                 android:buttonTint="@color/darkerBlue"
-                android:checked="false"
                 android:clickable="false"
                 android:text="@string/home_check1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
@@ -136,7 +135,6 @@
                 android:layout_below="@id/home_checkBox1"
                 android:layout_centerHorizontal="true"
                 android:buttonTint="@color/darkerBlue"
-                android:checked="false"
                 android:clickable="false"
                 android:text="@string/home_check2"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2" />

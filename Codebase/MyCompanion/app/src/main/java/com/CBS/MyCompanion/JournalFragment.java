@@ -25,13 +25,13 @@ import java.util.Calendar;
 
 public class JournalFragment extends Fragment {
 
-    private Button presetSelectionButton, closePresetButton;
+    private Button presetSelectionButton, closePresetButton, saveJournalButton;
     private ArrayList<String> presetQuestionsList;
     private ListView presetListView;
     protected ArrayAdapter<String> adapter;
     public TextView journalDate;
     public EditText presetInput, journalInput;
-
+    static boolean isJournalCompleted = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,6 +44,15 @@ public class JournalFragment extends Fragment {
         String today = DateFormat.getDateInstance().format(calendar.getTime());
         journalDate.setText(today);
 
+        //initialize buttons
+        saveJournalButton = journalView.findViewById(R.id.submitJournal);
+        saveJournalButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //trigger home journal checkbox
+                isJournalCompleted = true;
+            }
+        });
         presetSelectionButton = journalView.findViewById(R.id.preset_questions_button);
         presetSelectionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,5 +128,13 @@ public class JournalFragment extends Fragment {
         adapter = new ArrayAdapter<String>(requireActivity().getApplicationContext(), android.R.layout.simple_selectable_list_item, presetQuestionsList);
         presetListView.setAdapter(adapter);
 
+    }
+    public static boolean getJournalState()
+    {
+        return isJournalCompleted;
+    }
+    public static void setJournalState(boolean _isJournalCompleted)
+    {
+        isJournalCompleted = _isJournalCompleted;
     }
 }

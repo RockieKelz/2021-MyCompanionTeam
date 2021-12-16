@@ -81,7 +81,7 @@ public class JournalActivity extends AppCompatActivity {
             TextView headerUsername = header.findViewById(R.id.userName_header);
             headerUsername.setText(user.getDisplayName() + "'s Companion");
         }
-        
+
        TabLayout tabLayout_journal = findViewById(R.id.tabs_journal);
         ViewPager2 pager2_journal = findViewById(R.id.viewPager2_journal);
         FragmentManager fManager = getSupportFragmentManager();

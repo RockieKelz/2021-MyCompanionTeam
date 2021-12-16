@@ -47,6 +47,7 @@ public class CheckUpFragment extends Fragment {
     //enum Emotions {SAD, HAPPY, ANXIOUS, STRESSED, ANGRY, LONELY, WITHDRAWN, FEARFUL}
     Vector<Emotions> selectedEmotions;
     CheckUpEntry newEntry;
+    static boolean isCheckUpCompleted = false;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -299,6 +300,8 @@ public class CheckUpFragment extends Fragment {
                 newEntry.SetDate(selectedDate);
                 newEntry.SetEmotions((Vector)selectedEmotions);
                 newEntry.SetRating(mood);
+                //trigger home check up checkbox
+                isCheckUpCompleted = true;
             }
         });
 
@@ -348,5 +351,14 @@ public class CheckUpFragment extends Fragment {
                 break;
         }
         return month;
+    }
+
+    public static boolean getCheckUpState()
+    {
+        return isCheckUpCompleted;
+    }
+    public static void setCheckUpState(boolean _isCheckUpCompleted)
+    {
+        isCheckUpCompleted = _isCheckUpCompleted;
     }
 }

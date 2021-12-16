@@ -1,7 +1,10 @@
 package com.CBS.MyCompanion;
 
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -31,6 +34,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
+import java.util.TimeZone;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -104,10 +108,18 @@ public class HomeFragment extends Fragment {
         //Determine if the checkboxes are checked
         CheckBox journalCheckBox = (CheckBox) homeView.findViewById(R.id.home_checkBox1);
         //If log is completed
-        //journalCheckBox.setChecked(true);
+        if (JournalFragment.getJournalState())
+        {
+            journalCheckBox.setChecked(true);
+        }
         CheckBox trackerCheckBox= (CheckBox) homeView.findViewById(R.id.home_checkBox2);
-        //If log is completed
-        //trackerCheckBox.setChecked(true);
+        //If checkup is completed
+        if (CheckUpFragment.getCheckUpState())
+        {
+            trackerCheckBox.setChecked(true);
+        }
+        //reset checkbox states at end of day
+        setNewDayIsTriggered();
 
         return homeView;
     }
@@ -207,6 +219,25 @@ public class HomeFragment extends Fragment {
             homePic.setImageResource(R.drawable.default_profile_pic);
             //headerProfileImage.setImageResource(R.drawable.default_profile_pic);
         }
+
+    }
+    public void setNewDayIsTriggered()
+    {
+        //set conditions for a new day
+        Calendar newDay = Calendar.getInstance();
+        newDay.setTimeZone(TimeZone.getTimeZone("PST"));
+        newDay.set(Calendar.HOUR_OF_DAY, 1);
+        newDay.set(Calendar.MINUTE, 0);
+        newDay.set(Calendar.SECOND, 0);
+
+        AlarmManager dailyAlarm = (AlarmManager) requireActivity().getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(getContext(), NewDayReceiver.class);
+        PendingIntent reoccurringIntent = PendingIntent.getBroadcast(getContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        if (reoccurringIntent != null && dailyAlarm != null) {
+            dailyAlarm.cancel(reoccurringIntent);
+        }
+        assert dailyAlarm != null;
+        dailyAlarm.setRepeating(AlarmManager.RTC_WAKEUP, newDay.getTimeInMillis(), AlarmManager.INTERVAL_DAY, reoccurringIntent);
 
     }
 
