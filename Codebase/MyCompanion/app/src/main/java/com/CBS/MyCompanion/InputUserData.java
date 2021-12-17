@@ -95,34 +95,11 @@ public class InputUserData extends AppCompatActivity {
         }
 
         addDataToFirestore();
-        BuildTestLog();
 
         Intent i
                 = new Intent(InputUserData.this,
                 MainActivity.class);
         startActivity(i);
-
-    }
-
-    public void BuildTestLog() {
-        Timestamp timestamp = Timestamp.now();
-        String defaultFreeWrite = "This is a default Journal Entry";
-        JournalEntry journalEntry = new JournalEntry();
-        DiaryComponent diary = new DiaryComponent("Free Write", defaultFreeWrite);
-        journalEntry.AddComponent(diary);
-        Integer rating = 3;
-        Vector<Emotions> emotions = new Vector<>();
-        emotions.add(Emotions.HAPPY);
-        emotions.add(Emotions.LONELY);
-        CheckUpEntry checkUp = new CheckUpEntry();
-        checkUp.SetEmotions(emotions);
-        checkUp.SetRating(rating);
-
-        Log log = new Log();
-        log.SetCheckUp(checkUp);
-        log.SetJournal(journalEntry);
-
-        Database.AddLog(log);
 
     }
 
