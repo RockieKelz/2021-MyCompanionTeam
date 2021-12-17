@@ -174,6 +174,35 @@ public class Database {
         return diaryComponent;
     }
 
+    public static DiaryComponent GetJournal(String year, String month, String day) {
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        FirebaseAuth user = FirebaseAuth.getInstance();
+
+        CollectionReference journals = database.collection("User_Data")
+                .document(user.getUid()).collection("Logs")
+                .document(year).collection(month).document(day).collection("Journal");
+
+        final String[] response = {""};
+
+        journals.document("FreeWrite").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        response[0] = document.getString("Free Write");
+
+                    }
+                }
+            }
+        });
+        String r = response[0];
+
+        DiaryComponent diaryComponent = new DiaryComponent("Free Write", r);
+
+        return diaryComponent;
+    }
+
 }
 
 /*TODO:

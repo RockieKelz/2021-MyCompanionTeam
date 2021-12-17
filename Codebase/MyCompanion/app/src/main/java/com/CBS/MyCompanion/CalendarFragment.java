@@ -96,6 +96,8 @@ public class CalendarFragment extends Fragment {
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 String date =  year + "/" + (month + 1) + "/" + dayOfMonth;
                 mDateText.setText(date);
+
+                Database.GetJournal(Integer.toString(year), Integer.toString(month), Integer.toString(dayOfMonth));
                 Log.wtf("wtf","onSelectedDayChange" + date);
             }
         });
