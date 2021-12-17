@@ -123,13 +123,3 @@ public class Database {
 
 
 }
-
-/*TODO:
-    Functions to add:
-        1. Add a log to the users database
-        2. Search the database for a specific log
-        3. Delete specific Logs
-        4. Delete a profile
-        5. Edit Data in a log
-
- */
