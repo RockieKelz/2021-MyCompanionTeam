@@ -286,10 +286,8 @@ public class CheckUpFragment extends Fragment {
 
                 checkUp.SetEmotions(selectedEmotions);
                 checkUp.SetRating(mood);
-                log.SetDate(selectedDate);
-                log.SetCheckUp(checkUp);
 
-                Database.AddLog(log);
+                Database.AddCheckUp(checkUp);
 
                 //TODO: Remove test string
                 String test = "mood:" + mood + " Date:" + daySelected +" "+ monthSelected +" "+ yearSelected + " " + selectedEmotions.size();
