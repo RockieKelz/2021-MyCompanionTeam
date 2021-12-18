@@ -14,8 +14,13 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+
+import com.CBS.MyCompanion.Data.Logs.DiaryComponent;
+import com.CBS.MyCompanion.Data.Logs.JournalEntry;
+
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 
@@ -32,25 +37,47 @@ public class JournalFragment extends Fragment {
     public TextView journalDate;
     public EditText presetInput, journalInput;
     static boolean isJournalCompleted = false;
+    int daySelected, monthSelected, yearSelected;   //months are 0 - 11
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View journalView = inflater.inflate(R.layout.fragment_journal, container, false);
+        journalInput = journalView.findViewById(R.id.journal_Entry);
+
         //display date
         journalDate = journalView.findViewById(R.id.currentDate);
         Calendar calendar = Calendar.getInstance();
         String today = DateFormat.getDateInstance().format(calendar.getTime());
         journalDate.setText(today);
 
+        //set selected date and default text view
+        daySelected = calendar.get(Calendar.DAY_OF_MONTH);
+        monthSelected = calendar.get(Calendar.MONTH);
+        yearSelected = calendar.get(Calendar.YEAR);
+
         //initialize buttons
         saveJournalButton = journalView.findViewById(R.id.submitJournal);
         saveJournalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Calendar selectedDate = Calendar.getInstance();
+                selectedDate.set(yearSelected, monthSelected, daySelected);
+
+                JournalEntry journalEntry = new JournalEntry();
+                DiaryComponent diary = new DiaryComponent("FreeWrite", journalInput.getText().toString());
+                journalEntry.AddComponent(diary);
+                journalEntry.SetDate(selectedDate);
+
+                Database.AddJournal(journalEntry);
+
                 //trigger home journal checkbox
                 isJournalCompleted = true;
+
+                //clear's the entry from the screen
+                Toast.makeText(requireActivity(), "Journal Entry Saved", Toast.LENGTH_LONG).show();
+                journalInput.setText("");
             }
         });
         presetSelectionButton = journalView.findViewById(R.id.preset_questions_button);
@@ -71,7 +98,6 @@ public class JournalFragment extends Fragment {
 
                 //allow for any text written in freewrite to be displayed in the pop up's input area
                 presetInput = presetLayout.findViewById(R.id.presetInputBox);
-                journalInput = journalView.findViewById(R.id.journal_Entry);
                 presetInput.setText(journalInput.getText());
                 presetInput.requestFocusFromTouch();
 
