@@ -46,8 +46,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class HomeFragment extends Fragment {
 
     FirebaseUser user;
+    FirebaseAuth mAuth;
     FirebaseFirestore database;
-    SharedPreferences sharedPreferences;
+    DocumentReference documentReference;
+    StorageReference profileRef;
     String name;
     int streak;
 
@@ -123,6 +125,30 @@ public class HomeFragment extends Fragment {
 
         return homeView;
     }
+    public void pullUserInfoFromFirebase(View view)
+    {
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+        TextView homeName = view.findViewById(R.id.userName_home);
+        CircleImageView homePic = view.findViewById(R.id.homePic);
+        CircleImageView headerProfileImage = view.findViewById(R.id.header_profile_picture);
+
+        StorageReference profileRef;
+        //adds user's name and picture to homepage
+        if (user != null) {
+            name = user.getDisplayName();
+            homeName.setText((CharSequence) name);
+            profileRef = FirebaseStorage.getInstance().getReference().child("users/" + Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()+"/profile.jpg");
+            profileRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(homePic));
+        }
+        else
+        {
+            homeName.setText(requireActivity().getResources().getString(R.string.bypass_name));
+            homePic.setImageResource(R.drawable.default_profile_pic);
+            //headerProfileImage.setImageResource(R.drawable.default_profile_pic);
+        }
+
+    }
     public void getTimeFromAndroid(Calendar cal,View view, int day)
     {
         cal.add(cal.DATE, day);
@@ -155,35 +181,37 @@ public class HomeFragment extends Fragment {
 
     }
     @SuppressLint("SetTextI18n")
-    private void getLoginStreak(Calendar cal, View view)
+    private void getLoginStreak(Calendar currentDay, View view)
     {
-        /* Access the user's storage field and update their login streak
-        DocumentReference documentReference = FirebaseFirestore.getInstance().collection("User_data").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        //Access the user's storage field and update their login streak
+        database = FirebaseFirestore.getInstance();
+        documentReference = database.collection("User_Data").document(mAuth.getUid());
+        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot != null)
-                {
-                    streak = documentSnapshot.get("currentLoginStreak");
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful() && task.getResult()!= null){
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    if (documentSnapshot.exists())
+                        streak = documentSnapshot.getLong("currentLoginStreak").intValue();
                 }
             }
-        }); */
+        });
         //Generate Login Streak
         Date yesterday;
         @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDate = new SimpleDateFormat("MM, dd, yyyy");
 
         //get the last sign in date and format it to a string
         Date lastLogin = new Date(Objects.requireNonNull(user.getMetadata()).getLastSignInTimestamp());
-        String formatLogin = simpleDate.format(lastLogin);
+        String formattedLastLogin = simpleDate.format(lastLogin);
         //check if the last sign in is the current date
-        if (!formatLogin.equals(simpleDate.format(cal.getTime())))
+        if (!formattedLastLogin.equals(simpleDate.format(currentDay.getTime())))
         {
             //get yesterday's date and format it to a string
-            cal.add(Calendar.DATE, -1);
-            yesterday = cal.getTime();
+            currentDay.add(Calendar.DATE, -1);
+            yesterday = currentDay.getTime();
             String formatYesterday = simpleDate.format(yesterday);
             //determine if user's login streak should reset or go up
-            if (formatYesterday.equals(formatLogin))
+            if (formatYesterday.equals(formattedLastLogin))
             {
                 ++streak;
             }
@@ -192,35 +220,14 @@ public class HomeFragment extends Fragment {
                 streak=1;
             }
         }
-        /*Update their streak count
-        FirebaseFirestore.getInstance().collection("User_data").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).update("currentLoginStreak:", streak);*/
+        //Update their streak count
+        //TODO: uncomment when streak count gets fixed
+        //documentReference.update("currentLoginStreak", streak);
         TextView streakCount = view.findViewById(R.id.homeStreaks);
         streakCount.setText("Current Login Streak: " + streak);
 
     }
-    public void pullUserInfoFromFirebase(View view)
-    {
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        TextView homeName = view.findViewById(R.id.userName_home);
-        CircleImageView homePic = view.findViewById(R.id.homePic);
-        CircleImageView headerProfileImage = view.findViewById(R.id.header_profile_picture);
 
-        StorageReference profileRef;
-        //adds user's name and picture to homepage
-        if (user != null) {
-           name = user.getDisplayName();
-           homeName.setText((CharSequence) name);
-           profileRef = FirebaseStorage.getInstance().getReference().child("users/" + Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()+"/profile.jpg");
-           profileRef.getDownloadUrl().addOnSuccessListener(uri -> Picasso.get().load(uri).into(homePic));
-        }
-        else
-        {
-            homeName.setText(requireActivity().getResources().getString(R.string.bypass_name));
-            homePic.setImageResource(R.drawable.default_profile_pic);
-            //headerProfileImage.setImageResource(R.drawable.default_profile_pic);
-        }
-
-    }
     public void setNewDayIsTriggered()
     {
         //set conditions for a new day
